@@ -1,6 +1,6 @@
 import XCTest
-@testable import ClangSwiftTests
+@testable import ClangTests
 
 XCTMain([
-     testCase(ClangSwiftTests.allTests),
+     testCase(ClangTests.allTests),
 ])
