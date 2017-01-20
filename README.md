@@ -8,8 +8,8 @@ Check back for updates!
 
 # Authors
 
-Harlan Haskins ([@harlanhaskins](https://github.com/harlanhaskins))
-Robert Widmann ([@CodaFi](https://github.com/CodaFi))
+- Harlan Haskins ([@harlanhaskins](https://github.com/harlanhaskins))
+- Robert Widmann ([@CodaFi](https://github.com/CodaFi))
 
 # License
 
