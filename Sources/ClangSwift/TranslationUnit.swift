@@ -50,7 +50,7 @@ class TranslationUnit {
     }
 
     var cursor: Cursor {
-        return convertCursor(clang_getTranslationUnitCursor(clang))
+        return convertCursor(clang_getTranslationUnitCursor(clang))!
     }
 
     var spelling: String {

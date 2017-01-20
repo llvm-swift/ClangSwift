@@ -6,7 +6,8 @@ internal extension Bool {
     }
 }
 
-internal func convertCursor(_ clang: CXCursor) -> Cursor {
+internal func convertCursor(_ clang: CXCursor) -> Cursor? {
+    if clang_Cursor_isNull(clang) != 0 { return nil }
     switch (clang as Cursor).kind {
     default:
         return clang
