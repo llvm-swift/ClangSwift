@@ -222,6 +222,37 @@ extension Cursor {
     public var range: SourceRange {
         return SourceRange(clang: clang_getCursorExtent(asClang()))
     }
+
+    public var availability: Availability {
+        let maxNumPlatforms = 10 // 10 ought to be enough for anybody...
+        let platformAvailabilities =
+            UnsafeMutablePointer<CXPlatformAvailability>.allocate(capacity: maxNumPlatforms)
+        var alwaysDeprecated: Int32 = 0
+        var deprecatedMessage = CXString()
+        var alwaysUnavailable: Int32 = 0
+        var unavailableMessage = CXString()
+        let numPlatforms = clang_getCursorPlatformAvailability(asClang(),
+                                                               &alwaysDeprecated,
+                                                               &deprecatedMessage,
+                                                               &alwaysUnavailable,
+                                                               &unavailableMessage,
+                                                               platformAvailabilities,
+                                                               Int32(maxNumPlatforms))
+
+        var platforms = [PlatformAvailability]()
+        for i in 0..<Int(numPlatforms) {
+            var platform = platformAvailabilities[i]
+            platforms.append(PlatformAvailability(clang: platform))
+            clang_disposeCXPlatformAvailability(&platform)
+        }
+
+
+        return Availability(alwaysDeprecated: alwaysDeprecated != 0,
+                            deprecationMessage: deprecatedMessage.asSwiftOptional(),
+                            alwaysUnavailable: alwaysUnavailable != 0,
+                            unavailableMessage: unavailableMessage.asSwiftOptional(),
+                            platforms: platforms)
+    }
 }
 
 public enum VisibilityKind {
@@ -239,22 +270,5 @@ public enum VisibilityKind {
         case CXVisibility_Default: self = .default
         default: return nil
         }
-    }
-}
-
-/// Converts a CXCursor into the appropriate object conforming to `Cursor`.
-internal func convertCursor(_ clang: CXCursor) -> Cursor? {
-    if clang_Cursor_isNull(clang) != 0 { return nil }
-    switch (clang as Cursor).kind {
-    case .functionDecl:
-        return FunctionDecl(clang: clang)
-    case .structDecl, .classDecl:
-        return RecordDecl(clang: clang)
-    case .enumDecl:
-        return EnumDecl(clang: clang)
-    case .enumConstantDecl:
-        return EnumConstantDecl(clang: clang)
-    default:
-        return clang
     }
 }

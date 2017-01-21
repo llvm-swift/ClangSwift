@@ -8,10 +8,13 @@ internal extension Bool {
 
 
 extension CXString {
-    func asSwift() -> String {
-        guard let cStr = clang_getCString(self) else { return "" }
+    func asSwiftOptional() -> String? {
+        guard let cStr = clang_getCString(self) else { return nil }
         defer { clang_disposeString(self) }
         return String(cString: cStr)
+    }
+    func asSwift() -> String {
+        return asSwiftOptional() ?? ""
     }
 }
 
