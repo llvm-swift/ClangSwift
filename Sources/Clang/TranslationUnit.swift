@@ -96,6 +96,41 @@ public class TranslationUnit {
         return tokens
     }
 
+
+    /// Annotate the given set of tokens by providing cursors for each token 
+    /// that can be mapped to a specific entity within the abstract syntax tree.
+    /// This token-annotation routine is equivalent to invoking `cursor(at:)`
+    /// for the source locations of each of the tokens. The cursors provided are
+    /// filtered, so that only those cursors that have a direct correspondence
+    /// to the token are accepted. For example, given a function call `f(x)`,
+    /// `cursor(at:)` would provide the following cursors:
+    ///
+    /// - when the cursor is over the `f`, a `DeclRefExpr` cursor referring to
+    ///   `f`.
+    /// - when the cursor is over the `(` or the `)`, a `CallExpr` referring to
+    ///   `f`.
+    /// - when the cursor is over the `x`, a `DeclRefExpr` cursor referring to
+    ///   `x`.
+    ///
+    /// Only the first and last of these cursors will occur within the annotate,
+    /// since the tokens "f" and "x' directly refer to a function and a variable,
+    /// respectively, but the parentheses are just a small part of the full
+    /// syntax of the function call expression, which is not provided as an
+    /// annotation.
+    ///
+    /// - parameter tokens: The set of tokens to annotate
+    /// - returns: The cursors corresponding to each token provided
+    public func annotate(tokens: [Token]) -> [Cursor] {
+        var toks = tokens.map { $0.asClang() }
+        let cursors =
+            UnsafeMutablePointer<CXCursor>.allocate(capacity: toks.count)
+        toks.withUnsafeMutableBufferPointer { buf in
+            clang_annotateTokens(clang, buf.baseAddress,
+                                 UInt32(buf.count), cursors)
+        }
+        return (0..<toks.count).map { convertCursor(cursors[$0])! }
+    }
+
     deinit {
         clang_disposeTranslationUnit(clang)
     }
