@@ -115,6 +115,15 @@ extension CType {
         return clang_Type_getObjCEncoding(asClang()).asSwift()
     }
 
+    /// Return the canonical type for a CType.
+    /// Clang's type system explicitly models typedefs and all the ways a
+    /// specific type can be represented. The canonical type is the underlying
+    /// type with all the "sugar" removed. For example, if 'T' is a typedef for
+    /// 'int', the canonical type for 'T' would be 'int'.
+    public var canonicalType: CType {
+        return convertType(clang_getCanonicalType(asClang()))!
+    }
+
     /// Retrieve the ref-qualifier kind of a function or method.
     /// The ref-qualifier is returned for C++ functions or methods. For other
     /// types or non-C++ declarations, nil is returned.
