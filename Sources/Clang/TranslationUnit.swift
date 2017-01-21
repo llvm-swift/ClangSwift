@@ -1,39 +1,42 @@
 import cclang
 
-struct TranslationUnitOptions: OptionSet {
-    typealias RawValue = UInt32
-    let rawValue: UInt32
-    static let detailedPreprocessingRecord =
+public struct TranslationUnitOptions: OptionSet {
+    public typealias RawValue = UInt32
+    public let rawValue: UInt32
+
+    public init(rawValue: UInt32) { self.rawValue = rawValue }
+
+    public static let detailedPreprocessingRecord =
         TranslationUnitOptions(rawValue: CXTranslationUnit_DetailedPreprocessingRecord.rawValue)
-    static let incomplete =
+    public static let incomplete =
         TranslationUnitOptions(rawValue: CXTranslationUnit_Incomplete.rawValue)
-    static let precompiledPreamble =
+    public static let precompiledPreamble =
         TranslationUnitOptions(rawValue: CXTranslationUnit_PrecompiledPreamble.rawValue)
-    static let cacheCompletionResults =
+    public static let cacheCompletionResults =
         TranslationUnitOptions(rawValue: CXTranslationUnit_CacheCompletionResults.rawValue)
-    static let forSerialization =
+    public static let forSerialization =
         TranslationUnitOptions(rawValue: CXTranslationUnit_ForSerialization.rawValue)
-    static let cxxChainedPCH =
+    public static let cxxChainedPCH =
         TranslationUnitOptions(rawValue: CXTranslationUnit_CXXChainedPCH.rawValue)
-    static let skipFunctionBodies =
+    public static let skipFunctionBodies =
         TranslationUnitOptions(rawValue: CXTranslationUnit_SkipFunctionBodies.rawValue)
-    static let includeBriefCommentsInCodeCompletion =
+    public static let includeBriefCommentsInCodeCompletion =
         TranslationUnitOptions(rawValue: CXTranslationUnit_IncludeBriefCommentsInCodeCompletion.rawValue)
-    static let createPreambleOnFirstParse =
+    public static let createPreambleOnFirstParse =
         TranslationUnitOptions(rawValue: CXTranslationUnit_CreatePreambleOnFirstParse.rawValue)
-    static let keepGoing =
+    public static let keepGoing =
         TranslationUnitOptions(rawValue: CXTranslationUnit_KeepGoing.rawValue)
 }
 
-class TranslationUnit {
+public class TranslationUnit {
     let clang: CXTranslationUnit
 
     init(clang: CXTranslationUnit) {
         self.clang = clang
     }
 
-    init(index: Index, filename: String, commandLineArgs args: [String],
-          options: TranslationUnitOptions = []) throws {
+    public init(index: Index, filename: String, commandLineArgs args: [String],
+                options: TranslationUnitOptions = []) throws {
         // TODO: Handle UnsavedFiles
 
         self.clang = try args.withUnsafeCStringBuffer { argC in
@@ -49,11 +52,15 @@ class TranslationUnit {
         }
     }
 
-    var cursor: Cursor {
+    /// Retrieve the cursor that represents the given translation unit.
+    /// The translation unit cursor can be used to start traversing the various
+    /// declarations within the given translation unit.
+    public var cursor: Cursor {
         return convertCursor(clang_getTranslationUnitCursor(clang))!
     }
 
-    var spelling: String {
+    /// Get the original translation unit source file name.
+    public var spelling: String {
         return clang_getTranslationUnitSpelling(clang).asSwift()
     }
 

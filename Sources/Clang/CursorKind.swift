@@ -1,6 +1,6 @@
 import cclang
 
-enum CursorKind {
+public enum CursorKind {
     private static let fromClangMapping: [UInt32: CursorKind] = [
         CXCursor_UnexposedDecl.rawValue: .unexposedDecl,
         CXCursor_StructDecl.rawValue: .structDecl,

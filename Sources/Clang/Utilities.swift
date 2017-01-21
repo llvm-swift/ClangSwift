@@ -38,6 +38,6 @@ func freelist<T>(_ ptr: UnsafeMutablePointer<UnsafeMutablePointer<T>?>, count: I
 }
 
 internal class Box<T> {
-    var value: T
+    public var value: T
     init(_ value: T) { self.value = value }
 }

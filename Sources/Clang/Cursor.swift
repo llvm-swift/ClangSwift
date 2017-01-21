@@ -1,26 +1,54 @@
 import cclang
 
+/// A cursor representing some element in the abstract syntax tree for a
+/// translation unit.
+///
+/// The cursor abstraction unifies the different kinds of entities in a
+/// program--declaration, statements, expressions, references to declarations,
+/// etc.--under a single "cursor" abstraction with a common set of operations.
+/// Common operation for a cursor include: getting the physical location in a
+/// source file where the cursor points, getting the name associated with a
+/// cursor, and retrieving cursors for any child nodes of a particular cursor.
+/// Cursors can be produced in two specific ways.
+/// 
+/// `TranslationUnit.cursor`
+/// produces a cursor for a translation unit, from which one can use
+/// `children() to explore the rest of the translation unit.
+///
+/// `SourceLocation.cursor` maps from a physical source location to the entity
+/// that resides at that location, allowing one to map from the source code into the AST.
 public protocol Cursor: CustomStringConvertible {
+    /// Converts this cursor value to a CXCursor value to be consumed by
+    /// libclang APIs
     func asClang() -> CXCursor
 }
 
+/// Represents a cursor type that is simply backed by a CXCursor
 internal protocol ClangCursorBacked: Cursor {
     var clang: CXCursor { get }
 }
 
 extension ClangCursorBacked {
+    /// Returns the underlying CXCursor value
     public func asClang() -> CXCursor {
         return clang
     }
 }
 
 extension CXCursor: Cursor {
+    /// Returns `self` unmodified.
     public func asClang() -> CXCursor {
         return self
     }
 }
 
+/// Compares two `Cursor`s and determines if they are equivalent.
+public func ==(lhs: Cursor, rhs: Cursor) -> Bool {
+    return clang_equalCursors(lhs.asClang(), rhs.asClang()) != 0
+}
+
 extension Cursor {
+
     /// Retrieve a name for the entity referenced by this cursor.
     public var description: String {
         return clang_getCursorSpelling(asClang()).asSwift()
@@ -33,12 +61,12 @@ extension Cursor {
     /// USRs can be compared across translation units to determine, e.g., when
     /// references in one translation refer to an entity defined in another
     /// translation unit.
-    var usr: String {
+    public var usr: String {
         return clang_getCursorUSR(asClang()).asSwift()
     }
 
     /// The kind of this cursor.
-    var kind: CursorKind {
+    public var kind: CursorKind {
         return CursorKind(clang: asClang().kind)
     }
 
@@ -63,7 +91,7 @@ extension Cursor {
     /// If given a cursor for which there is no corresponding definition, e.g.,
     /// because there is no definition of that entity within this translation
     /// unit, returns a `NULL` cursor.
-    var definition: Cursor? {
+    public var definition: Cursor? {
         return convertCursor(clang_getCursorDefinition(asClang()))
     }
 
@@ -71,7 +99,7 @@ extension Cursor {
     /// The display name contains extra information that helps identify the
     /// cursor, such as the parameters of a function or template or the
     /// arguments of a class template specialization.
-    var displayName: String {
+    public var displayName: String {
         return clang_getCursorDisplayName(asClang()).asSwift()
     }
 
@@ -103,7 +131,7 @@ extension Cursor {
     /// semantic context, while the lexical context of the first `C::f` is `C`
     /// and the lexical context of the second `C::f` is the translation unit.
     /// For global declarations, the semantic parent is the translation unit.
-    var lexicalParent: Cursor? {
+    public var lexicalParent: Cursor? {
         return convertCursor(clang_getCursorLexicalParent(asClang()))
     }
 
@@ -135,7 +163,7 @@ extension Cursor {
     /// semantic context, while the lexical context of the first `C::f` is `C`
     /// and the lexical context of the second `C::f` is the translation unit.
     /// For global declarations, the semantic parent is the translation unit.
-    var semanticParent: Cursor? {
+    public var semanticParent: Cursor? {
         return convertCursor(clang_getCursorSemanticParent(asClang()))
     }
 
@@ -147,12 +175,18 @@ extension Cursor {
     /// cursor for the superclass reference. If the input cursor is a
     /// declaration or definition, it returns that declaration or definition
     /// unchanged. Otherwise, returns the `NULL` cursor.
-    var referenced: Cursor? {
+    public var referenced: Cursor? {
         return convertCursor(clang_getCursorReferenced(asClang()))
     }
 
-    var type: CType? {
+    /// Retrieves the type of this cursor (if any).
+    public var type: CType? {
         return convertType(clang_getCursorType(asClang()))
+    }
+
+    /// Returns the translation unit that a cursor originated from.
+    public var translationUnit: TranslationUnit {
+        return TranslationUnit(clang: clang_Cursor_getTranslationUnit(asClang()))
     }
 
     /// Retrieves all the children of the provided cursor.
@@ -168,8 +202,47 @@ extension Cursor {
         }
         return children
     }
+
+    /// Describe the visibility of the entity referred to by a cursor.
+    /// This returns the default visibility if not explicitly specified by a
+    /// visibility attribute. The default visibility may be changed by
+    /// commandline arguments.
+    public var visiblity: VisibilityKind? {
+        return VisibilityKind(clang: clang_getCursorVisibility(asClang()))
+    }
+
+    /// Retrieve the physical extent of the source construct referenced by the
+    /// given cursor.
+    /// The extent of a cursor starts with the file/line/column pointing at the
+    /// first character within the source construct that the cursor refers to
+    /// and ends with the last character within that source construct. For a
+    /// declaration, the extent covers the declaration itself. For a reference,
+    /// the extent covers the location of the reference (e.g., where the
+    /// referenced entity was actually used).
+    public var range: SourceRange {
+        return SourceRange(clang: clang_getCursorExtent(asClang()))
+    }
 }
 
+public enum VisibilityKind {
+    /// Symbol not seen by the linker.
+    case hidden
+    /// Symbol seen by the linker but resolves to a symbol inside this object.
+    case protected
+    /// Symbol seen by the linker and acts like a normal symbol.
+    case `default`
+
+    internal init?(clang: CXVisibilityKind) {
+        switch clang {
+        case CXVisibility_Hidden: self = .hidden
+        case CXVisibility_Protected: self = .protected
+        case CXVisibility_Default: self = .default
+        default: return nil
+        }
+    }
+}
+
+/// Converts a CXCursor into the appropriate object conforming to `Cursor`.
 internal func convertCursor(_ clang: CXCursor) -> Cursor? {
     if clang_Cursor_isNull(clang) != 0 { return nil }
     switch (clang as Cursor).kind {
