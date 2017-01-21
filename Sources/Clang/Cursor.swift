@@ -253,6 +253,11 @@ extension Cursor {
                             unavailableMessage: unavailableMessage.asSwiftOptional(),
                             platforms: platforms)
     }
+
+    /// Determine the "language" of the entity referred to by a given cursor.
+    public var language: Language? {
+        return Language(clang: clang_getCursorLanguage(asClang()))
+    }
 }
 
 public enum VisibilityKind {

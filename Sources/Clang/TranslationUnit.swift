@@ -35,7 +35,19 @@ public class TranslationUnit {
         self.clang = clang
     }
 
-    public init(index: Index, filename: String, commandLineArgs args: [String],
+
+    /// Creates a `TranslationUnit` by parsing the file at the specified path,
+    /// passing optional command line arguments and options to clang.
+    ///
+    /// - Parameters:
+    ///   - index: The index
+    ///   - filename: The path you're going to parse
+    ///   - args: Optional command-line arguments to pass to clang
+    ///   - options: Options for how to handle the parsed file
+    /// - throws: `ClangError` if the translation unit could not
+    ///           be created successfully.
+    public init(index: Index, filename: String,
+                commandLineArgs args: [String] = [],
                 options: TranslationUnitOptions = []) throws {
         // TODO: Handle UnsavedFiles
 
@@ -62,6 +74,26 @@ public class TranslationUnit {
     /// Get the original translation unit source file name.
     public var spelling: String {
         return clang_getTranslationUnitSpelling(clang).asSwift()
+    }
+
+    /// Tokenizes the source code described by the given range into raw lexical
+    /// tokens.
+    /// - parameter range: the source range in which text should be tokenized.
+    ///                    All of the tokens produced by tokenization will fall
+    ///                    within this source range.
+    /// - returns: All tokens that fall within the provided source range in this
+    ///            translation unit.
+    public func tokens(in range: SourceRange) -> [Token] {
+        var tokensPtrOpt: UnsafeMutablePointer<CXToken>?
+        var numTokens: UInt32 = 0
+        clang_tokenize(clang, range.clang, &tokensPtrOpt, &numTokens)
+        guard let tokensPtr = tokensPtrOpt else { return [] }
+        var tokens = [Token]()
+        for i in 0..<Int(numTokens) {
+            tokens.append(Token(clang: tokensPtr[i]))
+        }
+        clang_disposeTokens(clang, tokensPtr, numTokens)
+        return tokens
     }
 
     deinit {

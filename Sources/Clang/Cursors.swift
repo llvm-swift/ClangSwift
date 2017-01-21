@@ -68,6 +68,15 @@ extension MethodDecl {
     }
 }
 
+public struct InclusionDirective: ClangCursorBacked {
+    let clang: CXCursor
+
+    /// Retrieve the file that is included by the given inclusion directive.
+    public var includedFile: File? {
+        return File(clang: clang_getIncludedFile(asClang()))
+    }
+}
+
 protocol RecordDecl: ClangCursorBacked {}
 extension RecordDecl {
     func fields() -> [Cursor] {
@@ -316,7 +325,6 @@ public struct PreprocessingDirective: ClangCursorBacked { let clang: CXCursor }
 public struct MacroDefinition: ClangCursorBacked { let clang: CXCursor }
 public struct MacroExpansion: ClangCursorBacked { let clang: CXCursor }
 public struct MacroInstantiation: ClangCursorBacked { let clang: CXCursor }
-public struct InclusionDirective: ClangCursorBacked { let clang: CXCursor }
 public struct ModuleImportDecl: ClangCursorBacked { let clang: CXCursor }
 public struct TypeAliasTemplateDecl: ClangCursorBacked { let clang: CXCursor }
 public struct StaticAssert: ClangCursorBacked { let clang: CXCursor }
