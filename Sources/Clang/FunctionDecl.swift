@@ -59,15 +59,22 @@ public class MethodDecl: FunctionDecl {
     }
 }
 
-struct FieldDecl: ClangCursorBacked {
+struct RecordDecl: ClangCursorBacked {
     let clang: CXCursor
-}
-
-struct StructDecl: ClangCursorBacked {
-    let clang: CXCursor
-
     func fields() -> [Cursor] {
         guard let type = type as? RecordType else { return [] }
         return type.fields()
+    }
+}
+
+struct EnumConstantDecl: ClangCursorBacked {
+    let clang: CXCursor
+}
+
+struct EnumDecl: ClangCursorBacked {
+    let clang: CXCursor
+
+    func constants() -> [EnumConstantDecl] {
+        return children() as! [EnumConstantDecl]
     }
 }

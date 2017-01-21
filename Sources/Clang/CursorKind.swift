@@ -12,15 +12,15 @@ enum CursorKind {
         CXCursor_FunctionDecl.rawValue: .functionDecl,
         CXCursor_VarDecl.rawValue: .varDecl,
         CXCursor_ParmDecl.rawValue: .parmDecl,
-        CXCursor_ObjCInterfaceDecl.rawValue: .objCInterfaceDecl,
-        CXCursor_ObjCCategoryDecl.rawValue: .objCCategoryDecl,
-        CXCursor_ObjCProtocolDecl.rawValue: .objCProtocolDecl,
-        CXCursor_ObjCPropertyDecl.rawValue: .objCPropertyDecl,
-        CXCursor_ObjCIvarDecl.rawValue: .objCIvarDecl,
-        CXCursor_ObjCInstanceMethodDecl.rawValue: .objCInstanceMethodDecl,
-        CXCursor_ObjCClassMethodDecl.rawValue: .objCClassMethodDecl,
-        CXCursor_ObjCImplementationDecl.rawValue: .objCImplementationDecl,
-        CXCursor_ObjCCategoryImplDecl.rawValue: .objCCategoryImplDecl,
+        CXCursor_ObjCInterfaceDecl.rawValue: .objcInterfaceDecl,
+        CXCursor_ObjCCategoryDecl.rawValue: .objcCategoryDecl,
+        CXCursor_ObjCProtocolDecl.rawValue: .objcProtocolDecl,
+        CXCursor_ObjCPropertyDecl.rawValue: .objcPropertyDecl,
+        CXCursor_ObjCIvarDecl.rawValue: .objcIvarDecl,
+        CXCursor_ObjCInstanceMethodDecl.rawValue: .objcInstanceMethodDecl,
+        CXCursor_ObjCClassMethodDecl.rawValue: .objcClassMethodDecl,
+        CXCursor_ObjCImplementationDecl.rawValue: .objcImplementationDecl,
+        CXCursor_ObjCCategoryImplDecl.rawValue: .objcCategoryImplDecl,
         CXCursor_TypedefDecl.rawValue: .typedefDecl,
         CXCursor_CXXMethod.rawValue: .cxxMethod,
         CXCursor_Namespace.rawValue: .namespace,
@@ -38,12 +38,12 @@ enum CursorKind {
         CXCursor_UsingDirective.rawValue: .usingDirective,
         CXCursor_UsingDeclaration.rawValue: .usingDeclaration,
         CXCursor_TypeAliasDecl.rawValue: .typeAliasDecl,
-        CXCursor_ObjCSynthesizeDecl.rawValue: .objCSynthesizeDecl,
-        CXCursor_ObjCDynamicDecl.rawValue: .objCDynamicDecl,
+        CXCursor_ObjCSynthesizeDecl.rawValue: .objcSynthesizeDecl,
+        CXCursor_ObjCDynamicDecl.rawValue: .objcDynamicDecl,
         CXCursor_CXXAccessSpecifier.rawValue: .cxxAccessSpecifier,
-        CXCursor_ObjCSuperClassRef.rawValue: .objCSuperClassRef,
-        CXCursor_ObjCProtocolRef.rawValue: .objCProtocolRef,
-        CXCursor_ObjCClassRef.rawValue: .objCClassRef,
+        CXCursor_ObjCSuperClassRef.rawValue: .objcSuperClassRef,
+        CXCursor_ObjCProtocolRef.rawValue: .objcProtocolRef,
+        CXCursor_ObjCClassRef.rawValue: .objcClassRef,
         CXCursor_TypeRef.rawValue: .typeRef,
         CXCursor_CXXBaseSpecifier.rawValue: .cxxBaseSpecifier,
         CXCursor_TemplateRef.rawValue: .templateRef,
@@ -60,7 +60,7 @@ enum CursorKind {
         CXCursor_DeclRefExpr.rawValue: .declRefExpr,
         CXCursor_MemberRefExpr.rawValue: .memberRefExpr,
         CXCursor_CallExpr.rawValue: .callExpr,
-        CXCursor_ObjCMessageExpr.rawValue: .objCMessageExpr,
+        CXCursor_ObjCMessageExpr.rawValue: .objcMessageExpr,
         CXCursor_BlockExpr.rawValue: .blockExpr,
         CXCursor_IntegerLiteral.rawValue: .integerLiteral,
         CXCursor_FloatingLiteral.rawValue: .floatingLiteral,
@@ -93,18 +93,18 @@ enum CursorKind {
         CXCursor_CXXNewExpr.rawValue: .cxxNewExpr,
         CXCursor_CXXDeleteExpr.rawValue: .cxxDeleteExpr,
         CXCursor_UnaryExpr.rawValue: .unaryExpr,
-        CXCursor_ObjCStringLiteral.rawValue: .objCStringLiteral,
-        CXCursor_ObjCEncodeExpr.rawValue: .objCEncodeExpr,
-        CXCursor_ObjCSelectorExpr.rawValue: .objCSelectorExpr,
-        CXCursor_ObjCProtocolExpr.rawValue: .objCProtocolExpr,
-        CXCursor_ObjCBridgedCastExpr.rawValue: .objCBridgedCastExpr,
+        CXCursor_ObjCStringLiteral.rawValue: .objcStringLiteral,
+        CXCursor_ObjCEncodeExpr.rawValue: .objcEncodeExpr,
+        CXCursor_ObjCSelectorExpr.rawValue: .objcSelectorExpr,
+        CXCursor_ObjCProtocolExpr.rawValue: .objcProtocolExpr,
+        CXCursor_ObjCBridgedCastExpr.rawValue: .objcBridgedCastExpr,
         CXCursor_PackExpansionExpr.rawValue: .packExpansionExpr,
         CXCursor_SizeOfPackExpr.rawValue: .sizeOfPackExpr,
         CXCursor_LambdaExpr.rawValue: .lambdaExpr,
-        CXCursor_ObjCBoolLiteralExpr.rawValue: .objCBoolLiteralExpr,
-        CXCursor_ObjCSelfExpr.rawValue: .objCSelfExpr,
+        CXCursor_ObjCBoolLiteralExpr.rawValue: .objcBoolLiteralExpr,
+        CXCursor_ObjCSelfExpr.rawValue: .objcSelfExpr,
         CXCursor_OMPArraySectionExpr.rawValue: .ompArraySectionExpr,
-        CXCursor_ObjCAvailabilityCheckExpr.rawValue: .objCAvailabilityCheckExpr,
+        CXCursor_ObjCAvailabilityCheckExpr.rawValue: .objcAvailabilityCheckExpr,
         CXCursor_UnexposedStmt.rawValue: .unexposedStmt,
         CXCursor_LabelStmt.rawValue: .labelStmt,
         CXCursor_CompoundStmt.rawValue: .compoundStmt,
@@ -121,13 +121,13 @@ enum CursorKind {
         CXCursor_BreakStmt.rawValue: .breakStmt,
         CXCursor_ReturnStmt.rawValue: .returnStmt,
         CXCursor_AsmStmt.rawValue: .asmStmt,
-        CXCursor_ObjCAtTryStmt.rawValue: .objCAtTryStmt,
-        CXCursor_ObjCAtCatchStmt.rawValue: .objCAtCatchStmt,
-        CXCursor_ObjCAtFinallyStmt.rawValue: .objCAtFinallyStmt,
-        CXCursor_ObjCAtThrowStmt.rawValue: .objCAtThrowStmt,
-        CXCursor_ObjCAtSynchronizedStmt.rawValue: .objCAtSynchronizedStmt,
-        CXCursor_ObjCAutoreleasePoolStmt.rawValue: .objCAutoreleasePoolStmt,
-        CXCursor_ObjCForCollectionStmt.rawValue: .objCForCollectionStmt,
+        CXCursor_ObjCAtTryStmt.rawValue: .objcAtTryStmt,
+        CXCursor_ObjCAtCatchStmt.rawValue: .objcAtCatchStmt,
+        CXCursor_ObjCAtFinallyStmt.rawValue: .objcAtFinallyStmt,
+        CXCursor_ObjCAtThrowStmt.rawValue: .objcAtThrowStmt,
+        CXCursor_ObjCAtSynchronizedStmt.rawValue: .objcAtSynchronizedStmt,
+        CXCursor_ObjCAutoreleasePoolStmt.rawValue: .objcAutoreleasePoolStmt,
+        CXCursor_ObjCForCollectionStmt.rawValue: .objcForCollectionStmt,
         CXCursor_CXXCatchStmt.rawValue: .cxxCatchStmt,
         CXCursor_CXXTryStmt.rawValue: .cxxTryStmt,
         CXCursor_CXXForRangeStmt.rawValue: .cxxForRangeStmt,
@@ -217,15 +217,15 @@ enum CursorKind {
         .functionDecl: CXCursor_FunctionDecl,
         .varDecl: CXCursor_VarDecl,
         .parmDecl: CXCursor_ParmDecl,
-        .objCInterfaceDecl: CXCursor_ObjCInterfaceDecl,
-        .objCCategoryDecl: CXCursor_ObjCCategoryDecl,
-        .objCProtocolDecl: CXCursor_ObjCProtocolDecl,
-        .objCPropertyDecl: CXCursor_ObjCPropertyDecl,
-        .objCIvarDecl: CXCursor_ObjCIvarDecl,
-        .objCInstanceMethodDecl: CXCursor_ObjCInstanceMethodDecl,
-        .objCClassMethodDecl: CXCursor_ObjCClassMethodDecl,
-        .objCImplementationDecl: CXCursor_ObjCImplementationDecl,
-        .objCCategoryImplDecl: CXCursor_ObjCCategoryImplDecl,
+        .objcInterfaceDecl: CXCursor_ObjCInterfaceDecl,
+        .objcCategoryDecl: CXCursor_ObjCCategoryDecl,
+        .objcProtocolDecl: CXCursor_ObjCProtocolDecl,
+        .objcPropertyDecl: CXCursor_ObjCPropertyDecl,
+        .objcIvarDecl: CXCursor_ObjCIvarDecl,
+        .objcInstanceMethodDecl: CXCursor_ObjCInstanceMethodDecl,
+        .objcClassMethodDecl: CXCursor_ObjCClassMethodDecl,
+        .objcImplementationDecl: CXCursor_ObjCImplementationDecl,
+        .objcCategoryImplDecl: CXCursor_ObjCCategoryImplDecl,
         .typedefDecl: CXCursor_TypedefDecl,
         .cxxMethod: CXCursor_CXXMethod,
         .namespace: CXCursor_Namespace,
@@ -243,12 +243,12 @@ enum CursorKind {
         .usingDirective: CXCursor_UsingDirective,
         .usingDeclaration: CXCursor_UsingDeclaration,
         .typeAliasDecl: CXCursor_TypeAliasDecl,
-        .objCSynthesizeDecl: CXCursor_ObjCSynthesizeDecl,
-        .objCDynamicDecl: CXCursor_ObjCDynamicDecl,
+        .objcSynthesizeDecl: CXCursor_ObjCSynthesizeDecl,
+        .objcDynamicDecl: CXCursor_ObjCDynamicDecl,
         .cxxAccessSpecifier: CXCursor_CXXAccessSpecifier,
-        .objCSuperClassRef: CXCursor_ObjCSuperClassRef,
-        .objCProtocolRef: CXCursor_ObjCProtocolRef,
-        .objCClassRef: CXCursor_ObjCClassRef,
+        .objcSuperClassRef: CXCursor_ObjCSuperClassRef,
+        .objcProtocolRef: CXCursor_ObjCProtocolRef,
+        .objcClassRef: CXCursor_ObjCClassRef,
         .typeRef: CXCursor_TypeRef,
         .cxxBaseSpecifier: CXCursor_CXXBaseSpecifier,
         .templateRef: CXCursor_TemplateRef,
@@ -265,7 +265,7 @@ enum CursorKind {
         .declRefExpr: CXCursor_DeclRefExpr,
         .memberRefExpr: CXCursor_MemberRefExpr,
         .callExpr: CXCursor_CallExpr,
-        .objCMessageExpr: CXCursor_ObjCMessageExpr,
+        .objcMessageExpr: CXCursor_ObjCMessageExpr,
         .blockExpr: CXCursor_BlockExpr,
         .integerLiteral: CXCursor_IntegerLiteral,
         .floatingLiteral: CXCursor_FloatingLiteral,
@@ -298,18 +298,18 @@ enum CursorKind {
         .cxxNewExpr: CXCursor_CXXNewExpr,
         .cxxDeleteExpr: CXCursor_CXXDeleteExpr,
         .unaryExpr: CXCursor_UnaryExpr,
-        .objCStringLiteral: CXCursor_ObjCStringLiteral,
-        .objCEncodeExpr: CXCursor_ObjCEncodeExpr,
-        .objCSelectorExpr: CXCursor_ObjCSelectorExpr,
-        .objCProtocolExpr: CXCursor_ObjCProtocolExpr,
-        .objCBridgedCastExpr: CXCursor_ObjCBridgedCastExpr,
+        .objcStringLiteral: CXCursor_ObjCStringLiteral,
+        .objcEncodeExpr: CXCursor_ObjCEncodeExpr,
+        .objcSelectorExpr: CXCursor_ObjCSelectorExpr,
+        .objcProtocolExpr: CXCursor_ObjCProtocolExpr,
+        .objcBridgedCastExpr: CXCursor_ObjCBridgedCastExpr,
         .packExpansionExpr: CXCursor_PackExpansionExpr,
         .sizeOfPackExpr: CXCursor_SizeOfPackExpr,
         .lambdaExpr: CXCursor_LambdaExpr,
-        .objCBoolLiteralExpr: CXCursor_ObjCBoolLiteralExpr,
-        .objCSelfExpr: CXCursor_ObjCSelfExpr,
+        .objcBoolLiteralExpr: CXCursor_ObjCBoolLiteralExpr,
+        .objcSelfExpr: CXCursor_ObjCSelfExpr,
         .ompArraySectionExpr: CXCursor_OMPArraySectionExpr,
-        .objCAvailabilityCheckExpr: CXCursor_ObjCAvailabilityCheckExpr,
+        .objcAvailabilityCheckExpr: CXCursor_ObjCAvailabilityCheckExpr,
         .unexposedStmt: CXCursor_UnexposedStmt,
         .labelStmt: CXCursor_LabelStmt,
         .compoundStmt: CXCursor_CompoundStmt,
@@ -326,13 +326,13 @@ enum CursorKind {
         .breakStmt: CXCursor_BreakStmt,
         .returnStmt: CXCursor_ReturnStmt,
         .asmStmt: CXCursor_AsmStmt,
-        .objCAtTryStmt: CXCursor_ObjCAtTryStmt,
-        .objCAtCatchStmt: CXCursor_ObjCAtCatchStmt,
-        .objCAtFinallyStmt: CXCursor_ObjCAtFinallyStmt,
-        .objCAtThrowStmt: CXCursor_ObjCAtThrowStmt,
-        .objCAtSynchronizedStmt: CXCursor_ObjCAtSynchronizedStmt,
-        .objCAutoreleasePoolStmt: CXCursor_ObjCAutoreleasePoolStmt,
-        .objCForCollectionStmt: CXCursor_ObjCForCollectionStmt,
+        .objcAtTryStmt: CXCursor_ObjCAtTryStmt,
+        .objcAtCatchStmt: CXCursor_ObjCAtCatchStmt,
+        .objcAtFinallyStmt: CXCursor_ObjCAtFinallyStmt,
+        .objcAtThrowStmt: CXCursor_ObjCAtThrowStmt,
+        .objcAtSynchronizedStmt: CXCursor_ObjCAtSynchronizedStmt,
+        .objcAutoreleasePoolStmt: CXCursor_ObjCAutoreleasePoolStmt,
+        .objcForCollectionStmt: CXCursor_ObjCForCollectionStmt,
         .cxxCatchStmt: CXCursor_CXXCatchStmt,
         .cxxTryStmt: CXCursor_CXXTryStmt,
         .cxxForRangeStmt: CXCursor_CXXForRangeStmt,
@@ -449,31 +449,31 @@ enum CursorKind {
     case parmDecl
 
     /// An Objective-C `@interface`.
-    case objCInterfaceDecl
+    case objcInterfaceDecl
 
     ///An Objective-C `@interface` for a category.
-    case objCCategoryDecl
+    case objcCategoryDecl
 
     /// An Objective-C `@protocol` declaration.
-    case objCProtocolDecl
+    case objcProtocolDecl
 
     /// An Objective-C `@property` declaration.
-    case objCPropertyDecl
+    case objcPropertyDecl
 
     /// An Objective-C instance variable.
-    case objCIvarDecl
+    case objcIvarDecl
 
     /// An Objective-C instance method.
-    case objCInstanceMethodDecl
+    case objcInstanceMethodDecl
 
     /// An Objective-C class method.
-    case objCClassMethodDecl
+    case objcClassMethodDecl
 
     /// An Objective-C `@implementation`.
-    case objCImplementationDecl
+    case objcImplementationDecl
 
     /// An Objective-C `@implementation` for a category.
-    case objCCategoryImplDecl
+    case objcCategoryImplDecl
 
     /// A typedef.
     case typedefDecl
@@ -527,10 +527,10 @@ enum CursorKind {
     case typeAliasDecl
 
     /// An Objective-C \@synthesize definition.
-    case objCSynthesizeDecl
+    case objcSynthesizeDecl
 
     /// An Objective-C \@dynamic definition.
-    case objCDynamicDecl
+    case objcDynamicDecl
 
     /// An access specifier.
     case cxxAccessSpecifier
@@ -542,9 +542,9 @@ enum CursorKind {
     case firstRef
 
     /// MARK: Decl references
-    case objCSuperClassRef
-    case objCProtocolRef
-    case objCClassRef
+    case objcSuperClassRef
+    case objcProtocolRef
+    case objcClassRef
 
     ///
     /// A reference to a type declaration.
@@ -648,7 +648,7 @@ enum CursorKind {
 
     /// An expression that sends a message to an Objective-C
     /// object or class.
-    case objCMessageExpr
+    case objcMessageExpr
 
     ///An expression that represents a block literal.
     case blockExpr
@@ -764,16 +764,16 @@ enum CursorKind {
     case unaryExpr
 
     /// An Objective-C string literal i.e. @"foo".
-    case objCStringLiteral
+    case objcStringLiteral
 
     /// An Objective-C \@encode expression.
-    case objCEncodeExpr
+    case objcEncodeExpr
 
     /// An Objective-C \@selector expression.
-    case objCSelectorExpr
+    case objcSelectorExpr
 
     /// An Objective-C \@protocol expression.
-    case objCProtocolExpr
+    case objcProtocolExpr
 
     /// An Objective-C "bridged" cast expression, which casts between
     /// Objective-C pointers and C pointers, transferring ownership in
@@ -781,7 +781,7 @@ enum CursorKind {
     /// ```
     /// NSString *str = (__bridge_transfer NSString *)CFCreateString();
     /// ```
-    case objCBridgedCastExpr
+    case objcBridgedCastExpr
 
     /// Represents a C++0x pack expansion that produces a sequence of expressions.
     /// A pack expansion expression contains a pattern (which itself is an expression)
@@ -813,16 +813,16 @@ enum CursorKind {
     case lambdaExpr
 
     /// Objective-c Boolean Literal.
-    case objCBoolLiteralExpr
+    case objcBoolLiteralExpr
 
     /// Represents the "self" expression in an Objective-C method.
-    case objCSelfExpr
+    case objcSelfExpr
 
     /// OpenMP.0 [2.4, Array Section].
     case ompArraySectionExpr
 
     /// Represents an @available(...) check.
-    case objCAvailabilityCheckExpr
+    case objcAvailabilityCheckExpr
 
     /// MARK: Statements
 
@@ -884,25 +884,25 @@ enum CursorKind {
     case asmStmt
 
     /// Objective-C's overall \@try-\@catch-\@finally statement.
-    case objCAtTryStmt
+    case objcAtTryStmt
 
     /// Objective-C's \@catch statement.
-    case objCAtCatchStmt
+    case objcAtCatchStmt
 
     /// Objective-C's \@finally statement.
-    case objCAtFinallyStmt
+    case objcAtFinallyStmt
 
     /// Objective-C's \@throw statement.
-    case objCAtThrowStmt
+    case objcAtThrowStmt
 
     /// Objective-C's \@synchronized statement.
-    case objCAtSynchronizedStmt
+    case objcAtSynchronizedStmt
 
     /// Objective-C's autorelease pool statement.
-    case objCAutoreleasePoolStmt
+    case objcAutoreleasePoolStmt
 
     /// Objective-C's collection statement.
-    case objCForCollectionStmt
+    case objcForCollectionStmt
 
     /// C++'s catch statement.
     case cxxCatchStmt

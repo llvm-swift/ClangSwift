@@ -47,9 +47,10 @@ extension CXType: CType {
 
 /// Converts a raw CXType to a potentially more specialized CType.
 internal func convertType(_ type: CXType) -> CType? {
-    switch type.kind {
-    case CXType_Invalid:
-        return nil
+    if type.kind == CXType_Invalid { return nil }
+    switch (type as CType).kind {
+    case .objcClass, .record:
+        return RecordType(clang: type)
     default:
         return type
     }
@@ -113,6 +114,10 @@ extension CType {
     /// - note: If the type is invalid, an empty string is returned.
     public var description: String {
         return clang_getTypeSpelling(asClang()).asSwift()
+    }
+
+    public var kind: CTypeKind {
+        return CTypeKind(clang: asClang().kind)
     }
 }
 

@@ -175,8 +175,12 @@ internal func convertCursor(_ clang: CXCursor) -> Cursor? {
     switch (clang as Cursor).kind {
     case .functionDecl:
         return FunctionDecl(clang: clang)
-    case .structDecl:
-        return StructDecl(clang: clang)
+    case .structDecl, .classDecl:
+        return RecordDecl(clang: clang)
+    case .enumDecl:
+        return EnumDecl(clang: clang)
+    case .enumConstantDecl:
+        return EnumConstantDecl(clang: clang)
     default:
         return clang
     }
