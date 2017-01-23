@@ -140,168 +140,168 @@ public struct UsingDeclaration: TypeAliasCursor { let clang: CXCursor }
 /// their definitions, etc. However, the specific kind of the declaration is not
 /// reported.
 /// A declaration whose specific kind is not exposed via this interface.
-struct UnexposedDecl: ClangCursorBacked {
+public struct UnexposedDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C or C++ union.
-struct UnionDecl: ClangCursorBacked {
+public struct UnionDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A field (in C) or non-static data member (in C++) in a struct, union, or C++
 /// class.
-struct FieldDecl: ClangCursorBacked {
+public struct FieldDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A variable.
-struct VarDecl: ClangCursorBacked {
+public struct VarDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A function or method parameter.
-struct ParmDecl: ClangCursorBacked {
+public struct ParmDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @interface.
-struct ObjCInterfaceDecl: ClangCursorBacked {
+public struct ObjCInterfaceDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @interface for a category.
-struct ObjCCategoryDecl: ClangCursorBacked {
+public struct ObjCCategoryDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @protocol declaration.
-struct ObjCProtocolDecl: ClangCursorBacked {
+public struct ObjCProtocolDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @property declaration.
-struct ObjCPropertyDecl: ClangCursorBacked {
+public struct ObjCPropertyDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C instance variable.
-struct ObjCIvarDecl: ClangCursorBacked {
+public struct ObjCIvarDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C instance method.
-struct ObjCInstanceMethodDecl: ClangCursorBacked {
+public struct ObjCInstanceMethodDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C class method.
-struct ObjCClassMethodDecl: ClangCursorBacked {
+public struct ObjCClassMethodDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @implementation.
-struct ObjCImplementationDecl: ClangCursorBacked {
+public struct ObjCImplementationDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @implementation for a category.
-struct ObjCCategoryImplDecl: ClangCursorBacked {
+public struct ObjCCategoryImplDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ class method.
-struct CXXMethod: ClangCursorBacked {
+public struct CXXMethod: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ namespace.
-struct Namespace: ClangCursorBacked {
+public struct Namespace: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A linkage specification, e.g. 'extern "C"'.
-struct LinkageSpec: ClangCursorBacked {
+public struct LinkageSpec: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ constructor.
-struct Constructor: ClangCursorBacked {
+public struct Constructor: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ destructor.
-struct Destructor: ClangCursorBacked {
+public struct Destructor: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ conversion function.
-struct ConversionFunction: ClangCursorBacked {
+public struct ConversionFunction: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ template type parameter.
-struct TemplateTypeParameter: ClangCursorBacked {
+public struct TemplateTypeParameter: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ non-type template parameter.
-struct NonTypeTemplateParameter: ClangCursorBacked {
+public struct NonTypeTemplateParameter: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ template template parameter.
-struct TemplateTemplateParameter: ClangCursorBacked {
+public struct TemplateTemplateParameter: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ function template.
-struct FunctionTemplate: ClangCursorBacked {
+public struct FunctionTemplate: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ class template.
-struct ClassTemplate: ClangCursorBacked {
+public struct ClassTemplate: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ class template partial specialization.
-struct ClassTemplatePartialSpecialization: ClangCursorBacked {
+public struct ClassTemplatePartialSpecialization: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ namespace alias declaration.
-struct NamespaceAlias: ClangCursorBacked {
+public struct NamespaceAlias: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @synthesize definition.
-struct ObjCSynthesizeDecl: ClangCursorBacked {
+public struct ObjCSynthesizeDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @dynamic definition.
-struct ObjCDynamicDecl: ClangCursorBacked {
+public struct ObjCDynamicDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An access specifier.
-struct CXXAccessSpecifier: ClangCursorBacked {
+public struct CXXAccessSpecifier: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An access specifier.
-struct ObjCSuperClassRef: ClangCursorBacked {
+public struct ObjCSuperClassRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An access specifier.
-struct ObjCProtocolRef: ClangCursorBacked {
+public struct ObjCProtocolRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An access specifier.
-struct ObjCClassRef: ClangCursorBacked {
+public struct ObjCClassRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -315,28 +315,28 @@ struct ObjCClassRef: ClangCursorBacked {
 /// The typedef is a declaration of size_type (CXCursor_TypedefDecl), while the
 /// type of the variable "size" is referenced. The cursor referenced by the type
 /// of size is the typedef for size_type.
-struct TypeRef: ClangCursorBacked {
+public struct TypeRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
-struct CXXBaseSpecifier: ClangCursorBacked {
+public struct CXXBaseSpecifier: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A reference to a class template, function template, template
 /// parameter, or class template partial specialization.
-struct TemplateRef: ClangCursorBacked {
+public struct TemplateRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A reference to a namespace or namespace alias.
-struct NamespaceRef: ClangCursorBacked {
+public struct NamespaceRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A reference to a member of a struct, union, or class that occurs in some
 /// non-expression context, e.g., a designated initializer.
-struct MemberRef: ClangCursorBacked {
+public struct MemberRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -350,7 +350,7 @@ struct MemberRef: ClangCursorBacked {
 /// goto start_over;
 /// ```
 /// A label reference cursor refers to a label statement.
-struct LabelRef: ClangCursorBacked {
+public struct LabelRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -370,37 +370,29 @@ struct LabelRef: ClangCursorBacked {
 /// instantiation time, "swap" may also refer to other functions found via
 /// argument-dependent lookup (e.g., the "swap" function at the end of the
 /// example).
-struct OverloadedDeclRef: ClangCursorBacked {
+public struct OverloadedDeclRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A reference to a variable that occurs in some non-expression context, e.g.,
 /// a C++ lambda capture list.
-struct VariableRef: ClangCursorBacked {
+public struct VariableRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
-/// A reference to a variable that occurs in some non-expression context, e.g.,
-/// a C++ lambda capture list.
-struct InvalidFile: ClangCursorBacked {
+public struct InvalidFile: ClangCursorBacked {
     let clang: CXCursor
 }
 
-/// A reference to a variable that occurs in some non-expression context, e.g.,
-/// a C++ lambda capture list.
-struct NoDeclFound: ClangCursorBacked {
+public struct NoDeclFound: ClangCursorBacked {
     let clang: CXCursor
 }
 
-/// A reference to a variable that occurs in some non-expression context, e.g.,
-/// a C++ lambda capture list.
-struct NotImplemented: ClangCursorBacked {
+public struct NotImplemented: ClangCursorBacked {
     let clang: CXCursor
 }
 
-/// A reference to a variable that occurs in some non-expression context, e.g.,
-/// a C++ lambda capture list.
-struct InvalidCode: ClangCursorBacked {
+public struct InvalidCode: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -408,24 +400,24 @@ struct InvalidCode: ClangCursorBacked {
 /// Unexposed expressions have the same operations as any other kind of
 /// expression; one can extract their location information, spelling, children,
 /// etc. However, the specific kind of the expression is not reported.
-struct UnexposedExpr: ClangCursorBacked {
+public struct UnexposedExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An expression that refers to some value declaration, such as a function,
 /// variable, or enumerator.
-struct DeclRefExpr: ClangCursorBacked {
+public struct DeclRefExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An expression that refers to a member of a struct, union, class, Objective-C
 /// class, etc.
-struct MemberRefExpr: ClangCursorBacked {
+public struct MemberRefExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An expression that calls a function.
-struct CallExpr: ClangCursorBacked {
+public struct CallExpr: ClangCursorBacked {
     let clang: CXCursor
 
     /// Retrieve the argument cursor of a function or method.
@@ -442,7 +434,7 @@ struct CallExpr: ClangCursorBacked {
 }
 
 /// An expression that sends a message to an Objective-C object or class.
-struct ObjCMessageExpr: ClangCursorBacked {
+public struct ObjCMessageExpr: ClangCursorBacked {
     let clang: CXCursor
 
     /// Retrieve the argument cursor of a function or method.
@@ -459,96 +451,96 @@ struct ObjCMessageExpr: ClangCursorBacked {
 }
 
 /// An expression that represents a block literal.
-struct BlockExpr: ClangCursorBacked {
+public struct BlockExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An integer literal.
-struct IntegerLiteral: ClangCursorBacked {
+public struct IntegerLiteral: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A floating point number literal.
-struct FloatingLiteral: ClangCursorBacked {
+public struct FloatingLiteral: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An imaginary number literal.
-struct ImaginaryLiteral: ClangCursorBacked {
+public struct ImaginaryLiteral: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A string literal.
-struct StringLiteral: ClangCursorBacked {
+public struct StringLiteral: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A character literal.
-struct CharacterLiteral: ClangCursorBacked {
+public struct CharacterLiteral: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A parenthesized expression, e.g. "(1)".
 /// - note: This AST node is only formed if full location information is
 ///         requested.
-struct ParenExpr: ClangCursorBacked {
+public struct ParenExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// This represents the unary-expression's (except sizeof and alignof).
-struct UnaryOperator: ClangCursorBacked {
+public struct UnaryOperator: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// [C99 6.5.2.1] Array Subscripting.
-struct ArraySubscriptExpr: ClangCursorBacked {
+public struct ArraySubscriptExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A builtin binary operation expression such as "x + y" or "x <= y".
-struct BinaryOperator: ClangCursorBacked {
+public struct BinaryOperator: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Compound assignment such as "+=".
-struct CompoundAssignOperator: ClangCursorBacked {
+public struct CompoundAssignOperator: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// The ?: ternary operator.
-struct ConditionalOperator: ClangCursorBacked {
+public struct ConditionalOperator: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An explicit cast in C (C99 6.5.4) or a C-style cast in C++ (C++
 /// [expr.cast]), which uses the syntax (Type)expr.
 /// For example: `(int)f`.
-struct CStyleCastExpr: ClangCursorBacked {
+public struct CStyleCastExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// [C99 6.5.2.5]
-struct CompoundLiteralExpr: ClangCursorBacked {
+public struct CompoundLiteralExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Describes an C or C++ initializer list.
-struct InitListExpr: ClangCursorBacked {
+public struct InitListExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// The GNU address of label extension, representing &&label.
-struct AddrLabelExpr: ClangCursorBacked {
+public struct AddrLabelExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// This is the GNU Statement Expression extension: ({int X=4; X;})
-struct StmtExpr: ClangCursorBacked {
+public struct StmtExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Represents a C11 generic selection.
-struct GenericSelectionExpr: ClangCursorBacked {
+public struct GenericSelectionExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -558,27 +550,27 @@ struct GenericSelectionExpr: ClangCursorBacked {
 /// The `__null extension` is typically only used by system headers, which define
 /// `NULL` as `__null` in C++ rather than using 0 (which is an integer that may
 /// not match the size of a pointer).
-struct GNUNullExpr: ClangCursorBacked {
+public struct GNUNullExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// C++'s static_cast<> expression.
-struct CXXStaticCastExpr: ClangCursorBacked {
+public struct CXXStaticCastExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// C++'s dynamic_cast<> expression.
-struct CXXDynamicCastExpr: ClangCursorBacked {
+public struct CXXDynamicCastExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// C++'s reinterpret_cast<> expression.
-struct CXXReinterpretCastExpr: ClangCursorBacked {
+public struct CXXReinterpretCastExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// C++'s const_cast<> expression.
-struct CXXConstCastExpr: ClangCursorBacked {
+public struct CXXConstCastExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -588,71 +580,71 @@ struct CXXConstCastExpr: ClangCursorBacked {
 /// ```
 /// x = int(0.5);
 /// ```
-struct CXXFunctionalCastExpr: ClangCursorBacked {
+public struct CXXFunctionalCastExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A C++ typeid expression (C++ [expr.typeid]).
-struct CXXTypeidExpr: ClangCursorBacked {
+public struct CXXTypeidExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// [C++ 2.13.5] C++ Boolean Literal.
-struct CXXBoolLiteralExpr: ClangCursorBacked {
+public struct CXXBoolLiteralExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// [C++0x 2.14.7] C++ Pointer Literal.
-struct CXXNullPtrLiteralExpr: ClangCursorBacked {
+public struct CXXNullPtrLiteralExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Represents the "this" expression in C++
-struct CXXThisExpr: ClangCursorBacked {
+public struct CXXThisExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// This handles 'throw' and 'throw' assignment-expression. When
 /// assignment-expression isn't present, Op will be null.
 /// [C++ 15] C++ Throw Expression.
-struct CXXThrowExpr: ClangCursorBacked {
+public struct CXXThrowExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A new expression for memory allocation and constructor calls, e.g: "new
 /// CXXNewExpr(foo)".
-struct CXXNewExpr: ClangCursorBacked {
+public struct CXXNewExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A delete expression for memory deallocation and destructor calls, e.g.
 /// "delete[] pArray".
-struct CXXDeleteExpr: ClangCursorBacked {
+public struct CXXDeleteExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A unary expression. (noexcept, sizeof, or other traits)
-struct UnaryExpr: ClangCursorBacked {
+public struct UnaryExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C string literal i.e. "foo".
-struct ObjCStringLiteral: ClangCursorBacked {
+public struct ObjCStringLiteral: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @encode expression.
-struct ObjCEncodeExpr: ClangCursorBacked {
+public struct ObjCEncodeExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @selector expression.
-struct ObjCSelectorExpr: ClangCursorBacked {
+public struct ObjCSelectorExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An Objective-C @protocol expression.
-struct ObjCProtocolExpr: ClangCursorBacked {
+public struct ObjCProtocolExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -661,7 +653,7 @@ struct ObjCProtocolExpr: ClangCursorBacked {
 /// ```
 /// NSString *str = (__bridge_transfer NSString *)CFCreateString();
 /// ```
-struct ObjCBridgedCastExpr: ClangCursorBacked {
+public struct ObjCBridgedCastExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -674,7 +666,7 @@ struct ObjCBridgedCastExpr: ClangCursorBacked {
 /// f(static_cast<Types&&>(args)...);
 /// }
 /// ```
-struct PackExpansionExpr: ClangCursorBacked {
+public struct PackExpansionExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -685,31 +677,31 @@ struct PackExpansionExpr: ClangCursorBacked {
 /// static const unsigned value = sizeof...(Types);
 /// };
 /// ```
-struct SizeOfPackExpr: ClangCursorBacked {
+public struct SizeOfPackExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
-struct LambdaExpr: ClangCursorBacked {
+public struct LambdaExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-c Boolean Literal.
-struct ObjCBoolLiteralExpr: ClangCursorBacked {
+public struct ObjCBoolLiteralExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Represents the "self" expression in an Objective-C method.
-struct ObjCSelfExpr: ClangCursorBacked {
+public struct ObjCSelfExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP 4.0 [2.4, Array Section].
-struct OMPArraySectionExpr: ClangCursorBacked {
+public struct OMPArraySectionExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Represents an @available(...) check.
-struct ObjCAvailabilityCheckExpr: ClangCursorBacked {
+public struct ObjCAvailabilityCheckExpr: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -717,7 +709,7 @@ struct ObjCAvailabilityCheckExpr: ClangCursorBacked {
 /// statement; one can extract their location information, spelling, children,
 /// etc. However, the specific kind of the statement is not reported.
 /// A statement whose specific kind is not exposed via this interface.
-struct UnexposedStmt: ClangCursorBacked {
+public struct UnexposedStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
@@ -728,501 +720,501 @@ struct UnexposedStmt: ClangCursorBacked {
 /// start_over:
 /// ++counter;
 /// ```
-struct LabelStmt: ClangCursorBacked {
+public struct LabelStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A group of statements like { stmt stmt }.
 /// This cursor kind is used to describe compound statements, e.g. function
 /// bodies.
-struct CompoundStmt: ClangCursorBacked {
+public struct CompoundStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A case statement.
-struct CaseStmt: ClangCursorBacked {
+public struct CaseStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A default statement.
-struct DefaultStmt: ClangCursorBacked {
+public struct DefaultStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An if statement
-struct IfStmt: ClangCursorBacked {
+public struct IfStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A switch statement.
-struct SwitchStmt: ClangCursorBacked {
+public struct SwitchStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A while statement.
-struct WhileStmt: ClangCursorBacked {
+public struct WhileStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A do statement.
-struct DoStmt: ClangCursorBacked {
+public struct DoStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A for statement.
-struct ForStmt: ClangCursorBacked {
+public struct ForStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A goto statement.
-struct GotoStmt: ClangCursorBacked {
+public struct GotoStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// An indirect goto statement.
-struct IndirectGotoStmt: ClangCursorBacked {
+public struct IndirectGotoStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A continue statement.
-struct ContinueStmt: ClangCursorBacked {
+public struct ContinueStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A break statement.
-struct BreakStmt: ClangCursorBacked {
+public struct BreakStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A return statement.
-struct ReturnStmt: ClangCursorBacked {
+public struct ReturnStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A GCC inline assembly statement extension.
-struct GCCAsmStmt: ClangCursorBacked {
+public struct GCCAsmStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A GCC inline assembly statement extension.
-struct AsmStmt: ClangCursorBacked {
+public struct AsmStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-C's overall @try-@catch-@finally statement.
-struct ObjCAtTryStmt: ClangCursorBacked {
+public struct ObjCAtTryStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-C's @catch statement.
-struct ObjCAtCatchStmt: ClangCursorBacked {
+public struct ObjCAtCatchStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-C's @finally statement.
-struct ObjCAtFinallyStmt: ClangCursorBacked {
+public struct ObjCAtFinallyStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-C's @throw statement.
-struct ObjCAtThrowStmt: ClangCursorBacked {
+public struct ObjCAtThrowStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-C's @synchronized statement.
-struct ObjCAtSynchronizedStmt: ClangCursorBacked {
+public struct ObjCAtSynchronizedStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-C's autorelease pool statement.
-struct ObjCAutoreleasePoolStmt: ClangCursorBacked {
+public struct ObjCAutoreleasePoolStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Objective-C's collection statement.
-struct ObjCForCollectionStmt: ClangCursorBacked {
+public struct ObjCForCollectionStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// C++'s catch statement.
-struct CXXCatchStmt: ClangCursorBacked {
+public struct CXXCatchStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// C++'s try statement.
-struct CXXTryStmt: ClangCursorBacked {
+public struct CXXTryStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// C++'s for (* : *) statement.
-struct CXXForRangeStmt: ClangCursorBacked {
+public struct CXXForRangeStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Windows Structured Exception Handling's try statement.
-struct SEHTryStmt: ClangCursorBacked {
+public struct SEHTryStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Windows Structured Exception Handling's except statement.
-struct SEHExceptStmt: ClangCursorBacked {
+public struct SEHExceptStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Windows Structured Exception Handling's finally statement.
-struct SEHFinallyStmt: ClangCursorBacked {
+public struct SEHFinallyStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A MS inline assembly statement extension.
-struct MSAsmStmt: ClangCursorBacked {
+public struct MSAsmStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// This cursor kind is used to describe the null statement.
 /// The null statement ";": C99 6.8.3p3.
-struct NullStmt: ClangCursorBacked {
+public struct NullStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Adaptor class for mixing declarations with statements and expressions.
-struct DeclStmt: ClangCursorBacked {
+public struct DeclStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP parallel directive.
-struct OMPParallelDirective: ClangCursorBacked {
+public struct OMPParallelDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP SIMD directive.
-struct OMPSimdDirective: ClangCursorBacked {
+public struct OMPSimdDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP for directive.
-struct OMPForDirective: ClangCursorBacked {
+public struct OMPForDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP sections directive.
-struct OMPSectionsDirective: ClangCursorBacked {
+public struct OMPSectionsDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP section directive.
-struct OMPSectionDirective: ClangCursorBacked {
+public struct OMPSectionDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP single directive.
-struct OMPSingleDirective: ClangCursorBacked {
+public struct OMPSingleDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP parallel for directive.
-struct OMPParallelForDirective: ClangCursorBacked {
+public struct OMPParallelForDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP parallel sections directive.
-struct OMPParallelSectionsDirective: ClangCursorBacked {
+public struct OMPParallelSectionsDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP task directive.
-struct OMPTaskDirective: ClangCursorBacked {
+public struct OMPTaskDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP master directive.
-struct OMPMasterDirective: ClangCursorBacked {
+public struct OMPMasterDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP critical directive.
-struct OMPCriticalDirective: ClangCursorBacked {
+public struct OMPCriticalDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP taskyield directive.
-struct OMPTaskyieldDirective: ClangCursorBacked {
+public struct OMPTaskyieldDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP barrier directive.
-struct OMPBarrierDirective: ClangCursorBacked {
+public struct OMPBarrierDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP taskwait directive.
-struct OMPTaskwaitDirective: ClangCursorBacked {
+public struct OMPTaskwaitDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP flush directive.
-struct OMPFlushDirective: ClangCursorBacked {
+public struct OMPFlushDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Windows Structured Exception Handling's leave statement.
-struct SEHLeaveStmt: ClangCursorBacked {
+public struct SEHLeaveStmt: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP ordered directive.
-struct OMPOrderedDirective: ClangCursorBacked {
+public struct OMPOrderedDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP atomic directive.
-struct OMPAtomicDirective: ClangCursorBacked {
+public struct OMPAtomicDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP for SIMD directive.
-struct OMPForSimdDirective: ClangCursorBacked {
+public struct OMPForSimdDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP parallel for SIMD directive.
-struct OMPParallelForSimdDirective: ClangCursorBacked {
+public struct OMPParallelForSimdDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target directive.
-struct OMPTargetDirective: ClangCursorBacked {
+public struct OMPTargetDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP teams directive.
-struct OMPTeamsDirective: ClangCursorBacked {
+public struct OMPTeamsDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP taskgroup directive.
-struct OMPTaskgroupDirective: ClangCursorBacked {
+public struct OMPTaskgroupDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP cancellation point directive.
-struct OMPCancellationPointDirective: ClangCursorBacked {
+public struct OMPCancellationPointDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP cancel directive.
-struct OMPCancelDirective: ClangCursorBacked {
+public struct OMPCancelDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target data directive.
-struct OMPTargetDataDirective: ClangCursorBacked {
+public struct OMPTargetDataDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP taskloop directive.
-struct OMPTaskLoopDirective: ClangCursorBacked {
+public struct OMPTaskLoopDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP taskloop simd directive.
-struct OMPTaskLoopSimdDirective: ClangCursorBacked {
+public struct OMPTaskLoopSimdDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP distribute directive.
-struct OMPDistributeDirective: ClangCursorBacked {
+public struct OMPDistributeDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target enter data directive.
-struct OMPTargetEnterDataDirective: ClangCursorBacked {
+public struct OMPTargetEnterDataDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target exit data directive.
-struct OMPTargetExitDataDirective: ClangCursorBacked {
+public struct OMPTargetExitDataDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target parallel directive.
-struct OMPTargetParallelDirective: ClangCursorBacked {
+public struct OMPTargetParallelDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target parallel for directive.
-struct OMPTargetParallelForDirective: ClangCursorBacked {
+public struct OMPTargetParallelForDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target update directive.
-struct OMPTargetUpdateDirective: ClangCursorBacked {
+public struct OMPTargetUpdateDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP distribute parallel for directive.
-struct OMPDistributeParallelForDirective: ClangCursorBacked {
+public struct OMPDistributeParallelForDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP distribute parallel for simd directive.
-struct OMPDistributeParallelForSimdDirective: ClangCursorBacked {
+public struct OMPDistributeParallelForSimdDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP distribute simd directive.
-struct OMPDistributeSimdDirective: ClangCursorBacked {
+public struct OMPDistributeSimdDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// OpenMP target parallel for simd directive.
-struct OMPTargetParallelForSimdDirective: ClangCursorBacked {
+public struct OMPTargetParallelForSimdDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// Cursor that represents the translation unit itself.
 /// The translation unit cursor exists primarily to act as the root cursor for
 /// traversing the contents of a translation unit.
-struct TranslationUnitCursor: ClangCursorBacked {
+public struct TranslationUnitCursor: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct UnexposedAttr: ClangCursorBacked {
+public struct UnexposedAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct IBActionAttr: ClangCursorBacked {
+public struct IBActionAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct IBOutletAttr: ClangCursorBacked {
+public struct IBOutletAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct IBOutletCollectionAttr: ClangCursorBacked {
+public struct IBOutletCollectionAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct CXXFinalAttr: ClangCursorBacked {
+public struct CXXFinalAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct CXXOverrideAttr: ClangCursorBacked {
+public struct CXXOverrideAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct AnnotateAttr: ClangCursorBacked {
+public struct AnnotateAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct AsmLabelAttr: ClangCursorBacked {
+public struct AsmLabelAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct PackedAttr: ClangCursorBacked {
+public struct PackedAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct PureAttr: ClangCursorBacked {
+public struct PureAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct ConstAttr: ClangCursorBacked {
+public struct ConstAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct NoDuplicateAttr: ClangCursorBacked {
+public struct NoDuplicateAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct CUDAConstantAttr: ClangCursorBacked {
+public struct CUDAConstantAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct CUDADeviceAttr: ClangCursorBacked {
+public struct CUDADeviceAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct CUDAGlobalAttr: ClangCursorBacked {
+public struct CUDAGlobalAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct CUDAHostAttr: ClangCursorBacked {
+public struct CUDAHostAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct CUDASharedAttr: ClangCursorBacked {
+public struct CUDASharedAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct VisibilityAttr: ClangCursorBacked {
+public struct VisibilityAttr: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct DLLExport: ClangCursorBacked {
+public struct DLLExport: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct DLLImport: ClangCursorBacked {
+public struct DLLImport: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct PreprocessingDirective: ClangCursorBacked {
+public struct PreprocessingDirective: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct MacroDefinition: ClangCursorBacked {
+public struct MacroDefinition: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct MacroExpansion: ClangCursorBacked {
+public struct MacroExpansion: ClangCursorBacked {
     let clang: CXCursor
 }
 
 
-struct MacroInstantiation: ClangCursorBacked {
+public struct MacroInstantiation: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A module import declaration.
-struct ModuleImportDecl: ClangCursorBacked {
+public struct ModuleImportDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
-struct TypeAliasTemplateDecl: ClangCursorBacked {
+public struct TypeAliasTemplateDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A static_assert or _Static_assert node
-struct StaticAssert: ClangCursorBacked {
+public struct StaticAssert: ClangCursorBacked {
     let clang: CXCursor
 }
 
 /// A code completion overload candidate.
-struct OverloadCandidate: ClangCursorBacked {
+public struct OverloadCandidate: ClangCursorBacked {
     let clang: CXCursor
 }
 

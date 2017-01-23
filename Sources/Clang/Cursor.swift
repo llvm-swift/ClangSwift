@@ -187,7 +187,7 @@ extension Cursor {
     /// Retrieves all the children of the provided cursor.
     ///
     /// - returns: An array of `Cursors` that are children of this cursor.
-    func children() -> [Cursor] {
+    public func children() -> [Cursor] {
         var children = [Cursor]()
         clang_visitChildrenWithBlock(asClang()) { child, _ in
             if let cursor = convertCursor(child) {
@@ -250,20 +250,20 @@ extension Cursor {
 
     /// Given a cursor that represents a documentable entity (e.g.,
     /// declaration), return the associated parsed comment
-    var fullComment: FullComment? {
+    public var fullComment: FullComment? {
         return convertComment(clang_Cursor_getParsedComment(asClang())) as? FullComment
     }
 
     /// Given a cursor that represents a declaration, return the associated
     /// comment text, including comment markers.
-    var rawComment: String? {
+    public var rawComment: String? {
         return clang_Cursor_getRawCommentText(asClang()).asSwiftOptional()
     }
 
     /// Given a cursor that represents a documentable entity (e.g.,
     /// declaration), return the associated \brief paragraph; otherwise return
     /// the first paragraph.
-    var briefComment: String? {
+    public var briefComment: String? {
         return clang_Cursor_getBriefCommentText(asClang()).asSwiftOptional()
     }
 
@@ -294,7 +294,7 @@ public enum VisibilityKind {
 /// Describes the kind of a template argument.
 /// See the definition of llvm::clang::TemplateArgument::ArgKind for full
 /// element descriptions.
-enum TemplateArgumentKind {
+public enum TemplateArgumentKind {
     case type
     case declaration
     case nullPtr

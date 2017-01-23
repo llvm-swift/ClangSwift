@@ -63,7 +63,7 @@ func generateSwiftEnum(forEnum decl: EnumDecl, prefix: String, name: String) {
             print(line)
         }
     }
-    print("enum \(name) {")
+    print("public enum \(name) {")
     for child in decl.constants() {
         let constantName = "\(child)"
         let name = constantName.replacingOccurrences(of: prefix, with: "")
@@ -73,7 +73,7 @@ func generateSwiftEnum(forEnum decl: EnumDecl, prefix: String, name: String) {
     for (_, name, decl) in pairs {
         if let comment = decl.fullComment {
             print()
-            for section in convert(comment) {
+            for section in convert(comment, indent: 2) {
                 print("  \(section)")
             }
         }
@@ -108,7 +108,7 @@ func generateStructs(forEnum decl: EnumDecl,
         if typeName.hasPrefix("First") || typeName.hasPrefix("Last") { continue }
         let structName = "\(typeName)\(suffix)"
         var pieces = [
-            "struct \(structName): \(type) {",
+            "public struct \(structName): \(type) {",
             "  let clang: CX\(type)",
             "}",
             ""
@@ -139,7 +139,7 @@ func generateStructs(forEnum decl: EnumDecl,
 
 /// Performs a BFS over the comment text and converts it into Swift-compatible
 /// comments. Very quick&dirty, and will require manual edits.
-func convert(_ comment: FullComment) -> [String] {
+func convert(_ comment: FullComment, indent: Int = 0) -> [String] {
     var sections = [String]()
     var queue = [Comment]()
     queue.append(comment)
@@ -148,11 +148,11 @@ func convert(_ comment: FullComment) -> [String] {
         if let para = next as? ParagraphComment {
             if let textChildren = Array(para.children) as? [TextComment] {
                 let text = textChildren.map { $0.text }.joined()
-                sections.append(contentsOf: text.wrapped(to: 76))
+                sections.append(contentsOf: text.wrapped(to: 76 - indent))
                 continue
             }
         } else if let textComment = next as? TextComment {
-            sections.append(contentsOf: textComment.text.wrapped(to: 76))
+            sections.append(contentsOf: textComment.text.wrapped(to: 76 - indent))
         } else if let block = next as? VerbatimBlockCommandComment {
             sections.append("```")
             for child in block.children {
@@ -167,7 +167,8 @@ func convert(_ comment: FullComment) -> [String] {
             brief.name == "brief",
             let para = brief.firstChild as? ParagraphComment,
             let text = Array(para.children) as? [TextComment] {
-            sections.insert(text.map { $0.text }.joined(separator: " "), at: 0)
+            let paraText = text.map { $0.text }.joined(separator: "")
+            sections.insert(contentsOf: paraText.wrapped(to: 76 - indent), at: 0)
             queue.append(contentsOf: brief.children.dropFirst())
             continue
         }
@@ -192,7 +193,7 @@ class ClangTests: XCTestCase {
                                             "-I/usr/local/opt/llvm/include"
                                             ])
             let typesToMake: [String: (type: String, prefix: String, suffix: String)] = [
-                "CXTemplateArgumentKind": (type: "TemplateArgumentKind", prefix: "CXTemplateArgumentKind_", suffix: "")
+                "CXDiagnosticSeverity": (type: "DiagnosticSeverity", prefix: "CXDiagnostic_", suffix: "")
             ]
             for child in tu.cursor.children() {
                 guard let enumDecl = child as? EnumDecl else { continue }
