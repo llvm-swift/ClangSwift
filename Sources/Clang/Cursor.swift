@@ -65,11 +65,6 @@ extension Cursor {
         return clang_getCursorUSR(asClang()).asSwift()
     }
 
-    /// The kind of this cursor.
-    public var kind: CursorKind {
-        return CursorKind(clang: asClang().kind)
-    }
-
     /// For a cursor that is either a reference to or a declaration of some
     /// entity, retrieve a cursor that describes the definition of that entity.
     /// Some entities can be declared multiple times within a translation unit,
@@ -246,12 +241,30 @@ extension Cursor {
             clang_disposeCXPlatformAvailability(&platform)
         }
 
-
         return Availability(alwaysDeprecated: alwaysDeprecated != 0,
                             deprecationMessage: deprecatedMessage.asSwiftOptional(),
                             alwaysUnavailable: alwaysUnavailable != 0,
                             unavailableMessage: unavailableMessage.asSwiftOptional(),
                             platforms: platforms)
+    }
+
+    /// Given a cursor that represents a documentable entity (e.g.,
+    /// declaration), return the associated parsed comment
+    var fullComment: FullComment? {
+        return convertComment(clang_Cursor_getParsedComment(asClang())) as? FullComment
+    }
+
+    /// Given a cursor that represents a declaration, return the associated
+    /// comment text, including comment markers.
+    var rawComment: String? {
+        return clang_Cursor_getRawCommentText(asClang()).asSwiftOptional()
+    }
+
+    /// Given a cursor that represents a documentable entity (e.g.,
+    /// declaration), return the associated \brief paragraph; otherwise return
+    /// the first paragraph.
+    var briefComment: String? {
+        return clang_Cursor_getBriefCommentText(asClang()).asSwiftOptional()
     }
 
     /// Determine the "language" of the entity referred to by a given cursor.
@@ -274,6 +287,37 @@ public enum VisibilityKind {
         case CXVisibility_Protected: self = .protected
         case CXVisibility_Default: self = .default
         default: return nil
+        }
+    }
+}
+
+/// Describes the kind of a template argument.
+/// See the definition of llvm::clang::TemplateArgument::ArgKind for full
+/// element descriptions.
+enum TemplateArgumentKind {
+    case type
+    case declaration
+    case nullPtr
+    case integral
+    case template
+    case templateExpansion
+    case expression
+    case pack
+    case invalid
+
+    init?(clang: CXTemplateArgumentKind) {
+        switch clang {
+        case CXTemplateArgumentKind_Null: return nil
+        case CXTemplateArgumentKind_Type: self = .type
+        case CXTemplateArgumentKind_Declaration: self = .declaration
+        case CXTemplateArgumentKind_NullPtr: self = .nullPtr
+        case CXTemplateArgumentKind_Integral: self = .integral
+        case CXTemplateArgumentKind_Template: self = .template
+        case CXTemplateArgumentKind_TemplateExpansion: self = .templateExpansion
+        case CXTemplateArgumentKind_Expression: self = .expression
+        case CXTemplateArgumentKind_Pack: self = .pack
+        case CXTemplateArgumentKind_Invalid: self = .invalid
+        default: fatalError("invalid CXTemplateArgumentKind \(clang)")
         }
     }
 }

@@ -130,11 +130,6 @@ extension CType {
     public var cxxRefQualifier: RefQualifier? {
         return RefQualifier(clang: clang_Type_getCXXRefQualifier(asClang()))
     }
-
-    /// The kind of the receiver.
-    public var kind: CTypeKind {
-        return CTypeKind(clang: asClang().kind)
-    }
 }
 
 /// Represents the qualifier for C++ methods that determines how the
