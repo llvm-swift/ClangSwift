@@ -96,11 +96,6 @@ public struct ClassDecl: RecordDecl {
 public struct EnumConstantDecl: ClangCursorBacked {
     let clang: CXCursor
 
-    /// Retrieve the integer type of an enum declaration.
-    var integerType: CType {
-        return convertType(clang_getEnumDeclIntegerType(clang))!
-    }
-
     /// Retrieve the integer value of an enum constant declaration as an `Int`.
     var value: Int {
         return Int(clang_getEnumConstantDeclValue(clang))
@@ -117,6 +112,11 @@ public struct EnumDecl: ClangCursorBacked {
 
     func constants() -> [EnumConstantDecl] {
         return children() as! [EnumConstantDecl]
+    }
+
+    /// Retrieve the integer type of an enum declaration.
+    var integerType: CType {
+        return convertType(clang_getEnumDeclIntegerType(clang))!
     }
 }
 

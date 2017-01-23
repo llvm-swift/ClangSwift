@@ -56,6 +56,34 @@ extension String {
     }
 }
 
+func generateSwiftOptionSet(forEnum decl: EnumDecl, prefix: String, name: String) {
+    if let comment = decl.fullComment {
+        for line in convert(comment) {
+            print(line)
+        }
+    }
+    print("public struct \(name): OptionSet {")
+    print("  public typealias RawValue = \(decl).RawValue")
+    print("  public let rawValue: RawValue")
+    print("  /// Creates a new \(name) from a raw integer value.")
+    print("  public init(rawValue: RawValue) {")
+    print("    self.rawValue = rawValue")
+    print("  }")
+    for constant in decl.constants() {
+        if let comment = constant.fullComment {
+            print()
+            for line in convert(comment, indent: 2) {
+                print("  \(line)")
+            }
+        }
+        let constName = "\(constant)".replacingOccurrences(of: prefix, with: "")
+                                     .lowercasingFirstWord
+        print("  public static let \(constName) = \(name)(rawValue: ")
+        print("    \(constant).rawValue)")
+    }
+    print("}")
+}
+
 func generateSwiftEnum(forEnum decl: EnumDecl, prefix: String, name: String) {
     var pairs = [(String, String, EnumConstantDecl)]()
     if let comment = decl.fullComment {
@@ -153,6 +181,11 @@ func convert(_ comment: FullComment, indent: Int = 0) -> [String] {
             }
         } else if let textComment = next as? TextComment {
             sections.append(contentsOf: textComment.text.wrapped(to: 76 - indent))
+        } else if let line = next as? VerbatimLineComment {
+            sections.append("`\(line.text)`")
+        } else if let line = next as? InlineCommandComment {
+            let arg = Array(line.arguments)[0]
+            sections.append("`\(arg)`")
         } else if let block = next as? VerbatimBlockCommandComment {
             sections.append("```")
             for child in block.children {
@@ -168,7 +201,8 @@ func convert(_ comment: FullComment, indent: Int = 0) -> [String] {
             let para = brief.firstChild as? ParagraphComment,
             let text = Array(para.children) as? [TextComment] {
             let paraText = text.map { $0.text }.joined(separator: "")
-            sections.insert(contentsOf: paraText.wrapped(to: 76 - indent), at: 0)
+            let textSections = paraText.wrapped(to: 76 - indent)
+            sections.insert(contentsOf: textSections, at: 0)
             queue.append(contentsOf: brief.children.dropFirst())
             continue
         }
@@ -191,14 +225,23 @@ class ClangTests: XCTestCase {
                                          commandLineArgs: [
                                             "-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
                                             "-I/usr/local/opt/llvm/include"
-                                            ])
+                                        ])
             let typesToMake: [String: (type: String, prefix: String, suffix: String)] = [
-                "CXDiagnosticSeverity": (type: "DiagnosticSeverity", prefix: "CXDiagnostic_", suffix: "")
+                "CXTranslationUnit_Flags": (type: "TranslationUnitOptions",
+                                            prefix: "CXTranslationUnit_",
+                                            suffix: "")
             ]
             for child in tu.cursor.children() {
+//                if let decl = child as? TypedefDecl,
+//                    let underlying = decl.underlying,
+//                    "\(underlying)" == "enum CXTranslationUnit_Flags",
+//                    let enumDecl = underlying.declaration as? EnumDecl {
+//                    generateSwiftOptionSet(forEnum: enumDecl, prefix: "CXTranslationUnit_", name: "TranslationUnitOptions")
+//                }
                 guard let enumDecl = child as? EnumDecl else { continue }
                 if let values = typesToMake["\(enumDecl)"] {
-                    generateSwiftEnum(forEnum: enumDecl, prefix: values.prefix, name: values.type)
+                    generateSwiftOptionSet(forEnum: enumDecl, prefix: values.prefix, name: values.type)
+//                    generateSwiftEnum(forEnum: enumDecl, prefix: values.prefix, name: values.type)
 //                    generateStructs(forEnum: enumDecl, type: values.type,
 //                                    prefix: values.prefix, suffix: values.suffix)
                 }

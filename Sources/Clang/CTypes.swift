@@ -21,7 +21,7 @@ public struct RecordType: ClangTypeBacked {
         }
         return Int(val)
     }
-    
+
     /// Gathers and returns all the fields of this record.
     func fields() -> [Cursor] {
         let fields = Box([Cursor]())
