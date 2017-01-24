@@ -109,6 +109,30 @@ public struct EnumConstantDecl: ClangCursorBacked {
     }
 }
 
+protocol MacroCursor: ClangCursorBacked {}
+extension MacroCursor {
+    /// Determine whether a macro is function like.
+    public var isFunctionLike: Bool {
+        return clang_Cursor_isMacroFunctionLike(clang) != 0
+    }
+
+    /// Determine whether a macro is a built-in macro.
+    public var isBuiltin: Bool {
+        return clang_Cursor_isMacroBuiltin(clang) != 0
+    }
+}
+public struct MacroExpansion: MacroCursor {
+    let clang: CXCursor
+}
+
+public struct MacroInstantiation: MacroCursor {
+    let clang: CXCursor
+}
+
+public struct MacroDefinition: MacroCursor {
+    let clang: CXCursor
+}
+
 /// An access specifier.
 public struct CXXAccessSpecifier: ClangCursorBacked {
     let clang: CXCursor
@@ -1180,21 +1204,6 @@ public struct DLLImport: ClangCursorBacked {
 
 
 public struct PreprocessingDirective: ClangCursorBacked {
-    let clang: CXCursor
-}
-
-
-public struct MacroDefinition: ClangCursorBacked {
-    let clang: CXCursor
-}
-
-
-public struct MacroExpansion: ClangCursorBacked {
-    let clang: CXCursor
-}
-
-
-public struct MacroInstantiation: ClangCursorBacked {
     let clang: CXCursor
 }
 

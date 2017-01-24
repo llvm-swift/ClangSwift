@@ -165,7 +165,7 @@ public class TranslationUnit {
         guard let tokensPtr = tokensPtrOpt else { return [] }
         var tokens = [Token]()
         for i in 0..<Int(numTokens) {
-            tokens.append(Token(clang: tokensPtr[i]))
+            tokens.append(convertToken(tokensPtr[i]))
         }
         clang_disposeTokens(clang, tokensPtr, numTokens)
         return tokens

@@ -126,7 +126,7 @@ func generateStructs(forEnum decl: EnumDecl,
                      prefix: String,
                      suffix: String = "") {
     let protocolDecl = [
-        "protocol \(type) {",
+        "public protocol \(type) {",
         "  var clang: CX\(type) { get }",
         "}",
         ""
@@ -238,9 +238,9 @@ class ClangTests: XCTestCase {
                                             "-I/usr/local/opt/llvm/include"
                                         ])
             let typesToMake: [String: (type: String, prefix: String, suffix: String)] = [
-                "CX_StorageClass": (type: "StorageClass",
-                                            prefix: "CX_SC_",
-                                            suffix: "")
+                "CXTokenKind": (type: "Token",
+                                            prefix: "CXToken_",
+                                            suffix: "Token")
             ]
             for child in tu.cursor.children() {
 //                if let decl = child as? TypedefDecl,
@@ -257,9 +257,9 @@ class ClangTests: XCTestCase {
 //                print()
                 if let values = typesToMake["\(enumDecl)"] {
 //                    generateSwiftOptionSet(forEnum: enumDecl, prefix: values.prefix, name: values.type)
-                    generateSwiftEnum(forEnum: enumDecl, prefix: values.prefix, name: values.type)
-//                    generateStructs(forEnum: enumDecl, type: values.type,
-//                                    prefix: values.prefix, suffix: values.suffix)
+//                    generateSwiftEnum(forEnum: enumDecl, prefix: values.prefix, name: values.type)
+                    generateStructs(forEnum: enumDecl, type: values.type,
+                                    prefix: values.prefix, suffix: values.suffix)
                 }
             }
 //            for child in tu.cursor.children() {
