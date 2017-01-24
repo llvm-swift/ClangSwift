@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Cursor Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Cursor" class="dashAnchor"></a>
+    <a title="Cursor Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (70% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Cursor Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Index.html">Index</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TranslationUnit.html">TranslationUnit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CXXAccessSpecifierKind.html">CXXAccessSpecifierKind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/DiagnosticSeverity.html">DiagnosticSeverity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Language.html">Language</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/LoadDiagError.html">LoadDiagError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RefQualifier.html">RefQualifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StorageClass.html">StorageClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TemplateArgumentKind.html">TemplateArgumentKind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TokenKind.html">TokenKind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TypeLayoutError.html">TypeLayoutError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VisibilityKind.html">VisibilityKind</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CXCursor.html">CXCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CXType.html">CXType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/ClangCursorBacked.html">ClangCursorBacked</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/ClangTypeBacked.html">ClangTypeBacked</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/MethodDecl.html">MethodDecl</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Clangoi2eeFTPS_5CType_PS0___Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Clangoi2eeFTPS_6Cursor_PS0___Sb">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CType.html">CType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Comment.html">Comment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Cursor.html">Cursor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13AddrLabelExpr">AddrLabelExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12AnnotateAttr">AnnotateAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18ArraySubscriptExpr">ArraySubscriptExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12AsmLabelAttr">AsmLabelAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang7AsmStmt">AsmStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8AutoType">AutoType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12Availability">Availability</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14BinaryOperator">BinaryOperator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9BlockExpr">BlockExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16BlockPointerType">BlockPointerType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8BoolType">BoolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9BreakStmt">BreakStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14CStyleCastExpr">CStyleCastExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16CUDAConstantAttr">CUDAConstantAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14CUDADeviceAttr">CUDADeviceAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14CUDAGlobalAttr">CUDAGlobalAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12CUDAHostAttr">CUDAHostAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14CUDASharedAttr">CUDASharedAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18CXXAccessSpecifier">CXXAccessSpecifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16CXXBaseSpecifier">CXXBaseSpecifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18CXXBoolLiteralExpr">CXXBoolLiteralExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12CXXCatchStmt">CXXCatchStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16CXXConstCastExpr">CXXConstCastExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13CXXDeleteExpr">CXXDeleteExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18CXXDynamicCastExpr">CXXDynamicCastExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12CXXFinalAttr">CXXFinalAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15CXXForRangeStmt">CXXForRangeStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21CXXFunctionalCastExpr">CXXFunctionalCastExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9CXXMethod">CXXMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10CXXNewExpr">CXXNewExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21CXXNullPtrLiteralExpr">CXXNullPtrLiteralExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15CXXOverrideAttr">CXXOverrideAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22CXXReinterpretCastExpr">CXXReinterpretCastExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17CXXStaticCastExpr">CXXStaticCastExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11CXXThisExpr">CXXThisExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12CXXThrowExpr">CXXThrowExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10CXXTryStmt">CXXTryStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13CXXTypeidExpr">CXXTypeidExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CallExpr.html">CallExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8CaseStmt">CaseStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10Char16Type">Char16Type</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10Char32Type">Char32Type</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10Char_SType">Char_SType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10Char_UType">Char_UType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16CharacterLiteral">CharacterLiteral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9ClassDecl">ClassDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13ClassTemplate">ClassTemplate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang34ClassTemplatePartialSpecialization">ClassTemplatePartialSpecialization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11ComplexType">ComplexType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22CompoundAssignOperator">CompoundAssignOperator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19CompoundLiteralExpr">CompoundLiteralExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12CompoundStmt">CompoundStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19ConditionalOperator">ConditionalOperator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9ConstAttr">ConstAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17ConstantArrayType">ConstantArrayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11Constructor">Constructor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12ContinueStmt">ContinueStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18ConversionFunction">ConversionFunction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9DLLExport">DLLExport</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9DLLImport">DLLImport</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11DeclRefExpr">DeclRefExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8DeclStmt">DeclStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11DefaultStmt">DefaultStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang23DependentSizedArrayType">DependentSizedArrayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13DependentType">DependentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10Destructor">Destructor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DiagnosticDisplayOptions.html">DiagnosticDisplayOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang6DoStmt">DoStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10DoubleType">DoubleType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14ElaboratedType">ElaboratedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EnumConstantDecl.html">EnumConstantDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8EnumDecl">EnumDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8EnumType">EnumType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9FieldDecl">FieldDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/File.html">File</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16FirstBuiltinType">FirstBuiltinType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12Float128Type">Float128Type</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9FloatType">FloatType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15FloatingLiteral">FloatingLiteral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang7ForStmt">ForStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FullComment.html">FullComment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FunctionDecl.html">FunctionDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19FunctionNoProtoType">FunctionNoProtoType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17FunctionProtoType">FunctionProtoType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16FunctionTemplate">FunctionTemplate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10GCCAsmStmt">GCCAsmStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11GNUNullExpr">GNUNullExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang20GenericSelectionExpr">GenericSelectionExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GlobalOptions.html">GlobalOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8GotoStmt">GotoStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12IBActionAttr">IBActionAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12IBOutletAttr">IBOutletAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22IBOutletCollectionAttr">IBOutletCollectionAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang6IfStmt">IfStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16ImaginaryLiteral">ImaginaryLiteral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InclusionDirective.html">InclusionDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19IncompleteArrayType">IncompleteArrayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16IndirectGotoStmt">IndirectGotoStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12InitListExpr">InitListExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10Int128Type">Int128Type</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang7IntType">IntType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14IntegerLiteral">IntegerLiteral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11InvalidCode">InvalidCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11InvalidFile">InvalidFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11InvalidType">InvalidType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19LValueReferenceType">LValueReferenceType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8LabelRef">LabelRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9LabelStmt">LabelStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10LambdaExpr">LambdaExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15LastBuiltinType">LastBuiltinType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11LinkageSpec">LinkageSpec</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14LongDoubleType">LongDoubleType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12LongLongType">LongLongType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8LongType">LongType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9MSAsmStmt">MSAsmStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15MacroDefinition">MacroDefinition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14MacroExpansion">MacroExpansion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18MacroInstantiation">MacroInstantiation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17MemberPointerType">MemberPointerType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9MemberRef">MemberRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13MemberRefExpr">MemberRefExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16ModuleImportDecl">ModuleImportDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9Namespace">Namespace</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14NamespaceAlias">NamespaceAlias</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12NamespaceRef">NamespaceRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11NoDeclFound">NoDeclFound</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15NoDuplicateAttr">NoDuplicateAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang24NonTypeTemplateParameter">NonTypeTemplateParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14NotImplemented">NotImplemented</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11NullPtrType">NullPtrType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8NullStmt">NullStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19OMPArraySectionExpr">OMPArraySectionExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18OMPAtomicDirective">OMPAtomicDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19OMPBarrierDirective">OMPBarrierDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18OMPCancelDirective">OMPCancelDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang29OMPCancellationPointDirective">OMPCancellationPointDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang20OMPCriticalDirective">OMPCriticalDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22OMPDistributeDirective">OMPDistributeDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang33OMPDistributeParallelForDirective">OMPDistributeParallelForDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang37OMPDistributeParallelForSimdDirective">OMPDistributeParallelForSimdDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang26OMPDistributeSimdDirective">OMPDistributeSimdDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17OMPFlushDirective">OMPFlushDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15OMPForDirective">OMPForDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19OMPForSimdDirective">OMPForSimdDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18OMPMasterDirective">OMPMasterDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19OMPOrderedDirective">OMPOrderedDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang20OMPParallelDirective">OMPParallelDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang23OMPParallelForDirective">OMPParallelForDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang27OMPParallelForSimdDirective">OMPParallelForSimdDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang28OMPParallelSectionsDirective">OMPParallelSectionsDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19OMPSectionDirective">OMPSectionDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang20OMPSectionsDirective">OMPSectionsDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16OMPSimdDirective">OMPSimdDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18OMPSingleDirective">OMPSingleDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22OMPTargetDataDirective">OMPTargetDataDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18OMPTargetDirective">OMPTargetDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang27OMPTargetEnterDataDirective">OMPTargetEnterDataDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang26OMPTargetExitDataDirective">OMPTargetExitDataDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang26OMPTargetParallelDirective">OMPTargetParallelDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang29OMPTargetParallelForDirective">OMPTargetParallelForDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang33OMPTargetParallelForSimdDirective">OMPTargetParallelForSimdDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang24OMPTargetUpdateDirective">OMPTargetUpdateDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16OMPTaskDirective">OMPTaskDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang20OMPTaskLoopDirective">OMPTaskLoopDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang24OMPTaskLoopSimdDirective">OMPTaskLoopSimdDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21OMPTaskgroupDirective">OMPTaskgroupDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang20OMPTaskwaitDirective">OMPTaskwaitDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21OMPTaskyieldDirective">OMPTaskyieldDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17OMPTeamsDirective">OMPTeamsDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15ObjCAtCatchStmt">ObjCAtCatchStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17ObjCAtFinallyStmt">ObjCAtFinallyStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22ObjCAtSynchronizedStmt">ObjCAtSynchronizedStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15ObjCAtThrowStmt">ObjCAtThrowStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13ObjCAtTryStmt">ObjCAtTryStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang23ObjCAutoreleasePoolStmt">ObjCAutoreleasePoolStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang25ObjCAvailabilityCheckExpr">ObjCAvailabilityCheckExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19ObjCBoolLiteralExpr">ObjCBoolLiteralExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19ObjCBridgedCastExpr">ObjCBridgedCastExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16ObjCCategoryDecl">ObjCCategoryDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang20ObjCCategoryImplDecl">ObjCCategoryImplDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19ObjCClassMethodDecl">ObjCClassMethodDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12ObjCClassRef">ObjCClassRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13ObjCClassType">ObjCClassType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15ObjCDynamicDecl">ObjCDynamicDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14ObjCEncodeExpr">ObjCEncodeExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21ObjCForCollectionStmt">ObjCForCollectionStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10ObjCIdType">ObjCIdType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22ObjCImplementationDecl">ObjCImplementationDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22ObjCInstanceMethodDecl">ObjCInstanceMethodDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17ObjCInterfaceDecl">ObjCInterfaceDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17ObjCInterfaceType">ObjCInterfaceType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12ObjCIvarDecl">ObjCIvarDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ObjCMessageExpr.html">ObjCMessageExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21ObjCObjectPointerType">ObjCObjectPointerType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16ObjCPropertyDecl">ObjCPropertyDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16ObjCProtocolDecl">ObjCProtocolDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16ObjCProtocolExpr">ObjCProtocolExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang15ObjCProtocolRef">ObjCProtocolRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11ObjCSelType">ObjCSelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16ObjCSelectorExpr">ObjCSelectorExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12ObjCSelfExpr">ObjCSelfExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17ObjCStringLiteral">ObjCStringLiteral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17ObjCSuperClassRef">ObjCSuperClassRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang18ObjCSynthesizeDecl">ObjCSynthesizeDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17OverloadCandidate">OverloadCandidate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12OverloadType">OverloadType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17OverloadedDeclRef">OverloadedDeclRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17PackExpansionExpr">PackExpansionExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10PackedAttr">PackedAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9ParenExpr">ParenExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8ParmDecl">ParmDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PlatformAvailability.html">PlatformAvailability</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11PointerType">PointerType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang22PreprocessingDirective">PreprocessingDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8PureAttr">PureAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang19RValueReferenceType">RValueReferenceType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RecordType.html">RecordType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10ReturnStmt">ReturnStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9SCharType">SCharType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13SEHExceptStmt">SEHExceptStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14SEHFinallyStmt">SEHFinallyStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12SEHLeaveStmt">SEHLeaveStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10SEHTryStmt">SEHTryStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9ShortType">ShortType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14SizeOfPackExpr">SizeOfPackExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SourceLocation.html">SourceLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SourceRange.html">SourceRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang12StaticAssert">StaticAssert</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8StmtExpr">StmtExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13StringLiteral">StringLiteral</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10StructDecl">StructDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10SwitchStmt">SwitchStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11TemplateRef">TemplateRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang25TemplateTemplateParameter">TemplateTemplateParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21TemplateTypeParameter">TemplateTypeParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Token.html">Token</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21TranslationUnitCursor">TranslationUnitCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TranslationUnitOptions.html">TranslationUnitOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13TypeAliasDecl">TypeAliasDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang21TypeAliasTemplateDecl">TypeAliasTemplateDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang7TypeRef">TypeRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11TypedefDecl">TypedefDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11TypedefType">TypedefType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9UCharType">UCharType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11UInt128Type">UInt128Type</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8UIntType">UIntType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13ULongLongType">ULongLongType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9ULongType">ULongType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10UShortType">UShortType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9UnaryExpr">UnaryExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13UnaryOperator">UnaryOperator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13UnexposedAttr">UnexposedAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13UnexposedDecl">UnexposedDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13UnexposedExpr">UnexposedExpr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13UnexposedStmt">UnexposedStmt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang13UnexposedType">UnexposedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9UnionDecl">UnionDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UniqueFileID.html">UniqueFileID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang16UsingDeclaration">UsingDeclaration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14UsingDirective">UsingDirective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang7VarDecl">VarDecl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang17VariableArrayType">VariableArrayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang11VariableRef">VariableRef</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang10VectorType">VectorType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang7Version">Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang14VisibilityAttr">VisibilityAttr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang8VoidType">VoidType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9WCharType">WCharType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V5Clang9WhileStmt">WhileStmt</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Cursor</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Cursor</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                </div>
+              </div>
+            <p>A cursor representing some element in the abstract syntax tree for a
+translation unit.</p>
+
+<p>The cursor abstraction unifies the different kinds of entities in a
+program&ndash;declaration, statements, expressions, references to declarations,
+etc.&ndash;under a single <q>cursor</q> abstraction with a common set of operations.
+Common operation for a cursor include: getting the physical location in a
+source file where the cursor points, getting the name associated with a
+cursor, and retrieving cursors for any child nodes of a particular cursor.
+Cursors can be produced in two specific ways.</p>
+
+<p><code><a href="../Classes/TranslationUnit.html#/s:vC5Clang15TranslationUnit6cursorPS_6Cursor_">TranslationUnit.cursor</a></code>
+produces a cursor for a translation unit, from which one can use
+`children() to explore the rest of the translation unit.</p>
+
+<p><code>SourceLocation.cursor</code> maps from a physical source location to the entity
+that resides at that location, allowing one to map from the source code into the AST.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP5Clang6Cursor7asClangFT_VSC8CXCursor"></a>
+                    <a name="//apple_ref/swift/Method/asClang()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP5Clang6Cursor7asClangFT_VSC8CXCursor">asClang()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Converts this cursor value to a CXCursor value to be consumed by
+libclang APIs</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">asClang</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CXCursor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor11descriptionSS">description</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve a name for the entity referenced by this cursor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor3usrSS"></a>
+                    <a name="//apple_ref/swift/Property/usr" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor3usrSS">usr</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve a Unified Symbol Resolution (USR) for the entity referenced by
+the given cursor.
+A Unified Symbol Resolution (USR) is a string that identifies a
+particular entity (function, class, variable, etc.) within a program.
+USRs can be compared across translation units to determine, e.g., when
+references in one translation refer to an entity defined in another
+translation unit.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">usr</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor10definitionGSqPS0___"></a>
+                    <a name="//apple_ref/swift/Property/definition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor10definitionGSqPS0___">definition</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>For a cursor that is either a reference to or a declaration of some
+entity, retrieve a cursor that describes the definition of that entity.
+Some entities can be declared multiple times within a translation unit,
+but only one of those declarations can also be a definition. For
+example, given:
+<code>
+int f(int, int);
+int g(int x, int y) { return f(x, y); }
+int f(int a, int b) { return a + b; }
+int f(int, int);
+</code>
+there are three declarations of the function <q>f</q>, but only the second
+one is a definition. This variable, accessed on any cursor pointing to a
+declaration of <q>f</q> (the first or fourth lines of the example) or a
+cursor referenced that uses <q>f</q> (the call to <q>f&rsquo; inside</q>g<q>), will
+return a declaration cursor pointing to the definition (the second</q>f&quot;
+declaration).</p>
+
+<p>If given a cursor for which there is no corresponding definition, e.g.,
+because there is no definition of that entity within this translation
+unit, returns a <code>NULL</code> cursor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">definition</span><span class="p">:</span> <span class="kt">Cursor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor11displayNameSS"></a>
+                    <a name="//apple_ref/swift/Property/displayName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor11displayNameSS">displayName</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve the display name for the entity referenced by this cursor.
+The display name contains extra information that helps identify the
+cursor, such as the parameters of a function or template or the
+arguments of a class template specialization.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">displayName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor13lexicalParentGSqPS0___"></a>
+                    <a name="//apple_ref/swift/Property/lexicalParent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor13lexicalParentGSqPS0___">lexicalParent</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determine the lexical parent of the given cursor.
+The lexical parent of a cursor is the cursor in which the given cursor
+was actually written.  For many declarations, the lexical and semantic
+parents are equivalent. They diverge when declarations or definitions
+are provided out-of-line. For example:</p>
+
+<pre class="highlight plaintext"><code>class C {
+  void f();
+};
+void C::f() { }
+</code></pre>
+
+<p>In the out-of-line definition of <code>C::f</code>, the semantic parent is the class
+<code>C</code>, of which this function is a member. The lexical parent is the place
+where the declaration actually occurs in the source code; in this case,
+the definition occurs in the translation unit. In general, the lexical
+parent for a given entity can change without affecting the semantics of
+the program, and the lexical parent of different declarations of the
+same entity may be different. Changing the semantic parent of a
+declaration, on the other hand, can have a major impact on semantics,
+and redeclarations of a particular entity should all have the same
+semantic context.</p>
+
+<p>In the example above, both declarations of <code>C::f</code> have <code>C</code> as their
+semantic context, while the lexical context of the first <code>C::f</code> is <code>C</code>
+and the lexical context of the second <code>C::f</code> is the translation unit.
+For global declarations, the semantic parent is the translation unit.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lexicalParent</span><span class="p">:</span> <span class="kt">Cursor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor14semanticParentGSqPS0___"></a>
+                    <a name="//apple_ref/swift/Property/semanticParent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor14semanticParentGSqPS0___">semanticParent</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determine the semantic parent of the given cursor.
+The semantic parent of a cursor is the cursor that semantically contains
+the given cursor. For many declarations, the lexical and semantic
+parents are equivalent. They diverge when declarations or definitions
+are provided out-of-line. For example:</p>
+
+<pre class="highlight plaintext"><code>class C {
+  void f();
+};
+void C::f() { }
+</code></pre>
+
+<p>In the out-of-line definition of <code>C::f</code>, the semantic parent is the class
+<code>C</code>, of which this function is a member. The lexical parent is the place
+where the declaration actually occurs in the source code; in this case,
+the definition occurs in the translation unit. In general, the lexical
+parent for a given entity can change without affecting the semantics of
+the program, and the lexical parent of different declarations of the
+same entity may be different. Changing the semantic parent of a
+declaration, on the other hand, can have a major impact on semantics,
+and redeclarations of a particular entity should all have the same
+semantic context.</p>
+
+<p>In the example above, both declarations of <code>C::f</code> have <code>C</code> as their
+semantic context, while the lexical context of the first <code>C::f</code> is <code>C</code>
+and the lexical context of the second <code>C::f</code> is the translation unit.
+For global declarations, the semantic parent is the translation unit.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">semanticParent</span><span class="p">:</span> <span class="kt">Cursor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor10referencedGSqPS0___"></a>
+                    <a name="//apple_ref/swift/Property/referenced" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor10referencedGSqPS0___">referenced</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>For a cursor that is a reference, retrieve a cursor representing the
+entity that it references.
+Reference cursors refer to other entities in the AST. For example, an
+Objective-C superclass reference cursor refers to an Objective-C class.
+This function produces the cursor for the Objective-C class from the
+cursor for the superclass reference. If the input cursor is a
+declaration or definition, it returns that declaration or definition
+unchanged. Otherwise, returns the <code>NULL</code> cursor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">referenced</span><span class="p">:</span> <span class="kt">Cursor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor4typeGSqPS_5CType__"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor4typeGSqPS_5CType__">type</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the type of this cursor (if any).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CType.html">CType</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor15translationUnitCS_15TranslationUnit"></a>
+                    <a name="//apple_ref/swift/Property/translationUnit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor15translationUnitCS_15TranslationUnit">translationUnit</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the translation unit that a cursor originated from.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">translationUnit</span><span class="p">:</span> <span class="kt"><a href="../Classes/TranslationUnit.html">TranslationUnit</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE5ClangPS_6Cursor8childrenFT_GSaPS0___"></a>
+                    <a name="//apple_ref/swift/Method/children()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE5ClangPS_6Cursor8childrenFT_GSaPS0___">children()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves all the children of the provided cursor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">children</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Cursor</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of <code>Cursors</code> that are children of this cursor.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor9visiblityGSqOS_14VisibilityKind_"></a>
+                    <a name="//apple_ref/swift/Property/visiblity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor9visiblityGSqOS_14VisibilityKind_">visiblity</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Describe the visibility of the entity referred to by a cursor.
+This returns the default visibility if not explicitly specified by a
+visibility attribute. The default visibility may be changed by
+commandline arguments.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">visiblity</span><span class="p">:</span> <span class="kt"><a href="../Enums/VisibilityKind.html">VisibilityKind</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor5rangeVS_11SourceRange"></a>
+                    <a name="//apple_ref/swift/Property/range" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor5rangeVS_11SourceRange">range</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve the physical extent of the source construct referenced by the
+given cursor.
+The extent of a cursor starts with the file/line/column pointing at the
+first character within the source construct that the cursor refers to
+and ends with the last character within that source construct. For a
+declaration, the extent covers the declaration itself. For a reference,
+the extent covers the location of the reference (e.g., where the
+referenced entity was actually used).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">range</span><span class="p">:</span> <span class="kt"><a href="../Structs/SourceRange.html">SourceRange</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor12availabilityVS_12Availability"></a>
+                    <a name="//apple_ref/swift/Property/availability" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor12availabilityVS_12Availability">availability</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Cursor</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor12storageClassGSqOS_12StorageClass_"></a>
+                    <a name="//apple_ref/swift/Property/storageClass" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor12storageClassGSqOS_12StorageClass_">storageClass</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the storage class for a function or variable declaration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">storageClass</span><span class="p">:</span> <span class="kt"><a href="../Enums/StorageClass.html">StorageClass</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor15accessSpecifierGSqOS_22CXXAccessSpecifierKind_"></a>
+                    <a name="//apple_ref/swift/Property/accessSpecifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor15accessSpecifierGSqOS_22CXXAccessSpecifierKind_">accessSpecifier</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the access control level for the referenced object.
+If the cursor refers to a C++ declaration, its access control level
+within its parent scope is returned. Otherwise, if the cursor refers to
+a base specifier or access specifier, the specifier itself is returned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">accessSpecifier</span><span class="p">:</span> <span class="kt"><a href="../Enums/CXXAccessSpecifierKind.html">CXXAccessSpecifierKind</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor11fullCommentGSqVS_11FullComment_"></a>
+                    <a name="//apple_ref/swift/Property/fullComment" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor11fullCommentGSqVS_11FullComment_">fullComment</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Given a cursor that represents a documentable entity (e.g.,
+declaration), return the associated parsed comment</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">fullComment</span><span class="p">:</span> <span class="kt"><a href="../Structs/FullComment.html">FullComment</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor10rawCommentGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/rawComment" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor10rawCommentGSqSS_">rawComment</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Given a cursor that represents a declaration, return the associated
+comment text, including comment markers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawComment</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor12briefCommentGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/briefComment" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor12briefCommentGSqSS_">briefComment</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Given a cursor that represents a documentable entity (e.g.,
+declaration), return the associated \brief paragraph; otherwise return
+the first paragraph.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">briefComment</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE5ClangPS_6Cursor8languageGSqOS_8Language_"></a>
+                    <a name="//apple_ref/swift/Property/language" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE5ClangPS_6Cursor8languageGSqOS_8Language_">language</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determine the <q>language</q> of the entity referred to by a given cursor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">language</span><span class="p">:</span> <span class="kt"><a href="../Enums/Language.html">Language</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-01-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
