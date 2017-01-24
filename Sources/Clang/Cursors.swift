@@ -97,14 +97,19 @@ public struct EnumConstantDecl: ClangCursorBacked {
     let clang: CXCursor
 
     /// Retrieve the integer value of an enum constant declaration as an `Int`.
-    var value: Int {
+    public var value: Int {
         return Int(clang_getEnumConstantDeclValue(clang))
     }
 
     /// Retrieve the integer value of an enum constant declaration as a `UInt`.
-    var unsignedValue: UInt {
+    public var unsignedValue: UInt {
         return UInt(clang_getEnumConstantDeclUnsignedValue(clang))
     }
+}
+
+/// An access specifier.
+public struct CXXAccessSpecifier: ClangCursorBacked {
+    let clang: CXCursor
 }
 
 public struct EnumDecl: ClangCursorBacked {
@@ -285,22 +290,14 @@ public struct ObjCDynamicDecl: ClangCursorBacked {
     let clang: CXCursor
 }
 
-/// An access specifier.
-public struct CXXAccessSpecifier: ClangCursorBacked {
-    let clang: CXCursor
-}
-
-/// An access specifier.
 public struct ObjCSuperClassRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
-/// An access specifier.
 public struct ObjCProtocolRef: ClangCursorBacked {
     let clang: CXCursor
 }
 
-/// An access specifier.
 public struct ObjCClassRef: ClangCursorBacked {
     let clang: CXCursor
 }

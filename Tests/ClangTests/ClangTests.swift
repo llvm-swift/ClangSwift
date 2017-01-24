@@ -214,7 +214,16 @@ func convert(_ comment: FullComment, indent: Int = 0) -> [String] {
                    .map { "/// \($0)" }
 }
 
-
+extension TranslationUnit {
+    func findComment(symbol: String) -> FullComment? {
+        for child in cursor.children() {
+            if "\(child)".contains(symbol) {
+                return child.fullComment
+            }
+        }
+        return nil
+    }
+}
 
 class ClangTests: XCTestCase {
     func testExample() {
@@ -227,8 +236,8 @@ class ClangTests: XCTestCase {
                                             "-I/usr/local/opt/llvm/include"
                                         ])
             let typesToMake: [String: (type: String, prefix: String, suffix: String)] = [
-                "CXTranslationUnit_Flags": (type: "TranslationUnitOptions",
-                                            prefix: "CXTranslationUnit_",
+                "CX_StorageClass": (type: "StorageClass",
+                                            prefix: "CX_SC_",
                                             suffix: "")
             ]
             for child in tu.cursor.children() {
@@ -239,9 +248,14 @@ class ClangTests: XCTestCase {
 //                    generateSwiftOptionSet(forEnum: enumDecl, prefix: "CXTranslationUnit_", name: "TranslationUnitOptions")
 //                }
                 guard let enumDecl = child as? EnumDecl else { continue }
+//                print(enumDecl)
+//                for constant in enumDecl.constants() {
+//                    print("  \(constant)")
+//                }
+//                print()
                 if let values = typesToMake["\(enumDecl)"] {
-                    generateSwiftOptionSet(forEnum: enumDecl, prefix: values.prefix, name: values.type)
-//                    generateSwiftEnum(forEnum: enumDecl, prefix: values.prefix, name: values.type)
+//                    generateSwiftOptionSet(forEnum: enumDecl, prefix: values.prefix, name: values.type)
+                    generateSwiftEnum(forEnum: enumDecl, prefix: values.prefix, name: values.type)
 //                    generateStructs(forEnum: enumDecl, type: values.type,
 //                                    prefix: values.prefix, suffix: values.suffix)
                 }

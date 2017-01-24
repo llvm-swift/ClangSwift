@@ -248,6 +248,19 @@ extension Cursor {
                             platforms: platforms)
     }
 
+    /// Returns the storage class for a function or variable declaration.
+    public var storageClass: StorageClass? {
+        return StorageClass(clang: clang_Cursor_getStorageClass(asClang()))
+    }
+
+    /// Returns the access control level for the referenced object.
+    /// If the cursor refers to a C++ declaration, its access control level
+    /// within its parent scope is returned. Otherwise, if the cursor refers to
+    /// a base specifier or access specifier, the specifier itself is returned.
+    public var accessSpecifier: CXXAccessSpecifierKind? {
+        return CXXAccessSpecifierKind(clang: clang_getCXXAccessSpecifier(asClang()))
+    }
+
     /// Given a cursor that represents a documentable entity (e.g.,
     /// declaration), return the associated parsed comment
     public var fullComment: FullComment? {
@@ -318,6 +331,49 @@ public enum TemplateArgumentKind {
         case CXTemplateArgumentKind_Pack: self = .pack
         case CXTemplateArgumentKind_Invalid: self = .invalid
         default: fatalError("invalid CXTemplateArgumentKind \(clang)")
+        }
+    }
+}
+
+/// Represents the C++ access control level to a base class for a cursor.
+public enum CXXAccessSpecifierKind {
+    case `public`
+    case protected
+    case `private`
+
+    init?(clang: CX_CXXAccessSpecifier) {
+        switch clang {
+        case CX_CXXInvalidAccessSpecifier: return nil
+        case CX_CXXPublic: self = .public
+        case CX_CXXProtected: self = .protected
+        case CX_CXXPrivate: self = .private
+        default: fatalError("invalid CX_CXXAccessSpecifier \(clang)")
+        }
+    }
+}
+
+/// Represents the storage classes as declared in the source. CX_SC_Invalid was
+/// added for the case that the passed cursor in not a declaration.
+public enum StorageClass {
+    case none
+    case extern
+    case `static`
+    case privateExtern
+    case openCLWorkGroupLocal
+    case auto
+    case register
+
+    init?(clang: CX_StorageClass) {
+        switch clang {
+        case CX_SC_Invalid: return nil
+        case CX_SC_None: self = .none
+        case CX_SC_Extern: self = .extern
+        case CX_SC_Static: self = .static
+        case CX_SC_PrivateExtern: self = .privateExtern
+        case CX_SC_OpenCLWorkGroupLocal: self = .openCLWorkGroupLocal
+        case CX_SC_Auto: self = .auto
+        case CX_SC_Register: self = .register
+        default: fatalError("invalid CX_StorageClass \(clang)")
         }
     }
 }

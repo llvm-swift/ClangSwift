@@ -112,13 +112,13 @@ public class TranslationUnit {
     /// Creates a `TranslationUnit` by parsing the file at the specified path,
     /// passing optional command line arguments and options to clang.
     ///
-    /// - Parameters:
+    /// - parameters:
     ///   - index: The index
     ///   - filename: The path you're going to parse
     ///   - args: Optional command-line arguments to pass to clang
     ///   - options: Options for how to handle the parsed file
-    /// - throws: `ClangError` if the translation unit could not
-    ///           be created successfully.
+    /// - throws: `ClangError` if the translation unit could not be created
+    ///           successfully.
     public init(index: Index, filename: String,
                 commandLineArgs args: [String] = [],
                 options: TranslationUnitOptions = []) throws {
