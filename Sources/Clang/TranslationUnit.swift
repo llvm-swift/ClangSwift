@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// Flags that control the creation of translation units.
 /// The enumerators in this enumeration type are meant to be bitwise ORed

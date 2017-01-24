@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// Describes the severity of a particular diagnostic.
 public enum DiagnosticSeverity {

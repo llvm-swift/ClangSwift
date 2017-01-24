@@ -1,5 +1,7 @@
 import XCTest
+#if !NO_SWIFTPM
 import cclang
+#endif
 @testable import Clang
 
 extension String {

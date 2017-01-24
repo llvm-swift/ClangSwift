@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// The "language" a given cursor is written in.
 public enum Language {

@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 import Foundation
 
 /// Represents a file ID that's unique to each file in a translation unit.

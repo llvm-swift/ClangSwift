@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 import Foundation
 
 public struct Token {

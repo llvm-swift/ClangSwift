@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// MARK: Special Types
 public struct RecordType: ClangTypeBacked {

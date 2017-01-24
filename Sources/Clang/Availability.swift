@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 public struct Availability {
     let alwaysDeprecated: Bool

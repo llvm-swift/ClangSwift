@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// The type of an element in the abstract syntax tree.
 public protocol CType: CustomStringConvertible {

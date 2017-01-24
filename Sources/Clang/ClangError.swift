@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// Represents the errors that can be thrown by libclang.
 enum ClangError: Error {

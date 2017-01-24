@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// A cursor representing some element in the abstract syntax tree for a
 /// translation unit.
@@ -16,7 +18,8 @@ import cclang
 /// `children() to explore the rest of the translation unit.
 ///
 /// `SourceLocation.cursor` maps from a physical source location to the entity
-/// that resides at that location, allowing one to map from the source code into the AST.
+/// that resides at that location, allowing one to map from the source code into
+/// the AST.
 public protocol Cursor: CustomStringConvertible {
     /// Converts this cursor value to a CXCursor value to be consumed by
     /// libclang APIs

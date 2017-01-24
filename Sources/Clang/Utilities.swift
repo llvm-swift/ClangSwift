@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 internal extension Bool {
     func asClang() -> Int32 {

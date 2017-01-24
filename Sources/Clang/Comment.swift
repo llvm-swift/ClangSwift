@@ -1,4 +1,6 @@
+#if !NO_SWIFTPM
 import cclang
+#endif
 
 /// A `Comment` is a parsed documentation comment in a C/C++/Objective-C source
 /// file.
