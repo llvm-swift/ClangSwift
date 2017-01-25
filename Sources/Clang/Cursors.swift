@@ -141,12 +141,12 @@ public struct CXXAccessSpecifier: ClangCursorBacked {
 public struct EnumDecl: ClangCursorBacked {
     let clang: CXCursor
 
-    func constants() -> [EnumConstantDecl] {
+    public func constants() -> [EnumConstantDecl] {
         return children() as! [EnumConstantDecl]
     }
 
     /// Retrieve the integer type of an enum declaration.
-    var integerType: CType {
+    public var integerType: CType {
         return convertType(clang_getEnumDeclIntegerType(clang))!
     }
 }
@@ -154,7 +154,7 @@ public struct EnumDecl: ClangCursorBacked {
 protocol TypeAliasCursor: ClangCursorBacked {}
 extension TypeAliasCursor {
     /// Retrieve the underlying type of a typedef declaration.
-    var underlying: CType? {
+    public var underlying: CType? {
         return convertType(clang_getTypedefDeclUnderlyingType(clang))
     }
 }

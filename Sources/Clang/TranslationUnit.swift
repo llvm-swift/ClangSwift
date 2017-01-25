@@ -196,7 +196,7 @@ public class TranslationUnit {
     /// - parameter tokens: The set of tokens to annotate
     /// - returns: The cursors corresponding to each token provided
     public func annotate(tokens: [Token]) -> [Cursor] {
-        var toks = tokens.map { $0.asClang() }
+        var toks = tokens.map { $0.clang }
         let cursors =
             UnsafeMutablePointer<CXCursor>.allocate(capacity: toks.count)
         toks.withUnsafeMutableBufferPointer { buf in

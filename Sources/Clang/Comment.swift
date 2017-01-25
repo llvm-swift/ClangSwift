@@ -10,7 +10,7 @@ public protocol Comment {
 
 extension Comment {
   /// Retreives all children of this comment.
-  var children: AnySequence<Comment> {
+  public var children: AnySequence<Comment> {
     let count = clang_Comment_getNumChildren(clang)
     var index: UInt32 = 0
     return AnySequence<Comment> {
@@ -24,11 +24,11 @@ extension Comment {
 
   /// - parameter index: The index of the child you're getting.
   /// - returns: The specified child of the AST node.
-  func child(at index: Int) -> Comment? {
+  public func child(at index: Int) -> Comment? {
     return convertComment(clang_Comment_getChild(clang, UInt32(index)))
   }
 
-  var firstChild: Comment? {
+  public var firstChild: Comment? {
     let count = clang_Comment_getNumChildren(clang)
     if count == 0 { return nil }
     return convertComment(clang_Comment_getChild(clang, 0))
@@ -59,35 +59,35 @@ public struct FullComment: Comment {
   ///    names inside template template parameters
   /// - `tparam-name-index-invalid` and `tparam-descr-index-invalid` are used if
   ///   parameter position is invalid.
-  var html: String {
+  public var html: String {
     return clang_FullComment_getAsHTML(clang).asSwift()
   }
 
   /// Convert a given full parsed comment to an XML document.
   /// A Relax NG schema for the XML can be found in comment-xml-schema.rng file
   /// inside the clang source tree.
-  var xml: String {
+  public var xml: String {
     return clang_FullComment_getAsXML(clang).asSwift()
   }
 }
 
 /// A plain text comment.
-struct TextComment: Comment {
-  let clang: CXComment
+public struct TextComment: Comment {
+  public let clang: CXComment
 
   /// Retrieves the text contained in the AST node.
-  var text: String {
+  public var text: String {
     return clang_TextComment_getText(clang).asSwift()
   }
 }
 
 /// A command with word-like arguments that is considered inline content.
 /// For example: `\c command`
-struct InlineCommandComment: Comment {
-  let clang: CXComment
+public struct InlineCommandComment: Comment {
+  public let clang: CXComment
 
   /// Retrieves all arguments of this inline command.
-  var arguments: AnySequence<String> {
+  public var arguments: AnySequence<String> {
     let count = clang_InlineCommandComment_getNumArgs(clang)
     var index = 0 as UInt32
     return AnySequence<String> {
@@ -106,12 +106,12 @@ struct InlineCommandComment: Comment {
 /// ```
 /// Would have 1 attribute, with a name `"href"`, and value
 /// `"https://example.org"`
-struct HTMLAttribute {
+public struct HTMLAttribute {
   /// The name of the attribute, which comes before the `=`.
-  let name: String
+  public let name: String
 
   /// The value in the attribute, which comes after the `=`.
-  let value: String
+  public let value: String
 }
 
 /// An HTML start tag with attributes (name-value pairs). Considered inline
@@ -120,11 +120,11 @@ struct HTMLAttribute {
 /// ```
 /// <a href="http://example.org/">
 /// ```
-struct HTMLStartTagComment: Comment {
-  let clang: CXComment
+public struct HTMLStartTagComment: Comment {
+  public let clang: CXComment
 
   /// Retrieves all attributes of this HTML start tag.
-  var attributes: AnySequence<HTMLAttribute> {
+  public var attributes: AnySequence<HTMLAttribute> {
     let count = clang_HTMLStartTag_getNumAttrs(clang)
     var index = 0 as UInt32
     return AnySequence<HTMLAttribute> {
@@ -144,13 +144,13 @@ struct HTMLStartTagComment: Comment {
 /// ```
 /// </a>
 /// ```
-struct HTMLEndTagComment: Comment {
-  let clang: CXComment
+public struct HTMLEndTagComment: Comment {
+  public let clang: CXComment
 }
 
 /// A paragraph, contains inline comment. The paragraph itself is block content.
-struct ParagraphComment: Comment {
-  let clang: CXComment
+public struct ParagraphComment: Comment {
+  public let clang: CXComment
 }
 
 /// A command that has zero or more word-like arguments (number of word-like
@@ -160,16 +160,16 @@ struct ParagraphComment: Comment {
 /// For example: `\brief` has 0 word-like arguments and a paragraph argument.
 /// AST nodes of special kinds that parser knows about (e. g., the `\param`
 /// command) have their own node kinds.
-struct BlockCommandComment: Comment {
-  let clang: CXComment
+public struct BlockCommandComment: Comment {
+  public let clang: CXComment
 
   /// Retrieves the name of this block command.
-  var name: String {
+  public var name: String {
     return clang_BlockCommandComment_getCommandName(clang).asSwift()
   }
 
   /// Retrieves all attributes of this HTML start tag.
-  var arguments: AnySequence<String> {
+  public var arguments: AnySequence<String> {
     let count = clang_BlockCommandComment_getNumArgs(clang)
     var index = 0 as UInt32
     return AnySequence<String> {
@@ -182,7 +182,7 @@ struct BlockCommandComment: Comment {
   }
 
   /// Retrieves the paragraph argument of the block command.
-  var paragraph: ParagraphComment {
+  public var paragraph: ParagraphComment {
     return ParagraphComment(clang: clang_BlockCommandComment_getParagraph(clang))
   }
 }
@@ -193,7 +193,7 @@ struct BlockCommandComment: Comment {
 /// caller. An `.out` argument is usually a pointer and is meant to be filled
 /// by the caller, usually to return multiple pieces of data from a function.
 /// An `.inout` argument is meant to be read and written out to by the caller.
-enum ParamPassDirection {
+public enum ParamPassDirection {
   /// The parameter is an input parameter.
   case `in`
 
@@ -219,33 +219,33 @@ enum ParamPassDirection {
 /// ```
 /// \param [in] ParamName description.
 /// ```
-struct ParamCommandComment: Comment {
-  let clang: CXComment
+public struct ParamCommandComment: Comment {
+  public let clang: CXComment
 
   /// Retrieves the zero-based parameter index in the function prototype.
-  var index: Int {
+  public var index: Int {
     return Int(clang_ParamCommandComment_getParamIndex(clang))
   }
 
   /// The direction this parameter is passed by.
-  var passDirection: ParamPassDirection {
+  public var passDirection: ParamPassDirection {
     return ParamPassDirection(clang: clang_ParamCommandComment_getDirection(clang))
   }
 
   /// Retrieves the name of the declared parameter.
-  var name: String {
+  public var name: String {
     return clang_ParamCommandComment_getParamName(clang).asSwift()
   }
 
   /// Determine if this parameter is actually a valid parameter in the declared
   /// function
-  var isValidIndex: Bool {
+  public var isValidIndex: Bool {
     return clang_ParamCommandComment_isParamIndexValid(clang) != 0
   }
 
   /// Determines if the parameter's direction was explicitly stated in the
   /// function prototype.
-  var isExplicitDirection: Bool {
+  public var isExplicitDirection: Bool {
     return clang_ParamCommandComment_isDirectionExplicit(clang) != 0
   }
 }
@@ -255,8 +255,8 @@ struct ParamCommandComment: Comment {
 /// ```
 /// \tparam T description.
 /// ```
-struct TParamCommandComment: Comment {
-  let clang: CXComment
+public struct TParamCommandComment: Comment {
+  public let clang: CXComment
 
   /// Determines the zero-based nesting depth of this parameter in the template
   /// parameter list.
@@ -267,7 +267,7 @@ struct TParamCommandComment: Comment {
   /// ```
   /// for `C` and `TT` the nesting depth is 0, and for `T` the nesting
   /// depth is `1`.
-  var depth: Int {
+  public var depth: Int {
     return Int(clang_TParamCommandComment_getDepth(clang))
   }
 }
@@ -281,16 +281,16 @@ struct TParamCommandComment: Comment {
 ///   aaa
 /// \endverbatim
 /// ```
-struct VerbatimBlockCommandComment: Comment {
-  let clang: CXComment
+public struct VerbatimBlockCommandComment: Comment {
+  public let clang: CXComment
 
   /// Retrieves the name of this block command.
-  var name: String {
+  public var name: String {
     return clang_BlockCommandComment_getCommandName(clang).asSwift()
   }
 
   /// Retrieves all attributes of this HTML start tag.
-  var arguments: AnySequence<String> {
+  public var arguments: AnySequence<String> {
     let count = clang_BlockCommandComment_getNumArgs(clang)
     var index = 0 as UInt32
     return AnySequence<String> {
@@ -303,18 +303,18 @@ struct VerbatimBlockCommandComment: Comment {
   }
 
   /// Retrieves the paragraph argument of the block command.
-  var paragraph: ParagraphComment {
+  public var paragraph: ParagraphComment {
     return ParagraphComment(clang: clang_BlockCommandComment_getParagraph(clang))
   }
 }
 
 /// A line of text that is contained within a `VerbatimBlockCommand`
 /// node.
-struct VerbatimBlockLineComment: Comment {
-  let clang: CXComment
+public struct VerbatimBlockLineComment: Comment {
+  public let clang: CXComment
 
   /// The text of this comment.
-  var text: String {
+  public var text: String {
     return clang_VerbatimBlockLineComment_getText(clang).asSwift()
   }
 }
@@ -322,11 +322,11 @@ struct VerbatimBlockLineComment: Comment {
 /// A verbatim line command. Verbatim line has an opening command, a single
 /// line of text (up to the newline after the opening command) and has no
 /// closing command.
-struct VerbatimLineComment: Comment {
-  let clang: CXComment
+public struct VerbatimLineComment: Comment {
+  public let clang: CXComment
 
   /// The text of this comment.
-  var text: String {
+  public var text: String {
     return clang_VerbatimLineComment_getText(clang).asSwift()
   }
 }
