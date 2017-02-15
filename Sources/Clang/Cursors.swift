@@ -214,6 +214,11 @@ public struct ObjCProtocolDecl: ClangCursorBacked {
 /// An Objective-C @property declaration.
 public struct ObjCPropertyDecl: ClangCursorBacked {
     let clang: CXCursor
+
+    var attributes: ObjCPropertyAttributes {
+        return ObjCPropertyAttributes(rawValue:
+                clang_Cursor_getObjCPropertyAttributes(clang, 0))
+    }
 }
 
 /// An Objective-C instance variable.

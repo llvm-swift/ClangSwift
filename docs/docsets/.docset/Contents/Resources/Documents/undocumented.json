@@ -486,63 +486,63 @@
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 314,
-      "symbol": "TemplateArgumentKind.type",
+      "symbol": "TemplateArgumentKind.null",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 315,
-      "symbol": "TemplateArgumentKind.declaration",
+      "symbol": "TemplateArgumentKind.type",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 316,
-      "symbol": "TemplateArgumentKind.nullPtr",
+      "symbol": "TemplateArgumentKind.declaration",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 317,
-      "symbol": "TemplateArgumentKind.integral",
+      "symbol": "TemplateArgumentKind.nullPtr",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 318,
-      "symbol": "TemplateArgumentKind.template",
+      "symbol": "TemplateArgumentKind.integral",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 319,
-      "symbol": "TemplateArgumentKind.templateExpansion",
+      "symbol": "TemplateArgumentKind.template",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 320,
-      "symbol": "TemplateArgumentKind.expression",
+      "symbol": "TemplateArgumentKind.templateExpansion",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 321,
-      "symbol": "TemplateArgumentKind.pack",
+      "symbol": "TemplateArgumentKind.expression",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursor.swift",
       "line": 322,
-      "symbol": "TemplateArgumentKind.invalid",
+      "symbol": "TemplateArgumentKind.pack",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -737,219 +737,513 @@
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 319,
+      "line": 324,
       "symbol": "ObjCSuperClassRef",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 323,
+      "line": 328,
       "symbol": "ObjCProtocolRef",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 327,
+      "line": 332,
       "symbol": "ObjCClassRef",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 345,
+      "line": 350,
       "symbol": "CXXBaseSpecifier",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 406,
+      "line": 411,
       "symbol": "InvalidFile",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 410,
+      "line": 415,
       "symbol": "NoDeclFound",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 414,
+      "line": 419,
       "symbol": "NotImplemented",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 418,
+      "line": 423,
       "symbol": "InvalidCode",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 707,
+      "line": 712,
       "symbol": "LambdaExpr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1106,
+      "line": 1111,
       "symbol": "UnexposedAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1111,
+      "line": 1116,
       "symbol": "IBActionAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1116,
+      "line": 1121,
       "symbol": "IBOutletAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1121,
+      "line": 1126,
       "symbol": "IBOutletCollectionAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1126,
+      "line": 1131,
       "symbol": "CXXFinalAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1131,
+      "line": 1136,
       "symbol": "CXXOverrideAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1136,
+      "line": 1141,
       "symbol": "AnnotateAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1141,
+      "line": 1146,
       "symbol": "AsmLabelAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1146,
+      "line": 1151,
       "symbol": "PackedAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1151,
+      "line": 1156,
       "symbol": "PureAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1156,
+      "line": 1161,
       "symbol": "ConstAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1161,
+      "line": 1166,
       "symbol": "NoDuplicateAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1166,
+      "line": 1171,
       "symbol": "CUDAConstantAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1171,
+      "line": 1176,
       "symbol": "CUDADeviceAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1176,
+      "line": 1181,
       "symbol": "CUDAGlobalAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1181,
+      "line": 1186,
       "symbol": "CUDAHostAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1186,
+      "line": 1191,
       "symbol": "CUDASharedAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1191,
+      "line": 1196,
       "symbol": "VisibilityAttr",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1196,
+      "line": 1201,
       "symbol": "DLLExport",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1201,
+      "line": 1206,
       "symbol": "DLLImport",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1206,
+      "line": 1211,
       "symbol": "PreprocessingDirective",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/Cursors.swift",
-      "line": 1215,
+      "line": 1220,
       "symbol": "TypeAliasTemplateDecl",
       "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 9,
+      "symbol": "IntResult",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 11,
+      "symbol": "IntResult.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 16,
+      "symbol": "FloatResult",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 18,
+      "symbol": "FloatResult.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 23,
+      "symbol": "ObjCStrLiteralResult",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 25,
+      "symbol": "ObjCStrLiteralResult.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 30,
+      "symbol": "StrLiteralResult",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 32,
+      "symbol": "StrLiteralResult.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 37,
+      "symbol": "CFStrResult",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 39,
+      "symbol": "CFStrResult.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 44,
+      "symbol": "OtherResult",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/EvalResult.swift",
+      "line": 48,
+      "symbol": "UnExposedResult",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 7,
+      "symbol": "CallingConvention.default",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 8,
+      "symbol": "CallingConvention.c",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 9,
+      "symbol": "CallingConvention.x86StdCall",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 10,
+      "symbol": "CallingConvention.x86FastCall",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 11,
+      "symbol": "CallingConvention.x86ThisCall",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 12,
+      "symbol": "CallingConvention.x86Pascal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 13,
+      "symbol": "CallingConvention.aapcs",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 14,
+      "symbol": "CallingConvention.aapcs_vfp",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 15,
+      "symbol": "CallingConvention.intelOclBicc",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 16,
+      "symbol": "CallingConvention.x86_64Win64",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 17,
+      "symbol": "CallingConvention.x86_64SysV",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 18,
+      "symbol": "CallingConvention.x86VectorCall",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 19,
+      "symbol": "CallingConvention.swift",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 20,
+      "symbol": "CallingConvention.preserveMost",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 21,
+      "symbol": "CallingConvention.preserveAll",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 22,
+      "symbol": "CallingConvention.unexposed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 56,
+      "symbol": "ObjCPropertyAttributes.noattr",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 58,
+      "symbol": "ObjCPropertyAttributes.readonly",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 60,
+      "symbol": "ObjCPropertyAttributes.getter",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 62,
+      "symbol": "ObjCPropertyAttributes.assign",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 64,
+      "symbol": "ObjCPropertyAttributes.readwrite",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 66,
+      "symbol": "ObjCPropertyAttributes.retain",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 68,
+      "symbol": "ObjCPropertyAttributes.copy",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 70,
+      "symbol": "ObjCPropertyAttributes.nonatomic",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 72,
+      "symbol": "ObjCPropertyAttributes.setter",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 74,
+      "symbol": "ObjCPropertyAttributes.atomic",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 76,
+      "symbol": "ObjCPropertyAttributes.weak",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 78,
+      "symbol": "ObjCPropertyAttributes.strong",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 80,
+      "symbol": "ObjCPropertyAttributes.unsafe_unretained",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/FunctionDecl.swift",
+      "line": 82,
+      "symbol": "ObjCPropertyAttributes.class",
+      "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
@@ -964,6 +1258,13 @@
       "line": 8,
       "symbol": "Index.init(excludeDeclarationsFromPCH:displayDiagnostics:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harlan/Documents/Code/Swift/ClangSwift/Sources/Clang/NameRefOptions.swift",
+      "line": 5,
+      "symbol": "NameRefOptions",
+      "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {

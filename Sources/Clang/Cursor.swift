@@ -311,6 +311,7 @@ public enum VisibilityKind {
 /// See the definition of llvm::clang::TemplateArgument::ArgKind for full
 /// element descriptions.
 public enum TemplateArgumentKind {
+    case null
     case type
     case declaration
     case nullPtr
@@ -319,11 +320,10 @@ public enum TemplateArgumentKind {
     case templateExpansion
     case expression
     case pack
-    case invalid
 
     init?(clang: CXTemplateArgumentKind) {
         switch clang {
-        case CXTemplateArgumentKind_Null: return nil
+        case CXTemplateArgumentKind_Null: self = .null
         case CXTemplateArgumentKind_Type: self = .type
         case CXTemplateArgumentKind_Declaration: self = .declaration
         case CXTemplateArgumentKind_NullPtr: self = .nullPtr
@@ -332,7 +332,7 @@ public enum TemplateArgumentKind {
         case CXTemplateArgumentKind_TemplateExpansion: self = .templateExpansion
         case CXTemplateArgumentKind_Expression: self = .expression
         case CXTemplateArgumentKind_Pack: self = .pack
-        case CXTemplateArgumentKind_Invalid: self = .invalid
+        case CXTemplateArgumentKind_Invalid: return nil
         default: fatalError("invalid CXTemplateArgumentKind \(clang)")
         }
     }
