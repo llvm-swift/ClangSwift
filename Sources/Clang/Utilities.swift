@@ -21,7 +21,7 @@ extension CXString {
 }
 
 extension Collection where Iterator.Element == String, IndexDistance == Int {
-    func withUnsafeCStringBuffer<Result>(_ f: (UnsafeMutableBufferPointer<UnsafePointer<Int8>?>) throws -> Result) rethrows -> Result {
+    func withUnsafeCStringBuffer<Result>(_ f: @escaping (UnsafeMutableBufferPointer<UnsafePointer<Int8>?>) throws -> Result) rethrows -> Result {
         let ptr = UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>.allocate(capacity: self.count)
         defer  { freelist(ptr, count: self.count) }
         for (idx, str) in enumerated() {
@@ -29,9 +29,9 @@ extension Collection where Iterator.Element == String, IndexDistance == Int {
                 ptr[idx] = strdup(cStr)
             }
         }
-        let constPtr = unsafeBitCast(ptr, to: UnsafeMutablePointer<UnsafePointer<Int8>?>.self)
-
+      return try ptr.withMemoryRebound(to: Optional<UnsafePointer<Int8>>.self, capacity: self.count) { constPtr in
         return try f(UnsafeMutableBufferPointer(start: constPtr, count: self.count))
+      }
     }
 }
 
