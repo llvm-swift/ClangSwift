@@ -1,48 +1,47 @@
 #if !NO_SWIFTPM
-import cclang
+  import cclang
 #endif
 
 internal extension Bool {
-    func asClang() -> Int32 {
-        return self ? 1 : 0
-    }
+  func asClang() -> Int32 {
+    return self ? 1 : 0
+  }
 }
 
 
 extension CXString {
-    func asSwiftOptional() -> String? {
-        guard let cStr = clang_getCString(self) else { return nil }
-        defer { clang_disposeString(self) }
-        return String(cString: cStr)
-    }
-    func asSwift() -> String {
-        return asSwiftOptional() ?? ""
-    }
+  func asSwiftOptional() -> String? {
+    guard let cStr = clang_getCString(self) else { return nil }
+    defer { clang_disposeString(self) }
+    return String(cString: cStr)
+  }
+  func asSwift() -> String {
+    return asSwiftOptional() ?? ""
+  }
 }
 
 extension Collection where Iterator.Element == String, IndexDistance == Int {
-    func withUnsafeCStringBuffer<Result>(_ f: @escaping (UnsafeMutableBufferPointer<UnsafePointer<Int8>?>) throws -> Result) rethrows -> Result {
-        let ptr = UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>.allocate(capacity: self.count)
-        defer  { freelist(ptr, count: self.count) }
-        for (idx, str) in enumerated() {
-            str.withCString { cStr in
-                ptr[idx] = strdup(cStr)
-            }
-        }
-      return try ptr.withMemoryRebound(to: Optional<UnsafePointer<Int8>>.self, capacity: self.count) { constPtr in
-        return try f(UnsafeMutableBufferPointer(start: constPtr, count: self.count))
+
+  func withUnsafeCStringBuffer<Result>(_ f: (UnsafeMutableBufferPointer<UnsafePointer<Int8>?>) throws -> Result) rethrows -> Result {
+    var arr = [UnsafePointer<Int8>?]()
+    defer {
+      for cStr in arr {
+        free(UnsafeMutablePointer(mutating: cStr))
       }
     }
-}
-
-func freelist<T>(_ ptr: UnsafeMutablePointer<UnsafeMutablePointer<T>?>, count: Int) {
-    for i in 0..<count {
-        free(ptr[i])
+    for str in self {
+      str.withCString { cStr in
+        arr.append(UnsafePointer(strdup(cStr)))
+      }
     }
-    free(ptr)
+    return try arr.withUnsafeMutableBufferPointer { buf in
+      return try f(UnsafeMutableBufferPointer(start: buf.baseAddress,
+                                              count: buf.count))
+    }
+  }
 }
 
 internal class Box<T> {
-    public var value: T
-    init(_ value: T) { self.value = value }
+  public var value: T
+  init(_ value: T) { self.value = value }
 }
