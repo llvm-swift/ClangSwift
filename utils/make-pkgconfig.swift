@@ -1,6 +1,13 @@
 #!/usr/bin/env swift
 import Foundation
 
+#if os(Linux)
+  typealias Process = Task
+  let libCPP = "-L/usr/lib -lc++"
+#elseif os(macOS)
+  let libCPP = "-lc++"
+#endif
+
 /// Runs the specified program at the provided path.
 /// - parameter path: The full path of the executable you
 ///                   wish to run.
@@ -48,10 +55,10 @@ func makeFile() throws {
     try FileManager.default.createDirectory(at: pkgConfigDir,
                                             withIntermediateDirectories: true)
   }
-  let cllvmPath = pkgConfigDir.appendingPathComponent("cclang.pc")
+  let cclangPath = pkgConfigDir.appendingPathComponent("cclang.pc")
 
   /// Ensure we have llvm-config in the PATH
-  guard let llvmConfig = which("llvm-config-3.9") ?? which("llvm-config") else {
+  guard let llvmConfig = which("llvm-config-4.0") ?? which("llvm-config-3.9") ?? which("llvm-config") else {
     throw "Failed to find llvm-config. Ensure llvm-config is installed and " +
           "in your PATH"
   }
@@ -60,15 +67,35 @@ func makeFile() throws {
 
   print("Found llvm-config at \(llvmConfig)...")
 
-  let version = run(llvmConfig, args: ["--version"])!
-                .replacing(charactersIn: .newlines, with: "")
+  let versionStr = run(llvmConfig, args: ["--version"])!
+                     .replacing(charactersIn: .newlines, with: "")
+  let components = versionStr.components(separatedBy: ".")
+                             .flatMap { Int($0) }
 
-  guard version.hasPrefix("3.9") else {
-    throw "ClangSwift requires LLVM version >=3.9.0, but you have \(version)"
+  guard components.count == 3 else {
+    throw "Invalid version number \(versionStr)"
   }
 
+  let version = (components[0], components[1], components[2])
+
+  guard version > (3, 9, 0) else {
+    throw "LLVMSwift requires LLVM version >=3.9.0, but you have \(versionStr)"
+  }
+
+  print("LLVM version is \(versionStr)")
+
+  guard let includeDir = run(llvmConfig, args: ["--includedir"]) else {
+    throw "Could not find LLVM include dir"
+  }
+
+  guard let libDir = run(llvmConfig, args: ["--libdir"]) else {
+    throw "Could not find LLVM library dir"
+  }
+
+  /// Emit the pkg-config file to the path
+
   let libFlags = [
-    "-L/usr/local/Cellar/llvm/3.9.1/lib",
+    "-L\(libDir)",
     "-lclangEdit",
     "-lclangFrontendTool",
     "-lclang",
@@ -83,27 +110,21 @@ func makeFile() throws {
     "-lclangParse",
   ].joined(separator: " ")
 
-  let cFlags = "-I/usr/local/Cellar/llvm/3.9.1/include"
-  // SwiftPM has a whitelisted set of cflags that it understands, and
-  // unfortunately that includes almost everything but the include dir.
-
-  /// Emit the pkg-config file to the path
-
   let s = [
     "Name: cclang",
-    "Description: The llvm library",
-    "Version: \(version)",
+    "Description: The clang C library",
+    "Version: \(versionStr)",
     "Libs: \(libFlags)",
     "Requires.private:",
-    "Cflags: \(cFlags)",
+    "Cflags: -I\(includeDir)",
   ].joined(separator: "\n")
 
-  print("Writing pkg-config file to \(cllvmPath.path)...")
+  print("Writing pkg-config file to \(cclangPath.path)...")
 
-  try s.write(toFile: cllvmPath.path, atomically: true, encoding: .utf8)
+  try s.write(toFile: cclangPath.path, atomically: true, encoding: .utf8)
 
   print("\nSuccessfully wrote pkg-config file!")
-  print("Make sure to re-run this script when you update LLVM.")
+  print("Make sure to re-run this script when you update Clang.")
 }
 
 do {
