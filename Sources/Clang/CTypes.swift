@@ -182,6 +182,10 @@ public struct ComplexType: ClangTypeBacked {
 
 public struct PointerType: ClangTypeBacked {
     let clang: CXType
+    
+    public var pointee: CType? {
+        return convertType(clang_getPointeeType(clang))
+    }
 }
 
 public struct BlockPointerType: ClangTypeBacked {
@@ -222,6 +226,14 @@ public struct FunctionProtoType: ClangTypeBacked {
 
 public struct ConstantArrayType: ClangTypeBacked {
     let clang: CXType
+    
+    public var element: CType? {
+        return convertType(clang_getArrayElementType(clang))
+    }
+    
+    public var count: Int32 {
+        return clang_getNumArgTypes(clang)
+    }
 }
 
 public struct VectorType: ClangTypeBacked {
@@ -230,10 +242,18 @@ public struct VectorType: ClangTypeBacked {
 
 public struct IncompleteArrayType: ClangTypeBacked {
     let clang: CXType
+    
+    public var element: CType? {
+        return convertType(clang_getArrayElementType(clang))
+    }
 }
 
 public struct VariableArrayType: ClangTypeBacked {
     let clang: CXType
+    
+    public var element: CType? {
+        return convertType(clang_getArrayElementType(clang))
+    }
 }
 
 public struct DependentSizedArrayType: ClangTypeBacked {
