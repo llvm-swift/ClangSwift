@@ -1,0 +1,4 @@
+module cclang {
+  header "ClangBridgingHeader.h"
+  export *
+}
