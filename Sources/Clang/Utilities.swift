@@ -10,10 +10,18 @@ internal extension Bool {
 
 
 extension CXString {
-  func asSwiftOptional() -> String? {
+  func asSwiftOptionalNoDispose() -> String? {
+    guard self.data != nil else { return nil }
     guard let cStr = clang_getCString(self) else { return nil }
+    let swiftStr = String(cString: cStr)
+    return swiftStr.isEmpty ? nil : swiftStr
+  }
+  func asSwiftOptional() -> String? {
     defer { clang_disposeString(self) }
-    return String(cString: cStr)
+    return asSwiftOptionalNoDispose()
+  }
+  func asSwiftNoDispose() -> String {
+    return asSwiftOptionalNoDispose() ?? ""
   }
   func asSwift() -> String {
     return asSwiftOptional() ?? ""
