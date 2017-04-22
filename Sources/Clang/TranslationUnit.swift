@@ -115,13 +115,15 @@ public class TranslationUnit {
     /// passing optional command line arguments and options to clang.
     ///
     /// - parameters:
-    ///   - index: The index
     ///   - filename: The path you're going to parse
+    ///   - index: The index (optional, will use a default index if not
+    ///            provided)
     ///   - args: Optional command-line arguments to pass to clang
     ///   - options: Options for how to handle the parsed file
     /// - throws: `ClangError` if the translation unit could not be created
     ///           successfully.
-    public init(index: Index, filename: String,
+    public init(filename: String,
+                index: Index = Index(),
                 commandLineArgs args: [String] = [],
                 options: TranslationUnitOptions = []) throws {
         // TODO: Handle UnsavedFiles
@@ -129,7 +131,8 @@ public class TranslationUnit {
         self.clang = try args.withUnsafeCStringBuffer { argC in
             var unit: CXTranslationUnit?
             let err = clang_parseTranslationUnit2(index.clang, filename,
-                                                  argC.baseAddress, Int32(argC.count),
+                                                  argC.baseAddress,
+                                                  Int32(argC.count),
                                                   nil, 0,
                                                   options.rawValue, &unit)
             if let clangErr = ClangError(clang: err) {
