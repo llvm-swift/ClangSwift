@@ -3,3 +3,5 @@
 /build
 /Packages
 /*.xcodeproj
+Xcode/Modules/cclang/module.modulemap
+*.xcuserdatad

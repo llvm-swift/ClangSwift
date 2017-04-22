@@ -25,7 +25,6 @@
 		DCF0C2C81EA7F5550036E835 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0C2B71EA7F5550036E835 /* Token.swift */; };
 		DCF0C2C91EA7F5550036E835 /* TranslationUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0C2B81EA7F5550036E835 /* TranslationUnit.swift */; };
 		DCF0C2CA1EA7F5550036E835 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0C2B91EA7F5550036E835 /* Utilities.swift */; };
-		DCF63F0A1EA7F61300B808D7 /* ClangBridgingHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF63F091EA7F61300B808D7 /* ClangBridgingHeader.h */; };
 		DCF63F0D1EA7F75000B808D7 /* libclang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF63F0C1EA7F75000B808D7 /* libclang.dylib */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +49,6 @@
 		DCF0C2B71EA7F5550036E835 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = ../../Sources/Clang/Token.swift; sourceTree = "<group>"; };
 		DCF0C2B81EA7F5550036E835 /* TranslationUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TranslationUnit.swift; path = ../../Sources/Clang/TranslationUnit.swift; sourceTree = "<group>"; };
 		DCF0C2B91EA7F5550036E835 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = ../../Sources/Clang/Utilities.swift; sourceTree = "<group>"; };
-		DCF63F091EA7F61300B808D7 /* ClangBridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClangBridgingHeader.h; sourceTree = "<group>"; };
 		DCF63F0C1EA7F75000B808D7 /* libclang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libclang.dylib; path = ../../../../../../../usr/local/Cellar/llvm/4.0.0_1/lib/libclang.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +102,6 @@
 				DCF0C2B81EA7F5550036E835 /* TranslationUnit.swift */,
 				DCF0C2B91EA7F5550036E835 /* Utilities.swift */,
 				DCF0C2A11EA7F5460036E835 /* Clang.h */,
-				DCF63F091EA7F61300B808D7 /* ClangBridgingHeader.h */,
 				DCF0C2A21EA7F5460036E835 /* Info.plist */,
 			);
 			path = Clang;
@@ -126,7 +123,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF0C2A31EA7F5460036E835 /* Clang.h in Headers */,
-				DCF63F0A1EA7F61300B808D7 /* ClangBridgingHeader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +133,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCF0C2A61EA7F5460036E835 /* Build configuration list for PBXNativeTarget "Clang" */;
 			buildPhases = (
+				DC21738A1EAC24D700CF53BF /* ShellScript */,
 				DCF0C2991EA7F5460036E835 /* Sources */,
 				DCF0C29A1EA7F5460036E835 /* Frameworks */,
 				DCF0C29B1EA7F5460036E835 /* Headers */,
@@ -193,6 +190,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DC21738A1EAC24D700CF53BF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "touch Modules/cclang/module.modulemap\n\ncat <<EOT > \"Modules/cclang/module.modulemap\"\n\n// THIS FILE IS AUTO-GENERATED. DO NOT EDIT IT. EDIT THE \"Generate cclang ModuleMap\" BUILD PHASE INSTEAD\n\nmodule cclang [extern_c] [system] {\n    header \"${LLVM_TOOLS_DIR}/include/clang-c/Platform.h\"\n    header \"${LLVM_TOOLS_DIR}/include/clang-c/Index.h\"\n    header \"${LLVM_TOOLS_DIR}/include/clang-c/BuildSystem.h\"\n    header \"${LLVM_TOOLS_DIR}/include/clang-c/CXErrorCode.h\"\n    header \"${LLVM_TOOLS_DIR}/include/clang-c/Documentation.h\"\n    header \"${LLVM_TOOLS_DIR}/include/clang-c/CXCompilationDatabase.h\"\n    header \"${LLVM_TOOLS_DIR}/include/clang-c/CXString.h\"\n    export *\n}\nEOT";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DCF0C2991EA7F5460036E835 /* Sources */ = {
@@ -343,7 +356,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trill-lang.Clang";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Clang";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Modules";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "$(LLVM_TOOLS_DIR)/include";
@@ -373,7 +386,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trill-lang.Clang";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Clang";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Modules";
 				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "$(LLVM_TOOLS_DIR)/include";
 			};
