@@ -287,6 +287,14 @@ extension Cursor {
     public var language: Language? {
         return Language(clang: clang_getCursorLanguage(asClang()))
     }
+
+    /// If cursor is a statement declaration tries to evaluate the statement and
+    /// if its variable, tries to evaluate its initializer, into its
+    /// corresponding type.
+    public func evaluate() -> EvalResult? {
+        guard let result = clang_Cursor_Evaluate(asClang()) else { return nil }
+        return convertEvalResult(result)
+    }
 }
 
 public enum VisibilityKind {
