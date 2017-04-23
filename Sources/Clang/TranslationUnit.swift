@@ -149,6 +149,18 @@ public class TranslationUnit {
         return convertCursor(clang_getTranslationUnitCursor(clang))!
     }
 
+
+    /// Visits each of the children of this translation unit, calling the
+    /// provided callback for each child.
+    /// - parameter perCursorCallback: The callback to call with each child in
+    ///                                the receiver.
+    /// - note: The returned value of this callback defines what the next item
+    ///         visited will be. See `ChildVisitResult` for a list of possible
+    ///         results.
+    public func visitChildren(_ perCursorCallback: (Cursor) -> ChildVisitResult) {
+        cursor.visitChildren(perCursorCallback)
+    }
+
     /// Get the original translation unit source file name.
     public var spelling: String {
         return clang_getTranslationUnitSpelling(clang).asSwift()

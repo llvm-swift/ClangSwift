@@ -26,6 +26,19 @@ public protocol Cursor: CustomStringConvertible {
     func asClang() -> CXCursor
 }
 
+/// Used as the return type for `Cursor.visitChildren`. Describes what to do
+/// after each iteration of a child visitation.
+public enum ChildVisitResult {
+    /// Stop visitation.
+    case abort
+
+    /// Recurse into this cursor (if it has children).
+    case recurse
+
+    /// Continue to the next sibling without visiting this cursor's children.
+    case `continue`
+}
+
 /// Represents a cursor type that is simply backed by a CXCursor
 internal protocol ClangCursorBacked: Cursor {
     var clang: CXCursor { get }
@@ -294,6 +307,31 @@ extension Cursor {
     public func evaluate() -> EvalResult? {
         guard let result = clang_Cursor_Evaluate(asClang()) else { return nil }
         return convertEvalResult(result)
+    }
+
+    /// Visits each of the children of this cursor, calling the provided
+    /// callback for each child.
+    /// - parameter perCursorCallback: The callback to call with each child in
+    ///                                the receiver.
+    /// - note: The returned value of this callback defines what the next item
+    ///         visited will be. See `ChildVisitResult` for a list of possible
+    ///         results.
+    public func visitChildren(_ perCursorCallback: (Cursor) -> ChildVisitResult) {
+        withoutActuallyEscaping(perCursorCallback) { callback -> Void in
+            clang_visitChildrenWithBlock(asClang()) {
+                (thisCursor, parentCursor) -> CXChildVisitResult in
+                guard let cursor = convertCursor(thisCursor) else {
+                  return CXChildVisit_Continue
+                }
+
+                let result = callback(cursor)
+                switch result {
+                case .abort: return CXChildVisit_Break
+                case .recurse: return CXChildVisit_Recurse
+                case .continue: return CXChildVisit_Continue
+                }
+            }
+        }
     }
 }
 
