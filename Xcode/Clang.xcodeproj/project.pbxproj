@@ -32,7 +32,7 @@
 		DCF0C29E1EA7F5460036E835 /* Clang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Clang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF0C2A11EA7F5460036E835 /* Clang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Clang.h; sourceTree = "<group>"; };
 		DCF0C2A21EA7F5460036E835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DCF0C2A91EA7F5550036E835 /* Availability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Availability.swift; path = ../../Sources/Clang/Availability.swift; sourceTree = "<group>"; };
+		DCF0C2A91EA7F5550036E835 /* Availability.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = Availability.swift; path = ../../Sources/Clang/Availability.swift; sourceTree = "<group>"; tabWidth = 2; };
 		DCF0C2AA1EA7F5550036E835 /* ClangError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClangError.swift; path = ../../Sources/Clang/ClangError.swift; sourceTree = "<group>"; };
 		DCF0C2AB1EA7F5550036E835 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = ../../Sources/Clang/Comment.swift; sourceTree = "<group>"; };
 		DCF0C2AC1EA7F5550036E835 /* CType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CType.swift; path = ../../Sources/Clang/CType.swift; sourceTree = "<group>"; };

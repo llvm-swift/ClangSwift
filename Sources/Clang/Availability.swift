@@ -2,35 +2,62 @@
 import cclang
 #endif
 
+/// Describes the availability of a given declaration for each platform.
 public struct Availability {
-  let alwaysDeprecated: Bool
-  let deprecationMessage: String?
+  /// Whether this declaration is unconditionally deprecated for all platforms.
+  public let alwaysDeprecated: Bool
 
-  let alwaysUnavailable: Bool
-  let unavailableMessage: String?
+  /// The message to display when alerting someone of this deprecated
+  /// declaration.
+  public let deprecationMessage: String?
 
-  let platforms: [PlatformAvailability]
+  /// Whether this declaration is unconditionally unavailable.
+  public let alwaysUnavailable: Bool
+
+  /// The message to display when alerting someone of this unavailable
+  /// declaration.
+  public let unavailableMessage: String?
+
+  /// The specific availability for all platforms specified for this
+  /// declaration.
+  public let platforms: [PlatformAvailability]
 }
 
 /// Describes a version number of the form `<major>.<minor>.<subminor>`.
 public struct Version {
-  /// The major version number, e.g., the '10' in '10.7.3'. A nil value
-  /// indicates that there is no version number at all.
-  let major: Int?
+  /// The major version number, e.g., the '10' in '10.7.3'.
+  public let major: Int
 
   /// The minor version number, e.g., the '7' in '10.7.3'. This value will be
-  /// nil if no minor version number was provided, e.g., for version '10'.
-  let minor: Int?
+  /// 0 if no minor version number was provided, e.g., for version '10'.
+  public let minor: Int
 
   /// The subminor version number, e.g., the '3' in '10.7.3'. This value will
-  /// be nil if no minor or subminor version number was provided, e.g.,
+  /// be 0 if no minor or subminor version number was provided, e.g.,
   /// in version '10' or '10.7'.
-  let subminor: Int?
+  public let subminor: Int
 
-  internal init(clang: CXVersion) {
-    self.major = clang.Major < 0 ? nil : Int(clang.Major)
-    self.minor = clang.Minor < 0 ? nil : Int(clang.Minor)
-    self.subminor = clang.Subminor < 0 ? nil : Int(clang.Subminor)
+  /// Represents a version number for 0.0.0.
+  public static let zero = Version(major: 0, minor: 0, subminor: 0)
+
+
+  /// Creates a version with the specified major, minor, and subminor versions.
+  ///
+  /// - Parameters:
+  ///   - major: The major version, e.g. "10" in "10.3.1"
+  ///   - minor: The minor version, e.g. "3" in "10.3.1"
+  ///   - subminor: The subminor version, e.g. "1" in "10.3.1"
+  public init(major: Int, minor: Int, subminor: Int) {
+    self.major = major
+    self.minor = minor
+    self.subminor = subminor
+  }
+
+  internal init?(clang: CXVersion) {
+    guard clang.Major >= 0 else { return nil }
+    self.major = Int(clang.Major)
+    self.minor = max(Int(clang.Minor), 0)
+    self.subminor = max(Int(clang.Subminor), 0)
   }
 }
 
@@ -40,7 +67,6 @@ public struct Version {
 public struct PlatformAvailability {
   /// A string that describes the platform for which this structure
   /// provides availability information.
-  /// Possible values are "ios" or "macos".
   public let platform: String
 
   /// The version number in which this entity was introduced.
@@ -48,11 +74,11 @@ public struct PlatformAvailability {
 
   /// The version number in which this entity was deprecated (but is
   /// still available).
-  public let deprecated: Version
+  public let deprecated: Version?
 
   /// The version number in which this entity was obsoleted, and therefore
   /// is no longer available.
-  public let obsoleted: Version
+  public let obsoleted: Version?
 
   /// Whether the entity is unconditionally unavailable on this platform.
   public let unavailable: Bool
@@ -66,7 +92,7 @@ public struct PlatformAvailability {
     // clang_disposeCXPlatformAvailability, so we can't dispose the
     // individual strings inside.
     self.platform = clang.Platform.asSwiftNoDispose()
-    self.introduced = Version(clang: clang.Introduced)
+    self.introduced = Version(clang: clang.Introduced) ?? .zero
     self.deprecated = Version(clang: clang.Deprecated)
     self.obsoleted = Version(clang: clang.Obsoleted)
     self.unavailable = clang.Unavailable != 0
