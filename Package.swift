@@ -1,8 +1,16 @@
+// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
     name: "Clang",
+    products: [
+      .library(name: "Clang", targets: ["Clang"])
+    ],
     dependencies: [
-      .Package(url: "https://github.com/trill-lang/cclang", majorVersion: 0)
+      .package(url: "https://github.com/trill-lang/cclang", from: "0.0.1")
+    ],
+    targets: [
+      .target(name: "Clang"),
+      .testTarget(name: "ClangTests")
     ]
 )

@@ -5,3 +5,4 @@
 /*.xcodeproj
 Xcode/Modules/cclang/module.modulemap
 *.xcuserdatad
+*.resolved
