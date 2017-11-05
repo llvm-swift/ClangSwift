@@ -1,4 +1,4 @@
-#if !NO_SWIFTPM
+#if SWIFT_PACKAGE
 import cclang
 #endif
 
@@ -28,6 +28,7 @@ extension Comment {
     return convertComment(clang_Comment_getChild(clang, UInt32(index)))
   }
 
+  /// The first child of this comment, if there are any children.
   public var firstChild: Comment? {
     let count = clang_Comment_getNumChildren(clang)
     if count == 0 { return nil }

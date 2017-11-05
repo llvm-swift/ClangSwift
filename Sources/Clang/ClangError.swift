@@ -1,16 +1,29 @@
-#if !NO_SWIFTPM
+#if SWIFT_PACKAGE
 import cclang
 #endif
 
 /// Represents the errors that can be thrown by libclang.
-enum ClangError: Error {
-    static let mapping: [CXErrorCode.RawValue: ClangError] = [
-        CXError_Failure.rawValue: .failure, CXError_Crashed.rawValue: .crashed,
-        CXError_ASTReadError.rawValue: .astRead, CXError_InvalidArguments.rawValue: .invalidArguments
-    ]
-    case failure, crashed, invalidArguments, astRead
-    init?(clang: CXErrorCode) {
-        guard let val = ClangError.mapping[clang.rawValue] else { return nil }
-        self = val
+public enum ClangError: Error {
+  /// Clang had an internal failure while processing the request.
+  case failure
+
+  /// Clang crashed while processing the request.
+  case crashed
+
+  /// The arguments provided to the clang invocation were invalid.
+  case invalidArguments
+
+  /// Clang failed to parse an AST from the provided source file(s).
+  case astRead
+
+  /// Constructs a ClangError from the provided CXErrorCode
+  init?(clang: CXErrorCode) {
+    switch clang {
+    case CXError_Failure: self = .failure
+    case CXError_Crashed: self = .crashed
+    case CXError_ASTReadError: self = .astRead
+    case CXError_InvalidArguments: self = .invalidArguments
+    default: return nil
     }
+  }
 }

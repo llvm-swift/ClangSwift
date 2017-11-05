@@ -1,29 +1,29 @@
-#if !NO_SWIFTPM
-import cclang
+#if SWIFT_PACKAGE
+  import cclang
 #endif
 
 /// Represents the result of evaluating a CXCursor
 public enum EvalResult {
-    /// The cursor evaluated to an integer value.
-    case int(Int)
-
-    /// The cursor evaluated to a floating-point value.
-    case float(Double)
-
-    /// The cursor evaluated to an Objective-C String Literal.
-    case objcStringLiteral(String)
-
-    /// The cursor evaluated to a NUL-terminated C String literal (char *).
-    case stringLiteral(String)
-
-    /// The cursor evaluated to a Core Foundation CFString literal.
-    case cfStringLiteral(String)
-
-    /// The cursor evaluated to another kind of value, currently unavailable.
-    case other
-
-    /// The cursor evaluated to an explicitly unexposed value.
-    case unexposed
+  /// The cursor evaluated to an integer value.
+  case int(Int)
+  
+  /// The cursor evaluated to a floating-point value.
+  case float(Double)
+  
+  /// The cursor evaluated to an Objective-C String Literal.
+  case objcStringLiteral(String)
+  
+  /// The cursor evaluated to a NUL-terminated C String literal (char *).
+  case stringLiteral(String)
+  
+  /// The cursor evaluated to a Core Foundation CFString literal.
+  case cfStringLiteral(String)
+  
+  /// The cursor evaluated to another kind of value, currently unavailable.
+  case other
+  
+  /// The cursor evaluated to an explicitly unexposed value.
+  case unexposed
 }
 
 /// Converts a CXEvalResult to an EvalResult, returning `nil` if it was

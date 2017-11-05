@@ -1,5 +1,5 @@
 import XCTest
-#if !NO_SWIFTPM
+#if SWIFT_PACKAGE
 import cclang
 #endif
 @testable import Clang

@@ -1,5 +1,5 @@
-#if !NO_SWIFTPM
-  import cclang
+#if SWIFT_PACKAGE
+import cclang
 #endif
 
 internal extension Bool {
@@ -30,7 +30,9 @@ extension CXString {
 
 extension Collection where Iterator.Element == String, IndexDistance == Int {
 
-  func withUnsafeCStringBuffer<Result>(_ f: (UnsafeMutableBufferPointer<UnsafePointer<Int8>?>) throws -> Result) rethrows -> Result {
+  func withUnsafeCStringBuffer<Result>(
+    _ f: (UnsafeMutableBufferPointer<UnsafePointer<Int8>?>) throws -> Result)
+    rethrows -> Result {
     var arr = [UnsafePointer<Int8>?]()
     defer {
       for cStr in arr {
