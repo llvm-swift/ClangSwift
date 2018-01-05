@@ -1,8 +1,8 @@
 # ClangSwift
-[![Documentation](https://cdn.rawgit.com/trill-lang/ClangSwift/master/docs/badge.svg)](https://trill-lang.github.io/ClangSwift)
+[![Documentation](https://cdn.rawgit.com/llvm-swift/ClangSwift/master/docs/badge.svg)](https://trill-lang.github.io/ClangSwift)
 
 ClangSwift aims to be a Swifty wrapper for the `libclang` C API, much like
-[LLVMSwift](https://github.com/trill-lang/LLVMSwift).
+[LLVMSwift](https://github.com/llvm-swift/LLVMSwift).
 
 It's still heavily in development, and is nowhere near complete.
 Check back for updates!
