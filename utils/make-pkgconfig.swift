@@ -57,8 +57,14 @@ func makeFile() throws {
   }
   let cclangPath = pkgConfigDir.appendingPathComponent("cclang.pc")
 
+  let brewLLVMConfig: () -> String? = {
+    guard let brew = which("brew") else { return nil }
+    guard let brewPrefix = run(brew, args: ["--prefix"]) else { return nil }
+    return which(brewPrefix + "/opt/llvm/bin/llvm-config")
+  }
+
   /// Ensure we have llvm-config in the PATH
-  guard let llvmConfig = which("llvm-config-4.0") ?? which("llvm-config-3.9") ?? which("llvm-config") else {
+  guard let llvmConfig = which("llvm-config-4.0") ?? which("llvm-config") ?? brewLLVMConfig() else {
     throw "Failed to find llvm-config. Ensure llvm-config is installed and " +
           "in your PATH"
   }
@@ -69,6 +75,7 @@ func makeFile() throws {
 
   let versionStr = run(llvmConfig, args: ["--version"])!
                      .replacing(charactersIn: .newlines, with: "")
+                     .replacingOccurrences(of: "svn", with: "")
   let components = versionStr.components(separatedBy: ".")
                              .flatMap { Int($0) }
 
@@ -79,14 +86,16 @@ func makeFile() throws {
   let version = (components[0], components[1], components[2])
 
   guard version > (3, 9, 0) else {
-    throw "LLVMSwift requires LLVM version >=3.9.0, but you have \(versionStr)"
+    throw "ClangSwift requires LLVM version >=3.9.0, but you have \(versionStr)"
   }
 
   print("LLVM version is \(versionStr)")
 
-  guard let includeDir = run(llvmConfig, args: ["--includedir"]) else {
-    throw "Could not find LLVM include dir"
-  }
+  let cFlags = run(llvmConfig, args: ["--cflags"])!
+    .replacing(charactersIn: .newlines, with: "")
+    .components(separatedBy: " ")
+    .filter { $0.hasPrefix("-I") }
+    .joined(separator: " ")
 
   guard let libDir = run(llvmConfig, args: ["--libdir"]) else {
     throw "Could not find LLVM library dir"
@@ -116,7 +125,7 @@ func makeFile() throws {
     "Version: \(versionStr)",
     "Libs: \(libFlags)",
     "Requires.private:",
-    "Cflags: -I\(includeDir)",
+    "Cflags: \(cFlags)", 
   ].joined(separator: "\n")
 
   print("Writing pkg-config file to \(cclangPath.path)...")
