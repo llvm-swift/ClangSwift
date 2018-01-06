@@ -11,6 +11,7 @@ let package = Package(
     ],
     targets: [
       .target(name: "Clang"),
-      .testTarget(name: "ClangTests")
+      .testTarget(name: "ClangTests",
+                  dependencies: ["Clang"])
     ]
 )
