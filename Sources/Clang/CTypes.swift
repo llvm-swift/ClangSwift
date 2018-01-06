@@ -168,14 +168,6 @@ public struct Float128Type: ClangTypeBacked {
   let clang: CXType
 }
 
-public struct FirstBuiltinType: ClangTypeBacked {
-  let clang: CXType
-}
-
-public struct LastBuiltinType: ClangTypeBacked {
-  let clang: CXType
-}
-
 public struct ComplexType: ClangTypeBacked {
   let clang: CXType
 }
@@ -307,8 +299,6 @@ func convertType(_ clang: CXType) -> CType? {
   case CXType_ObjCClass: return ObjCClassType(clang: clang)
   case CXType_ObjCSel: return ObjCSelType(clang: clang)
   case CXType_Float128: return Float128Type(clang: clang)
-  case CXType_FirstBuiltin: return FirstBuiltinType(clang: clang)
-  case CXType_LastBuiltin: return LastBuiltinType(clang: clang)
   case CXType_Complex: return ComplexType(clang: clang)
   case CXType_Pointer: return PointerType(clang: clang)
   case CXType_BlockPointer: return BlockPointerType(clang: clang)
