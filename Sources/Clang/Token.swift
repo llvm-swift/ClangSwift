@@ -14,14 +14,14 @@ extension Token {
   /// Determine the spelling of the given token.
   /// The spelling of a token is the textual representation of that token,
   /// e.g., the text of an identifier or keyword.
-  func spelling(in translationUnit: TranslationUnit) -> String {
+  public func spelling(in translationUnit: TranslationUnit) -> String {
     return clang_getTokenSpelling(translationUnit.clang, clang).asSwift()
   }
   
   /// Retrieve the source location of the given token.
   /// - param translationUnit: The translation unit in which you're looking
   ///                          for this token.
-  func location(in translationUnit: TranslationUnit) -> SourceLocation {
+  public func location(in translationUnit: TranslationUnit) -> SourceLocation {
     return SourceLocation(clang: clang_getTokenLocation(translationUnit.clang,
                                                         clang))
   }
@@ -29,7 +29,7 @@ extension Token {
   /// Retrieve a source range that covers the given token.
   /// - param translationUnit: The translation unit in which you're looking
   ///                          for this token.
-  func range(in translationUnit: TranslationUnit) -> SourceRange {
+  public func range(in translationUnit: TranslationUnit) -> SourceRange {
     return SourceRange(clang: clang_getTokenExtent(translationUnit.clang,
                                                    clang))
   }
@@ -61,7 +61,7 @@ public struct CommentToken: Token {
 }
 
 /// Converts a CXToken to a Token, returning `nil` if it was unsuccessful
-func convertToken(_ clang: CXToken) -> Token {
+public func convertToken(_ clang: CXToken) -> Token {
   switch clang_getTokenKind(clang) {
   case CXToken_Punctuation: return PunctuationToken(clang: clang)
   case CXToken_Keyword: return KeywordToken(clang: clang)
@@ -114,7 +114,7 @@ public struct SourceLocation {
 
 /// Represents a half-open character range in the source code.
 public struct SourceRange {
-  let clang: CXSourceRange
+  public let clang: CXSourceRange
   
   /// Retrieve a source location representing the first character within a
   /// source range.
@@ -128,3 +128,4 @@ public struct SourceRange {
     return SourceLocation(clang: clang_getRangeEnd(clang))
   }
 }
+
