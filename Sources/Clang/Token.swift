@@ -33,6 +33,11 @@ extension Token {
     return SourceRange(clang: clang_getTokenExtent(translationUnit.clang,
                                                    clang))
   }
+  
+  /// Returns the underlying CXToken value.
+  public func asClang() -> CXToken {
+    return self.clang
+  }
 }
 
 /// A token that contains some kind of punctuation.
@@ -110,11 +115,16 @@ public struct SourceLocation {
   public var file: File {
     return locations.file
   }
+  
+  /// Returns the underlying CXSourceLocation value.
+  public func asClang() -> CXSourceLocation {
+    return self.clang
+  }
 }
 
 /// Represents a half-open character range in the source code.
 public struct SourceRange {
-  public let clang: CXSourceRange
+  let clang: CXSourceRange
   
   /// Retrieve a source location representing the first character within a
   /// source range.
@@ -127,5 +137,9 @@ public struct SourceRange {
   public var end: SourceLocation {
     return SourceLocation(clang: clang_getRangeEnd(clang))
   }
+  
+  /// Returns the underlying CXSourceRange value.
+  public func asClang() -> CXSourceRange {
+    return self.clang
+  }
 }
-
