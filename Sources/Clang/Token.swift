@@ -66,7 +66,7 @@ public struct CommentToken: Token {
 }
 
 /// Converts a CXToken to a Token, returning `nil` if it was unsuccessful
-public func convertToken(_ clang: CXToken) -> Token {
+func convertToken(_ clang: CXToken) -> Token {
   switch clang_getTokenKind(clang) {
   case CXToken_Punctuation: return PunctuationToken(clang: clang)
   case CXToken_Keyword: return KeywordToken(clang: clang)
