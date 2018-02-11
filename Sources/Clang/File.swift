@@ -4,7 +4,7 @@
 import Foundation
 
 /// Represents a file ID that's unique to each file in a translation unit.
-public struct UniqueFileID: Equatable, Hashable {
+public struct UniqueFileID: Hashable {
   let clang: CXFileUniqueID
 
   /// Determines if two unique file IDs are equal.
@@ -20,7 +20,7 @@ public struct UniqueFileID: Equatable, Hashable {
 }
 
 /// A particular source file that is part of a translation unit.
-public struct File: Equatable, Hashable {
+public struct File: Hashable {
   let clang: CXFile
 
   /// Retrieve the complete file and path name of the given file.
