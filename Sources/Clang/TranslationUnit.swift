@@ -142,7 +142,17 @@ public class TranslationUnit {
     }
   }
 
-  /// Creates a `TranslationUnit` by p
+  /// Creates a `TranslationUnit` by parsing the source code passed,
+  /// passing optional command line arguments and options to clang.
+  ///
+  /// - parameters:
+  ///   - clangSource: The source code to parse
+  ///   - index: The index (optional, will use a default index if not
+  ///            provided)
+  ///   - args: Optional command-line arguments to pass to clang
+  ///   - options: Options for how to handle the parsed file
+  /// - throws: `ClangError` if the translation unit could not be created
+  ///           successfully.
   public convenience init(clangSource: String,
                           language: Language,
                           index: Index = Index(),
