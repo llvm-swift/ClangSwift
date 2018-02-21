@@ -2,6 +2,8 @@
   import cclang
 #endif
 
+import Foundation
+
 /// Flags that control the creation of translation units.
 /// The enumerators in this enumeration type are meant to be bitwise ORed
 /// together to specify which options should be used when constructing the
@@ -126,8 +128,6 @@ public class TranslationUnit {
               index: Index = Index(),
               commandLineArgs args: [String] = [],
               options: TranslationUnitOptions = []) throws {
-    // TODO: Handle UnsavedFiles
-
     self.clang = try args.withUnsafeCStringBuffer { argC in
       var unit: CXTranslationUnit?
       let err = clang_parseTranslationUnit2(index.clang, filename,
@@ -140,6 +140,60 @@ public class TranslationUnit {
       }
       return unit!
     }
+  }
+
+  /// Creates a `TranslationUnit` by parsing the source code passed,
+  /// passing optional command line arguments and options to clang.
+  ///
+  /// - parameters:
+  ///   - clangSource: The source code to parse
+  ///   - index: The index (optional, will use a default index if not
+  ///            provided)
+  ///   - args: Optional command-line arguments to pass to clang
+  ///   - options: Options for how to handle the parsed file
+  /// - throws: `ClangError` if the translation unit could not be created
+  ///           successfully.
+  public convenience init(clangSource: String,
+                          language: Language,
+                          index: Index = Index(),
+                          commandLineArgs args: [String] = [],
+                          options: TranslationUnitOptions = []) throws {
+    // Returns URL for temporary directory.
+    let temporaryDirectory = { () -> URL in
+      if #available(OSX 10.12, *) {
+        return FileManager.default.temporaryDirectory
+      } else {
+        return URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+      }
+    }
+
+    // Returns correct extension depending on the language passed.
+    let extensionFromLang = { (lang: Language) -> String in
+      switch lang {
+      case .c:
+        return ".c"
+      case .cPlusPlus:
+        return ".cc"
+      case .objectiveC:
+        return ".m"
+      }
+    }
+
+    // Create random file in temporary directory with `clangSource` as content.
+    let randomFileName =
+      UUID().uuidString.lowercased() + extensionFromLang(language)
+    let temporaryClangFileURL =
+      temporaryDirectory().appendingPathComponent(randomFileName)
+    FileManager.default.createFile(atPath: temporaryClangFileURL.path,
+                                   contents: clangSource.data(using: .utf8))
+    defer {
+      try? FileManager.default.removeItem(at: temporaryClangFileURL)
+    }
+
+    try self.init(filename: temporaryClangFileURL.path,
+                  index: index,
+                  commandLineArgs: args,
+                  options: options)
   }
 
   /// Retrieve the cursor that represents the given translation unit.
