@@ -286,6 +286,51 @@ public class TranslationUnit {
     return (0..<toks.count).flatMap { convertCursor(cursors[$0]) }
   }
 
+  /// Returns the set of flags that is suitable for reparsing a translation unit.
+  public var defaultReparseOptions: TranslationUnitOptions {
+    return TranslationUnitOptions(rawValue:
+      clang_defaultReparseOptions(self.clang))
+  }
+
+  /// Reparse the source files that produced this translation unit.
+  ///
+  /// This routine can be used to re-parse the source files that originally
+  /// created the given translation unit, for example because those source files
+  /// have changed (either on disk or as passed via unsavedFiles). The
+  /// source code will be reparsed with the same command-line options as it
+  /// was originally parsed.
+  ///
+  /// Reparsing a translation unit invalidates all cursors and source locations
+  /// that refer into that translation unit. This makes reparsing a translation
+  /// unit semantically equivalent to destroying the translation unit and then
+  /// creating a new translation unit with the same command-line arguments.
+  /// However, it may be more efficient to reparse a translation
+  /// unit using this routine.
+  ///
+  /// - parameters:
+  ///   - parameter unsavedFiles: The files that have not yet been saved to disk
+  ///       but may be required for parsing, including the contents of
+  ///       those files.  The contents and name of these files are copied when
+  ///       necessary, so the client only needs to guarantee their validity
+  ///       until the call to this function returns.
+  ///   - options: Options for how to handle the parsed file. Use
+  ///       `defaultReparseOptions` for default reparsing option.
+  ///
+  /// - throws: `ClangError` if the translation unit could not be created
+  ///           successfully.
+  public func reparseTU(unsavedFiles: [UnsavedFile],
+                        options: TranslationUnitOptions) throws {
+    var cxUnsavedFiles = unsavedFiles.map { $0.clang }
+    let err = CXErrorCode(
+      UInt32(clang_reparseTranslationUnit(self.clang,
+                                          UInt32(unsavedFiles.count),
+                                          &cxUnsavedFiles,
+                                          options.rawValue)))
+    if let clangErr = ClangError(clang: err) {
+      throw clangErr
+    }
+  }
+
   deinit {
     clang_disposeTranslationUnit(clang)
   }
