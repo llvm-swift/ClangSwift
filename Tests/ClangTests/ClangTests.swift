@@ -57,7 +57,7 @@ class ClangTests: XCTestCase {
       let src = "int add(int, int);"
       let unsavedFile = UnsavedFile(filename: filename, contents: src)
 
-      try unit.reparseTU(unsavedFiles: [unsavedFile],
+      try unit.reparseTU(using: [unsavedFile],
                          options: unit.defaultReparseOptions)
 
       XCTAssertEqual(
