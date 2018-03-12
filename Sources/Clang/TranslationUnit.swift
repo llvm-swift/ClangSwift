@@ -318,7 +318,7 @@ public class TranslationUnit {
   ///
   /// - throws: `ClangError` if the translation unit could not be created
   ///           successfully.
-  public func reparseTU(using unsavedFiles: [UnsavedFile],
+  public func reparseTransaltionUnit(using unsavedFiles: [UnsavedFile],
                         options: TranslationUnitOptions) throws {
     var cxUnsavedFiles = unsavedFiles.map { $0.clang }
     let err = CXErrorCode(
