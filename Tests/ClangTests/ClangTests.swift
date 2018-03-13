@@ -48,6 +48,26 @@ class ClangTests: XCTestCase {
     XCTAssertEqual(unsavedFile.clang.Length, 18)
   }
 
+  func testTUReparsing() {
+    do {
+      let filename = "input_tests/reparse.c"
+      let index = Index()
+      let unit = try TranslationUnit(filename: filename, index: index)
+
+      let src = "int add(int, int);"
+      let unsavedFile = UnsavedFile(filename: filename, contents: src)
+
+      try unit.reparseTransaltionUnit(using: [unsavedFile],
+                         options: unit.defaultReparseOptions)
+
+      XCTAssertEqual(
+        unit.tokens(in: unit.cursor.range).map { $0.spelling(in: unit) },
+        ["int", "add", "(", "int", ",", "int", ")", ";"]
+      )
+    } catch {
+      XCTFail("\(error)")
+    }
+  }
 
   static var allTests : [(String, (ClangTests) -> () throws -> Void)] {
     return [
