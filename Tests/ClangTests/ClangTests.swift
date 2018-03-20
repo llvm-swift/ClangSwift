@@ -69,11 +69,34 @@ class ClangTests: XCTestCase {
     }
   }
 
+  func testInitFromASTFile() {
+    do {
+      let filename = "input_tests/init-ast.c"
+      let astFilename = "/tmp/JKN-23-AC.ast"
+
+      let unit = try TranslationUnit(filename: filename)
+      try unit.saveTranslationUnit(in: astFilename,
+                                   withOptions: unit.defaultSaveOptions)
+      defer {
+        try? FileManager.default.removeItem(atPath: astFilename)
+      }
+
+      let unit2 = try TranslationUnit(astFilename: astFilename)
+      XCTAssertEqual(
+        unit2.tokens(in: unit2.cursor.range).map { $0.spelling(in: unit2) },
+        ["int", "main", "(", "void", ")", "{", "return", "0", ";", "}"]
+      )
+    } catch {
+      XCTFail("\(error)")
+    }
+  }
+
   static var allTests : [(String, (ClangTests) -> () throws -> Void)] {
     return [
       ("testInitUsingStringAsSource", testInitUsingStringAsSource),
       ("testDiagnostic", testDiagnostic),
       ("testUnsavedFile", testUnsavedFile),
+      ("testInitFromASTFile", testInitFromASTFile),
     ]
   }
 }
