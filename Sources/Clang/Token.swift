@@ -94,7 +94,8 @@ public struct SourceLocation {
   ///   - file: Source file.
   ///   - line: The line number in the source file.
   ///   - column: The column number in the source file.
-  init(translationUnit: TranslationUnit, file: File, line: Int, column: Int) {
+  public init(translationUnit: TranslationUnit,
+              file: File, line: Int, column: Int) {
     self.clang = clang_getLocation(
       translationUnit.clang, file.clang, UInt32(line), UInt32(column))
   }
@@ -106,7 +107,7 @@ public struct SourceLocation {
   ///       to extract.
   ///   - file: Source file.
   ///   - offset: character offset in the source file.
-  init(translationUnit: TranslationUnit, file: File, offset: Int) {
+  public init(translationUnit: TranslationUnit, file: File, offset: Int) {
     self.clang = clang_getLocationForOffset(
       translationUnit.clang, file.clang, UInt32(offset))
   }
