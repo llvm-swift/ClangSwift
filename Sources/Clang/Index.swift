@@ -78,3 +78,149 @@ public struct GlobalOptions: OptionSet {
   public static let threadBackgroundPriorityForAll = GlobalOptions(rawValue:
     CXGlobalOpt_ThreadBackgroundPriorityForAll.rawValue)
 }
+
+
+/// Options for used for indexing actions.
+public struct IndexOptFlags: OptionSet {
+  public typealias RawValue = CXIndexOptFlags.RawValue
+  public let rawValue: RawValue
+
+  /// Creates a new IndexOptFlags from a raw integer value.
+  public init(rawValue: RawValue) {
+    self.rawValue = rawValue
+  }
+
+  /// Used to indicate that no special indexing options are needed.
+  public static let none =
+    IndexOptFlags(rawValue: CXIndexOpt_None.rawValue)
+
+  /// Used to indicate that IndexerCallbacks#indexEntityReference should
+  /// be invoked for only one reference of an entity per source file that does
+  /// not also include a declaration/definition of the entity.
+  public static let supressRedundantRefs =
+    IndexOptFlags(rawValue: CXIndexOpt_SuppressRedundantRefs.rawValue)
+
+  /// Function-local symbols should be indexed. If this is not set
+  /// function-local symbols will be ignored.
+  public static let indexFunctionLocalSymbols =
+    IndexOptFlags(rawValue: CXIndexOpt_IndexFunctionLocalSymbols.rawValue)
+
+  /// Implicit function/class template instantiations should be indexed.
+  /// If this is not set, implicit instantiations will be ignored.
+  public static let indexImplicitTemplateInstantiations =
+    IndexOptFlags(rawValue: CXIndexOpt_IndexImplicitTemplateInstantiations.rawValue)
+
+  /// Suppress all compiler warnings when parsing for indexing.
+  public static let supressWarnings =
+    IndexOptFlags(rawValue: CXIndexOpt_SuppressWarnings.rawValue)
+
+  /// Skip a function/method body that was already parsed during an
+  /// indexing session associated with a \c CXIndexAction object.
+  /// Bodies in system headers are always skipped
+  public static let skipParsedBodiesInSession =
+    IndexOptFlags(rawValue: CXIndexOpt_SkipParsedBodiesInSession.rawValue)
+}
+
+/// An indexing action/session, to be applied to one or multiple translation
+/// units.
+public class IndexAction {
+  let clang: CXIndexAction
+
+  /// Initializes an indexion action.
+  /// - parameter index: An Index.
+  public init(index: Index = Index()) {
+    clang = clang_IndexAction_create(index.clang)
+  }
+
+  deinit {
+    clang_IndexAction_dispose(clang)
+  }
+}
+
+/// Represents a declaration.
+public struct IdxDeclInfo {
+  let clang: CXIdxDeclInfo
+
+  /// Attached cursor with the declaration.
+  public var cursor: Cursor? {
+    return convertCursor(clang.cursor)
+  }
+
+  /// Wheter the declaration has been redeclared.
+  public var isRedeclaration: Bool {
+    return clang.isRedeclaration != 0
+  }
+
+  /// Wheter the declaration is a definition.
+  public var isDefinition: Bool {
+    return clang.isDefinition != 0
+  }
+
+  /// Wheter the declaration is a container.
+  public var isContainer: Bool {
+    return clang.isContainer != 0
+  }
+
+  /// Whether the declaration exists in code or was created implicitly
+  /// by the compiler, e.g. implicit Objective-C methods for properties.
+  public var isImplicit: Bool {
+    return clang.isImplicit != 0
+  }
+
+  /// Get location of the declaration.
+  public var loc: SourceLocation {
+    return SourceLocation(clang: clang_indexLoc_getCXSourceLocation(clang.loc))
+  }
+
+  // TODO: entityInfo: UnsafePointer<CXIdxEntityInfo>!
+  // TODO: semanticContainer: UnsafePointer<CXIdxContainerInfo>!
+  // TODO: lexicalContainer: UnsafePointer<CXIdxContainerInfo>!
+  // TODO: declAsContainer: UnsafePointer<CXIdxContainerInfo>!
+  // TODO: attributes: UnsafePointer<UnsafePointer<CXIdxAttrInfo>?>!
+  // TODO: numAttributes: UInt32
+  // TODO: flags: UInt32
+}
+
+/// Closure type used with `IndexerCallbacks`.
+public typealias IndexDeclaration = (IdxDeclInfo) -> Void
+
+/// A group of callbacks used by
+/// `TranslationUnit.indexTranslationUnit(indexAction:indexerCallbacks:options:)`.
+public class IndexerCallbacks {
+  var clang = cclang.IndexerCallbacks()
+
+  // TODO: Implement other possible callbacks in `cclang.IndexerCallbacks`.
+
+  /// Callback called for each declaration.
+  var indexDeclaration: IndexDeclaration? {
+    didSet {
+      if indexDeclaration == nil {
+        clang.indexDeclaration = nil
+        return
+      }
+
+      // It is assumed that the underlying type of CXClientData (e.g: `opaque` below) is
+      // of type `IndexerCallbacks`.
+      // This means that calls to `clang_indexTranslationUnit()` or `clang_indexSourceFile()`
+      // should take a void pointer to an 'IndexerCallbacks' in the CXClientData argument.
+      // Example:
+      // ```
+      // let opaque = Unmanaged.passUnretained(indexerCallbacks).toOpaque()
+      // clang_indexTranslationUnit(indexAction.clang,
+      //                            opaque, <-- Here
+      //                            &indexerCallbacks.clang,
+      //                            UInt32(MemoryLayout<cclang.IndexerCallbacks>.size),
+      //                            options, tu)
+      // ```
+      clang.indexDeclaration = { (opaque, declPtr) in
+        if let decl = declPtr?.pointee {
+          let this =
+            Unmanaged<IndexerCallbacks>.fromOpaque(opaque!).takeUnretainedValue()
+          if let f = this.indexDeclaration {
+            f(IdxDeclInfo(clang: decl))
+          }
+        }
+      }
+    }
+  }
+}

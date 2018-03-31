@@ -414,6 +414,30 @@ public class TranslationUnit {
     }
   }
 
+  /// Index the given translation unit via callbacks implemented through
+  /// IndexerCallbacks.
+  /// The order of callback invocations is not guaranteed to be the same as when
+  /// indexing a source file. The high level order will be:
+  /// - Preprocessor callbacks invocations
+  /// - Declaration/reference callbacks invocations
+  /// - Diagnostic callback invocations
+  public func indexTranslationUnit(indexAction: IndexAction,
+                                   indexerCallbacks: IndexerCallbacks,
+                                   options: IndexOptFlags) throws {
+    let opaque = Unmanaged.passUnretained(indexerCallbacks).toOpaque()
+    let err = CXErrorCode(UInt32(
+      clang_indexTranslationUnit(indexAction.clang,
+                                 opaque, // Used as data in order capture its callbacks
+                                 &indexerCallbacks.clang,
+                                 UInt32(MemoryLayout<cclang.IndexerCallbacks>.size),
+                                 options.rawValue,
+                                 self.clang)))
+
+    if let clangErr = ClangError(clang: err) {
+      throw clangErr
+    }
+  }
+
   deinit {
     clang_disposeTranslationUnit(clang)
   }

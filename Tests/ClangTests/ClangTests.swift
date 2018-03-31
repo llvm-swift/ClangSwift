@@ -133,6 +133,30 @@ class ClangTests: XCTestCase {
     }
   }
 
+  func testIndexAction() {
+    do {
+      let filename = "input_tests/index-action.c"
+      let unit = try TranslationUnit(filename: filename)
+
+      let indexerCallbacks = Clang.IndexerCallbacks()
+      var functionsFound = Set<String>()
+      indexerCallbacks.indexDeclaration = { decl in
+        if decl.cursor is FunctionDecl  {
+          functionsFound.insert(decl.cursor!.description)
+        }
+      }
+
+      try unit.indexTranslationUnit(indexAction: IndexAction(),
+                                    indexerCallbacks: indexerCallbacks,
+                                    options: .none)
+
+      XCTAssertEqual(functionsFound,
+                     Set<String>(arrayLiteral: "main", "didLaunch"))
+    } catch {
+      XCTFail("\(error)")
+    }
+  }
+      
   func testParsingWithUnsavedFile() {
     do {
       let filename = "input_tests/unsaved-file.c"
@@ -158,6 +182,8 @@ class ClangTests: XCTestCase {
       ("testInitFromASTFile", testInitFromASTFile),
       ("testLocationInitFromLineAndColumn", testLocationInitFromLineAndColumn),
       ("testLocationInitFromOffset", testLocationInitFromOffset),
+      ("testIndexAction", testIndexAction),
+      ("testParsingWithUnsavedFile", testParsingWithUnsavedFile),
     ]
   }
 }
