@@ -361,7 +361,7 @@ extension Cursor {
   }
 
   /// Determine whether the given cursor is `nil` or not.
-  public var isNil: Bool {
+  public var isNull: Bool {
     return clang_Cursor_isNull(asClang()) != 0
   }
 
@@ -399,7 +399,7 @@ extension Cursor {
   }
 
   /// Retrieve the nil cursor, which represents no entity.
-  public static var nilCursor: Cursor {
+  public static var null: Cursor {
     return clang_getNullCursor()
   }
 }
