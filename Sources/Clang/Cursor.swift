@@ -399,7 +399,7 @@ extension Cursor {
   }
 
   /// Retrieve the nil cursor, which represents no entity.
-  public static func getNilCursor() -> Cursor {
+  public static var nilCursor: Cursor {
     return clang_getNullCursor()
   }
 }
