@@ -64,6 +64,13 @@ public func ==(lhs: Cursor, rhs: Cursor) -> Bool {
 }
 
 extension Cursor {
+  /// Retrieve the nil cursor, which represents no entity.
+  public static func getNilCursor() -> Cursor {
+    return clang_getNullCursor()
+  }
+}
+
+extension Cursor {
 
   /// Retrieve a name for the entity referenced by this cursor.
   public var description: String {
