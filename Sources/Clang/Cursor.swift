@@ -64,13 +64,6 @@ public func ==(lhs: Cursor, rhs: Cursor) -> Bool {
 }
 
 extension Cursor {
-  /// Retrieve the nil cursor, which represents no entity.
-  public static func getNilCursor() -> Cursor {
-    return clang_getNullCursor()
-  }
-}
-
-extension Cursor {
 
   /// Retrieve a name for the entity referenced by this cursor.
   public var description: String {
@@ -367,6 +360,11 @@ extension Cursor {
     return clang_isUnexposed(asClang().kind) != 0
   }
 
+  /// Determine whether the given cursor is `nil` or not.
+  public var isNil: Bool {
+    return clang_Cursor_isNull(asClang()) != 0
+  }
+
   /// If cursor is a statement declaration tries to evaluate the statement and
   /// if its variable, tries to evaluate its initializer, into its
   /// corresponding type.
@@ -398,6 +396,11 @@ extension Cursor {
         }
       }
     }
+  }
+
+  /// Retrieve the nil cursor, which represents no entity.
+  public static func getNilCursor() -> Cursor {
+    return clang_getNullCursor()
   }
 }
 
