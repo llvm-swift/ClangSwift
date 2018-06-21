@@ -204,6 +204,27 @@ class ClangTests: XCTestCase {
 
     }
   }
+  
+  func testVisitInclusion() {
+    func fileName(_ file: File) -> String {
+        return file.name.components(separatedBy: "/").last!
+    }
+    do {
+      let inclusionEx = [
+        ["inclusion.c"],
+        ["inclusion-header.h", "inclusion.c"],
+      ]
+      let unit = try TranslationUnit(filename: "input_tests/inclusion.c")
+      var inclusion: [[String]] = []
+      unit.visitInclusion { file, stack in
+        let inc = [fileName(file)] + stack.map { fileName($0.file) }
+        inclusion.append(inc)
+      }
+      XCTAssertEqual(inclusion, inclusionEx)
+    } catch {
+      XCTFail("\(error)")
+    }
+  }
 
   static var allTests : [(String, (ClangTests) -> () throws -> Void)] {
     return [
@@ -216,6 +237,7 @@ class ClangTests: XCTestCase {
       ("testIndexAction", testIndexAction),
       ("testParsingWithUnsavedFile", testParsingWithUnsavedFile),
       ("testIsFromMainFile", testIsFromMainFile),
+      ("testVisitInclusion", testVisitInclusion),
     ]
   }
 }
