@@ -1,17 +1,26 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 import PackageDescription
 
 let package = Package(
     name: "Clang",
     products: [
-      .library(name: "Clang", targets: ["Clang"])
+      .library(
+        name: "Clang",
+        targets: ["Clang"])
     ],
-    dependencies: [
-      .package(url: "https://github.com/llvm-swift/cclang", from: "0.0.1")
-    ],
+    dependencies: [ ],
     targets: [
-      .target(name: "Clang"),
-      .testTarget(name: "ClangTests",
-                  dependencies: ["Clang"])
+      .systemLibrary(
+        name: "cclang",
+        pkgConfig: "cclang",
+        providers: [
+          .brew(["llvm"]),
+        ]),
+      .target(
+        name: "Clang",
+        dependencies: ["cclang"]),
+      .testTarget(
+        name: "ClangTests",
+        dependencies: ["Clang"])
     ]
 )
