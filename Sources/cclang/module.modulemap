@@ -1,0 +1,4 @@
+module cclang [system] {
+  header "shim.h"
+  export *
+}
