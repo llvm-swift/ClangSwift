@@ -200,6 +200,10 @@ public struct ObjCInterfaceType: ClangTypeBacked {
   let clang: CXType
 }
 
+public struct ObjCTypeParam: ClangTypeBacked {
+  let clang: CXType
+}
+
 public struct ObjCObjectPointerType: ClangTypeBacked {
   let clang: CXType
 }
@@ -305,6 +309,7 @@ func convertType(_ clang: CXType) -> CType? {
   case CXType_Typedef: return TypedefType(clang: clang)
   case CXType_ObjCInterface: return ObjCInterfaceType(clang: clang)
   case CXType_ObjCObjectPointer: return ObjCObjectPointerType(clang: clang)
+  case CXType_ObjCTypeParam: return ObjCTypeParam(clang: clang)
   case CXType_FunctionNoProto: return FunctionNoProtoType(clang: clang)
   case CXType_FunctionProto: return FunctionProtoType(clang: clang)
   case CXType_ConstantArray: return ConstantArrayType(clang: clang)
