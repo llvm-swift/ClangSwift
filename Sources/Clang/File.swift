@@ -13,9 +13,10 @@ public struct UniqueFileID: Hashable {
   }
 
   /// A unique integer value representing this unique ID.
-  public var hashValue: Int {
-    return Int(Int64(bitPattern: clang.data.0 ^ clang.data.1 ^ clang.data.2)
-      ^ 0x0a28bf1ac) // xor with a constant for extra mixing.
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(clang.data.0)
+    hasher.combine(clang.data.1)
+    hasher.combine(clang.data.2)
   }
 }
 
@@ -49,12 +50,12 @@ public struct File: Hashable {
   }
 
   /// A unique integer value representing this file.
-  public var hashValue: Int {
-    let mixin = 0xa24b1bc4
+  public func hash(into hasher: inout Hasher) {
     guard let uniqueID = uniqueID else {
-      return name.hashValue ^ mixin
+      hasher.combine(name)
+      return
     }
-    return uniqueID.hashValue ^ mixin
+    hasher.combine(uniqueID)
   }
 }
 
